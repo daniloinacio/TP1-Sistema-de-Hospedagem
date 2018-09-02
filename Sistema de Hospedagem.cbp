@@ -31,27 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="dominios.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="dominios.hpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="entidades.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="entidades.hpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="main.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="testes.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="testes.hpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="dominios.cpp" />
+		<Unit filename="dominios.hpp" />
+		<Unit filename="entidades.cpp" />
+		<Unit filename="entidades.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="testes.cpp" />
+		<Unit filename="testes.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

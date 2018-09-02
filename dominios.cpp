@@ -30,9 +30,9 @@ void Banco::validar( string numero ) throw ( invalid_argument )
     }
 }
 
-void CapAcomodacao::validar( int quantidade )
+void CapAcomodacao::validar( int valor ) throw ( invalid_argument )
 {
-    if ( quantidade < LIMITE_INF || quantidade > LIMITE_SUP)
+    if ( valor < MIN_VALOR || valor > MAX_VALOR)
     {
         throw invalid_argument{ "Argumento Invalido." };
     }

@@ -6,20 +6,21 @@
 using namespace std;
 
 /// Representação numérica de uma Agência.
-/** Detailed description. */
+/** Representa uma Agência com um valor numérico de 5 dígitos em que
+cada dígito é um número de 0 a 9. */
 
 class Agencia
 {
 private:
-    string numero;              ///< Representação numérica da Agência.
+    string numero;              ///< Representação numérica de uma Agência.
     const int TAM = 5;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Valida uma representação numérica de da Agência.
+    /// Valida uma representação numérica de uma Agência.
     /** Verifica se a representação contém 5 caracteres e se cada um deles
     está no intervalo 0-9.
-        \param Uma string contendo uma representação da Agência.
+        \param Uma string contendo uma representação de uma Agência.
         \return Void.
     */
 
@@ -27,7 +28,7 @@ private:
 
 public:
 
-    /// Atribui uma representação numérica ao atributo numero da Agencia;
+    /// Atribui uma representação numérica ao atributo numero;
     /** Valida o parametro recebido e atribui ao atributo numero;
         \param Uma string contendo uma representação numérica válida.
         \return Void.
@@ -40,7 +41,7 @@ public:
     }
 
     /// Obtém o atributo número.
-    /** Retorna a representação numérica da Agência.
+    /** Retorna a representação numérica de uma Agência.
         \param Void.
         \return Uma string contendo a representação numérica.
     */
@@ -52,92 +53,92 @@ public:
 
 };
 
-/// Brief description.
-/** Detailed description. */
+/// Representação numérica de um Banco.
+/** Representa um banco com um valor numérico de 3 dígitos em que
+cada dígito é um número de 0 a 9. */
 
 class Banco
 {
 private:
 
-    string numero;              ///<
-    const int TAM = 3;          ///<
-    const int LIMITE_INF = 48;  ///<
-    const int LIMITE_SUP = 57;  ///<
+    string numero;              ///< Representação numérica de um Banco.
+    const int TAM = 3;          ///< Tamanho válido da representação.
+    const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
+    /// Valida uma representação numérica de um Banco.
+    /** Verifica se a representação contém 3 caracteres e se cada um deles
+    está no intervalo 0-9.
+        \param Uma string contendo uma representação de um Banco.
+        \return Void.
     */
 
     void validar( string numero ) throw ( invalid_argument );
 
 public:
 
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
+    /// Atribui uma representação numérica ao atributo numero;
+    /** Valida o parametro recebido e atribui ao atributo numero;
+        \param Uma string contendo uma representação numérica válida.
+        \return Void.
     */
-
     void setBanco( string numero) throw ( invalid_argument )
     {
         validar( numero );
         this->numero = numero;
     }
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
-     */
+    /// Obtém o atributo número.
+    /** Retorna a representação numérica de um Banco.
+        \param Void.
+        \return Uma string contendo a representação numérica.
+    */
     string getBanco( ) const
     {
         return numero;
     }
-}
+};
 
-/// Brief description.
-/** Detailed description. */
+/// Valor numérico de uma capacidade de acomodação.
+/** Representa uma capacidade de acomodação com um valor numérico de 0 a 9. */
 
 class CapAcomodacao
 {
 private:
 
-    int quantidade;         ///<
-    const LIMITE_INF = 0;   ///<
-    const LIMITE_SUP = 9;   ///<
+    int valor;             ///< Valor da capacidade.
+    const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
+    const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
+    /// Valida um valor de capacidade de acomodação.
+    /** Verifica se a representação contém um inteiro no intervalo 0-9.
+        \param Um inteiro contendo um valor.
+        \return Void.
     */
 
-    void validar( int quantidade ) throw ( invalid_argument );
+    void validar( int valor ) throw ( invalid_argument );
 
 public:
 
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
+    /// Atribui um valor válido ao atributo valor;
+    /** Valida o parametro recebido e atribui ao atributo valor;
+        \param Um inteiro contendo um valor válido;
+        \return Void.
     */
 
-    void setCapAcomodacao( int quantidade ) throw ( invalid_argument ){
-        validar( quantidade );
-        this->quantidade = quantidade;
+    void setCapAcomodacao( int valor ) throw ( invalid_argument ){
+        validar( valor );
+        this->valor = valor;
     }
 
-    /// Brief description.
-    /** Detailed description.
-        \param
-        \return
+    /// Obtém o atributo valor.
+    /** Retorna o valor da capacidade de acomodação.
+        \param Void.
+        \return Um inteiro contendo o valor da capacidade de acomodação.
     */
-
     int getCapAcomodacao( )
     {
-        return quantidade;
+        return valor;
     }
-}
+};
 
 #endif // DOMINIOS_HPP_INCLUDED

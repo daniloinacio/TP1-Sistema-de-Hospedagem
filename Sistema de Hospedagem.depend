@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1535912581 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.cpp
+1535915289 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.cpp
 	"dominios.hpp"
 
 1535912558 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.hpp
@@ -7,7 +7,7 @@
 
 1535847681 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/entidades.cpp
 
-1535894159 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/main.cpp
+1535915026 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/main.cpp
 	<iostream>
 	"dominios.hpp"
 

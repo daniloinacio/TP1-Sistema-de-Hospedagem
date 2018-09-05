@@ -34,11 +34,7 @@ public:
         \return Void.
     */
 
-    void setAgencia( string numero ) throw ( invalid_argument )
-    {
-        validar( numero );
-        this->numero = numero;
-    }
+    void setAgencia( string numero ) throw ( invalid_argument );
 
     /// Obtém o atributo número.
     /** Retorna a representação numérica de uma Agência.
@@ -82,11 +78,8 @@ public:
         \param Uma string contendo uma representação numérica válida.
         \return Void.
     */
-    void setBanco( string numero) throw ( invalid_argument )
-    {
-        validar( numero );
-        this->numero = numero;
-    }
+    void setBanco( string numero) throw ( invalid_argument );
+
     /// Obtém o atributo número.
     /** Retorna a representação numérica de um Banco.
         \param Void.
@@ -105,7 +98,7 @@ class CapAcomodacao
 {
 private:
 
-    int valor;             ///< Valor da capacidade.
+    int valor;                 ///< Valor da capacidade.
     const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
     const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
@@ -125,10 +118,7 @@ public:
         \return Void.
     */
 
-    void setCapAcomodacao( int valor ) throw ( invalid_argument ){
-        validar( valor );
-        this->valor = valor;
-    }
+    void setCapAcomodacao( int valor ) throw ( invalid_argument );
 
     /// Obtém o atributo valor.
     /** Retorna o valor da capacidade de acomodação.

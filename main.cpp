@@ -1,5 +1,4 @@
 #include <iostream>
-//#include "dominios.hpp"
 
 #include "testes_dominios.hpp"
 

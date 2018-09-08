@@ -17,6 +17,8 @@ int TUAgencia::run()
 
     TestarNumeroValido();
 
+    TestarNumeroInvalido();
+
     Finalizar();
 
     return estado;
@@ -35,5 +37,18 @@ void TUAgencia::TestarNumeroValido()
     catch( invalid_argument excecao )
     {
         estado = FALHA;
+    }
+}
+
+void TUAgencia::TestarNumeroInvalido()
+{
+    try
+    {
+        agencia_teste->setAgencia( numero_invalido );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
     }
 }

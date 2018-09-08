@@ -1,37 +1,23 @@
 #include <iostream>
-#include "dominios.hpp"
+//#include "dominios.hpp"
+
+#include "testes_dominios.hpp"
 
 using namespace std;
 
 int main( )
 {
-    Agencia agencia;
-    Banco caixa;
-    CapAcomodacao capacidade;
-    string numero;
-    int valor;
+    TUAgencia agencia_teste;
 
-
-    cout << "Insira um número da agência:" << endl;
-    cin >> numero;
-
-    agencia.setAgencia( numero );
-
-    cout << "Número da agência inserido:\n" << numero << endl;
-
-    cout << "Insira um número de banco:" << endl;
-    cin >> numero;
-
-    caixa.setBanco( numero );
-
-    cout << "Número de banco inserido:\n" << numero << endl;
-
-    cout << "Insira a capacidade de acomodação:" << endl;
-    cin >> valor;
-
-    capacidade.setCapAcomodacao( valor );
-
-    cout << "Valor da capacidade inserido:\n" << valor << endl;
+    switch( agencia_teste.run() )
+    {
+    case TUAgencia::SUCESSO:
+        cout << "Deu certo, uhuul!!";
+        break;
+    case TUAgencia::FALHA:
+        cout << "Opa, acho que algo deu errado";
+        break;
+    }
 
     return 0;
 }

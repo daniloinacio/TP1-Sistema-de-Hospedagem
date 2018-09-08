@@ -13,3 +13,21 @@
 
 1535847784 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes.cpp
 
+1536033017 source:c:\home\tp1-sistema-de-hospedagem\entidades.cpp
+
+1536214539 source:c:\home\tp1-sistema-de-hospedagem\dominios.cpp
+	"dominios.hpp"
+
+1536214539 c:\home\tp1-sistema-de-hospedagem\dominios.hpp
+	<stdexcept>
+
+1536378594 source:c:\home\tp1-sistema-de-hospedagem\testes_dominios.cpp
+	"testes_dominios.hpp"
+
+1536378661 c:\home\tp1-sistema-de-hospedagem\testes_dominios.hpp
+	"dominios.hpp"
+
+1536378478 source:c:\home\tp1-sistema-de-hospedagem\main.cpp
+	<iostream>
+	"testes_dominios.hpp"
+

@@ -1,32 +1,53 @@
-# Prerequisites
+# Pre-requisitos
 *.d
 
-# Compiled Object files
+
+
+# Arquivos objeto compilados
 *.slo
+
 *.lo
+
 *.o
+
 *.obj
 
-# Precompiled Headers
+
+
+# Headers pre-compilados
 *.gch
+
 *.pch
 
-# Compiled Dynamic libraries
+
+
+# Bibliotecas dinâmicas
 *.so
+
 *.dylib
+
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
 
-# Compiled Static libraries
+
+# Bibliotecas estáticas comiladas
 *.lai
+
 *.la
+
 *.a
+
 *.lib
 
-# Executables
+
+
+# Executaveis
 *.exe
+
 *.out
+
 *.app
+
+
+#Pasta dos executáveis
+bin/

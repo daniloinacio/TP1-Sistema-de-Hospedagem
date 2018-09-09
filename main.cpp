@@ -6,15 +6,35 @@ using namespace std;
 
 int main( )
 {
+    // Testes para a unidade Agencia
     TUAgencia agencia_teste;
 
-    switch( agencia_teste.run() )
+    cout << "Teste de unidade da classe Agencia:\n";
+
+    switch( agencia_teste.RodarTestes() )
     {
     case TUAgencia::SUCESSO:
-        cout << "Deu certo, uhuul!!";
+        cout << "Testes ocorreram sem falhas\n";
         break;
     case TUAgencia::FALHA:
-        cout << "Opa, acho que algo deu errado";
+        cout << "Houveram falhas nos testes\n";
+        break;
+    }
+
+    cout << "\n";
+
+    // Testes para a classe Banco
+    TUBanco banco_teste;
+
+    cout << "Teste de unidade da classe Banco:\n";
+
+    switch( banco_teste.RodarTestes() )
+    {
+    case TUBanco::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUBanco::FALHA:
+        cout << "Houveram falhas nos testes\n";
         break;
     }
 

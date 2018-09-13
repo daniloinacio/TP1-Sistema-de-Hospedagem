@@ -17,7 +17,6 @@ int TUAgencia::RodarTestes()
     Inicializar();
 
     TestarNumeroValido();
-
     TestarNumeroInvalido();
 
     Finalizar();
@@ -69,6 +68,10 @@ void TUBanco::Finalizar()
 int TUBanco::RodarTestes()
 {
     Inicializar();
+
+    TestarNumeroInvalido();
+    TestarNumeroValido();
+
     Finalizar();
 
     return estado;
@@ -95,6 +98,60 @@ void TUBanco::TestarNumeroInvalido()
     try
     {
         banco_teste->setBanco( numero_invalido );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+// Funções de teste da classe CapAcomodacao
+void TUCapAcomodacao::Inicializar()
+{
+    estado = SUCESSO;
+    capacidade = new CapAcomodacao();
+}
+
+void TUCapAcomodacao::Finalizar()
+{
+    delete capacidade;
+}
+
+int TUCapAcomodacao::RodarTestes()
+{
+    Inicializar();
+
+    TestarValorInvalido();
+    TestarValorValido();
+
+    Finalizar();
+
+    return estado;
+}
+
+void TUCapAcomodacao::TestarValorValido()
+{
+    try
+    {
+         capacidade->setCapAcomodacao(valor_valido);
+         if( capacidade->getCapAcomodacao() != valor_valido )
+         {
+             estado = FALHA;
+         }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+
+void TUCapAcomodacao::TestarValorInvalido()
+{
+    try
+    {
+        capacidade->setCapAcomodacao( valor_invalido );
         estado = FALHA;
     }
     catch( invalid_argument excecao )

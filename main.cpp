@@ -14,7 +14,7 @@ int main( )
     switch( agencia_teste.RodarTestes() )
     {
     case TUAgencia::SUCESSO:
-        cout << "Testes ocorreram sem falhas\n";
+        cout << "Testes rodaram sem falhas\n";
         break;
     case TUAgencia::FALHA:
         cout << "Houveram falhas nos testes\n";
@@ -35,6 +35,23 @@ int main( )
         break;
     case TUBanco::FALHA:
         cout << "Houveram falhas nos testes\n";
+        break;
+    }
+
+    cout << "\n";
+
+    // Testes para a unidade CapAcomodacao
+    TUCapAcomodacao capacidade_teste;
+
+    cout << "Teste de unidade da classe CapAcomodacao:\n";
+
+    switch( capacidade_teste.RodarTestes() )
+    {
+    case TUCapAcomodacao::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUCapAcomodacao::FALHA:
+        cout << "Houveram falhar nos testes\n";
         break;
     }
 

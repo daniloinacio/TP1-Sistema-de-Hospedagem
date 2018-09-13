@@ -93,4 +93,35 @@ private:
     void TestarNumeroInvalido();
 }; //TUBanco
 
+/// Classe de testes para a classe CapAcomodacao
+/** Este módulo faz testes básicos para a classe CaoAcomodacao */
+class TUCapAcomodacao
+{
+public:
+    static const int SUCESSO = 1; ///< Indica sucesso
+    static const int FALHA = -1; ///< Indica falha
+
+    /// Função que irá rodar todos os testes desta unidade
+    int RodarTestes();
+
+private:
+    int valor_valido = 6; ///< Valor permitido para capacidade
+    int valor_invalido = -3; ///< Valor não permitido para capacidade
+
+    CapAcomodacao *capacidade; ///< Objeto de teste
+    int estado; ///< Indica se houve sucesso ou falha nos testes
+
+    /// Função que inicializa o ambiente de testes
+    void Inicializar();
+
+    /// Função que finaliza o ambiente de testes
+    void Finalizar();
+
+    /// Esta função ira testar um valor válido
+    void TestarValorValido();
+
+    /// Esta função irá testar um valor inválido
+    void TestarValorInvalido();
+};
+
 #endif // TESTES_DOMINIOS_HPP

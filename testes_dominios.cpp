@@ -1,35 +1,35 @@
 #include "testes_dominios.hpp"
 
 // Funções de teste da classe Agência
-void TUAgencia::Inicializar()
+void TUAgencia::inicializar()
 {
-    agencia_teste = new Agencia();
+    agenciaTeste = new Agencia();
     estado = SUCESSO;
 }
 
-void TUAgencia::Finalizar()
+void TUAgencia::finalizar()
 {
-    delete agencia_teste;
+    delete agenciaTeste;
 }
 
-int TUAgencia::RodarTestes()
+int TUAgencia::rodarTestes()
 {
-    Inicializar();
+    inicializar();
 
-    TestarNumeroValido();
-    TestarNumeroInvalido();
+    testarCenarioSucesso();
+    testarCenarioFalha();
 
-    Finalizar();
+    finalizar();
 
     return estado;
 }
 
-void TUAgencia::TestarNumeroValido()
+void TUAgencia::testarCenarioSucesso()
 {
     try
     {
-        agencia_teste->setAgencia(numero_valido);
-        if(agencia_teste->getAgencia()!= numero_valido)
+        agenciaTeste->setAgencia(AGENCIA_VALIDA);
+        if(agenciaTeste->getAgencia()!= AGENCIA_VALIDA)
         {
             estado = FALHA;
         }
@@ -40,11 +40,11 @@ void TUAgencia::TestarNumeroValido()
     }
 }
 
-void TUAgencia::TestarNumeroInvalido()
+void TUAgencia::testarCenarioFalha()
 {
     try
     {
-        agencia_teste->setAgencia( numero_invalido );
+        agenciaTeste->setAgencia( AGENCIA_INVALIDA );
         estado = FALHA;
     }
     catch( invalid_argument excecao )
@@ -54,35 +54,35 @@ void TUAgencia::TestarNumeroInvalido()
 }
 
 // Funções de teste da classe Banco
-void TUBanco::Inicializar()
+void TUBanco::inicializar()
 {
     estado = SUCESSO;
-    banco_teste = new Banco();
+    bancoTeste = new Banco();
 }
 
-void TUBanco::Finalizar()
+void TUBanco::finalizar()
 {
-    delete banco_teste;
+    delete bancoTeste;
 }
 
-int TUBanco::RodarTestes()
+int TUBanco::rodarTestes()
 {
-    Inicializar();
+    inicializar();
 
-    TestarNumeroInvalido();
-    TestarNumeroValido();
+    testarCenarioSucesso();
+    testarCenarioFalha();
 
-    Finalizar();
+    finalizar();
 
     return estado;
 }
 
-void TUBanco::TestarNumeroValido()
+void TUBanco::testarCenarioSucesso()
 {
     try
     {
-        banco_teste->setBanco(numero_valido);
-        if( banco_teste->getBanco() != numero_valido )
+        bancoTeste->setBanco(BANCO_VALIDO);
+        if( bancoTeste->getBanco() != BANCO_VALIDO )
         {
             estado = FALHA;
         }
@@ -93,11 +93,11 @@ void TUBanco::TestarNumeroValido()
     }
 }
 
-void TUBanco::TestarNumeroInvalido()
+void TUBanco::testarCenarioFalha()
 {
     try
     {
-        banco_teste->setBanco( numero_invalido );
+        bancoTeste->setBanco( BANCO_INVALIDO );
         estado = FALHA;
     }
     catch( invalid_argument excecao )
@@ -107,35 +107,35 @@ void TUBanco::TestarNumeroInvalido()
 }
 
 // Funções de teste da classe CapAcomodacao
-void TUCapAcomodacao::Inicializar()
+void TUCapAcomodacao::inicializar()
 {
     estado = SUCESSO;
     capacidade = new CapAcomodacao();
 }
 
-void TUCapAcomodacao::Finalizar()
+void TUCapAcomodacao::finalizar()
 {
     delete capacidade;
 }
 
-int TUCapAcomodacao::RodarTestes()
+int TUCapAcomodacao::rodarTestes()
 {
-    Inicializar();
+    inicializar();
 
-    TestarValorInvalido();
-    TestarValorValido();
+    testarCenarioSucesso();
+    testarCenarioFalha();
 
-    Finalizar();
+    finalizar();
 
     return estado;
 }
 
-void TUCapAcomodacao::TestarValorValido()
+void TUCapAcomodacao::testarCenarioSucesso()
 {
     try
     {
-         capacidade->setCapAcomodacao(valor_valido);
-         if( capacidade->getCapAcomodacao() != valor_valido )
+         capacidade->setCapAcomodacao(CAP_ACOMODACAO_VALIDA);
+         if( capacidade->getCapAcomodacao() != CAP_ACOMODACAO_VALIDA )
          {
              estado = FALHA;
          }
@@ -147,11 +147,11 @@ void TUCapAcomodacao::TestarValorValido()
 }
 
 
-void TUCapAcomodacao::TestarValorInvalido()
+void TUCapAcomodacao::testarCenarioFalha()
 {
     try
     {
-        capacidade->setCapAcomodacao( valor_invalido );
+        capacidade->setCapAcomodacao( CAP_ACOMODACAO_INVALIDA );
         estado = FALHA;
     }
     catch( invalid_argument excecao )

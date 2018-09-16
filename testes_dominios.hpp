@@ -19,21 +19,21 @@ public:
         \param void Não possui parâmetros de entrada
         \return void Não possui retorno
     */
-    int RodarTestes();
+    int rodarTestes();
 
 private:
-    string numero_valido = "12345"; ///< Sequência de 5 dígitos válida
-    string numero_invalido = "123456"; ///< Sequência de 6 dígitos inválida
+    string AGENCIA_VALIDA = "12345"; ///< Sequência de 5 dígitos válida
+    string AGENCIA_INVALIDA = "123456"; ///< Sequência de 6 dígitos inválida
 
-    Agencia *agencia_teste; ///< Objeto a ser testado
+    Agencia *agenciaTeste; ///< Objeto a ser testado
 
     int estado; ///< Indica se houve falha ou não
 
     /// Prepara tudo para a realização dos testes
-    void Inicializar( );
+    void inicializar( );
 
     /// Finaliza tudo depois da realização dos testes
-    void Finalizar( );
+    void finalizar( );
 
     /// Testa a exceção de argumento inválido.
     /** Este teste procura colocar um nome válido para o objeto a ser
@@ -41,7 +41,7 @@ private:
         \param void Não possui parâmetros
         \return void não possui retorno
     */
-    void TestarNumeroValido( );
+    void testarCenarioSucesso( );
 
     /// Testa a ezceção de argumento inválido.
     /** Aqui há uma tentativa de colocar um nome inválido na agência,
@@ -50,7 +50,7 @@ private:
         \param void Não possui parâmetros de entrada
         \return void Não possui retorno
     */
-    void TestarNumeroInvalido();
+    void testarCenarioFalha();
 }; // TUAgencia
 
 /// Classe de testes para a classe Banco
@@ -64,13 +64,13 @@ public:
     /// Roda todos os testes para a classe Banco
     /** \param void Não tem parâmetros
         \return estado Um valor que indica se os testes foram um sucesso ou falhos */
-    int RodarTestes();
+    int rodarTestes();
 
 private:
-    string numero_valido = "123"; ///< Valor permitido para um valor de Banco
-    string numero_invalido = "1234"; ///< Valor não permitido para um valor de Banco
+    string BANCO_VALIDO = "123"; ///< Valor permitido para um valor de Banco
+    string BANCO_INVALIDO = "1234"; ///< Valor não permitido para um valor de Banco
 
-    Banco *banco_teste; ///< Objeto de teste
+    Banco *bancoTeste; ///< Objeto de teste
 
     int estado; ///< Indica o estado dos testes
 
@@ -78,19 +78,19 @@ private:
     /** Esta função faz tarefas simples como criar um objeto de testes
         \param void
         \return void */
-    void Inicializar();
+    void inicializar();
 
     /// Função responsável por finlizar o ambiente de testes desta unidade.
     /** Ela irá realizar ações como liberar o espaço alocado para a realização
         dos testes
         */
-    void Finalizar();
+    void finalizar();
 
     /// Faz um teste de um valor válido para Banco
-    void TestarNumeroValido();
+    void testarCenarioSucesso();
 
     /// Faz um teste de um valor inválido para Banco
-    void TestarNumeroInvalido();
+    void testarCenarioFalha();
 }; //TUBanco
 
 /// Classe de testes para a classe CapAcomodacao
@@ -102,26 +102,26 @@ public:
     static const int FALHA = -1; ///< Indica falha
 
     /// Função que irá rodar todos os testes desta unidade
-    int RodarTestes();
+    int rodarTestes();
 
 private:
-    int valor_valido = 6; ///< Valor permitido para capacidade
-    int valor_invalido = -3; ///< Valor não permitido para capacidade
+    int CAP_ACOMODACAO_VALIDA = 6; ///< Valor permitido para capacidade
+    int CAP_ACOMODACAO_INVALIDA = -3; ///< Valor não permitido para capacidade
 
     CapAcomodacao *capacidade; ///< Objeto de teste
     int estado; ///< Indica se houve sucesso ou falha nos testes
 
     /// Função que inicializa o ambiente de testes
-    void Inicializar();
+    void inicializar();
 
     /// Função que finaliza o ambiente de testes
-    void Finalizar();
+    void finalizar();
 
     /// Esta função ira testar um valor válido
-    void TestarValorValido();
+    void testarCenarioSucesso();
 
     /// Esta função irá testar um valor inválido
-    void TestarValorInvalido();
+    void testarCenarioFalha();
 };
 
 #endif // TESTES_DOMINIOS_HPP

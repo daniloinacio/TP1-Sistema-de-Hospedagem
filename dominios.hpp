@@ -12,7 +12,7 @@ cada dígito é um número de 0 a 9. */
 class Agencia
 {
 private:
-    string numero;              ///< Representação numérica da Agência.
+    string agencia;             ///< Representação numérica da Agência.
     const int TAM = 5;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
@@ -34,7 +34,7 @@ public:
         \return Void.
     */
 
-    void setAgencia( string numero ) throw ( invalid_argument );
+    void setAgencia( string agencia ) throw ( invalid_argument );
 
     /// Método que obtém o número da Agência.
     /** Retorna a representação numérica da Agência.
@@ -44,7 +44,7 @@ public:
 
     string getAgencia( ) const
     {
-        return numero;
+        return agencia;
     }
 
 };
@@ -57,7 +57,7 @@ class Banco
 {
 private:
 
-    string numero;              ///< Representação numérica do Banco.
+    string banco;               ///< Representação numérica do Banco.
     const int TAM = 3;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
@@ -69,7 +69,7 @@ private:
         \return Void.
     */
 
-    void validar( string numero ) throw ( invalid_argument );
+    void validar( string ) throw ( invalid_argument );
 
 public:
 
@@ -78,7 +78,7 @@ public:
         \param Uma representação numérica válida.
         \return Void.
     */
-    void setBanco( string numero) throw ( invalid_argument );
+    void setBanco( string ) throw ( invalid_argument );
 
     /// Método que obtém o atributo número.
     /** Retorna a representação numérica do Banco.
@@ -87,7 +87,7 @@ public:
     */
     string getBanco( ) const
     {
-        return numero;
+        return banco;
     }
 };
 
@@ -98,7 +98,7 @@ class CapAcomodacao
 {
 private:
 
-    int valor;                 ///< Valor da capacidade.
+    int capAcomodacao;         ///< Valor da capacidade.
     const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
     const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
@@ -108,7 +108,7 @@ private:
         \return Void.
     */
 
-    void validar( int valor ) throw ( invalid_argument );
+    void validar( int ) throw ( invalid_argument );
 
 public:
 
@@ -118,7 +118,7 @@ public:
         \return Void.
     */
 
-    void setCapAcomodacao( int valor ) throw ( invalid_argument );
+    void setCapAcomodacao( int ) throw ( invalid_argument );
 
     /// Método que btém o valor da capacidade de acomodação.
     /** Retorna o valor da capacidade de acomodação.
@@ -127,7 +127,7 @@ public:
     */
     int getCapAcomodacao( )
     {
-        return valor;
+        return capAcomodacao;
     }
 };
 

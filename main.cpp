@@ -7,11 +7,11 @@ using namespace std;
 int main( )
 {
     // Testes para a unidade Agencia
-    TUAgencia agencia_teste;
+    TUAgencia agenciaTeste;
 
     cout << "Teste de unidade da classe Agencia:\n";
 
-    switch( agencia_teste.RodarTestes() )
+    switch( agenciaTeste.rodarTestes() )
     {
     case TUAgencia::SUCESSO:
         cout << "Testes rodaram sem falhas\n";
@@ -24,11 +24,11 @@ int main( )
     cout << "\n";
 
     // Testes para a classe Banco
-    TUBanco banco_teste;
+    TUBanco bancoTeste;
 
     cout << "Teste de unidade da classe Banco:\n";
 
-    switch( banco_teste.RodarTestes() )
+    switch( bancoTeste.rodarTestes() )
     {
     case TUBanco::SUCESSO:
         cout << "Testes rodaram sem falhas\n";
@@ -41,11 +41,11 @@ int main( )
     cout << "\n";
 
     // Testes para a unidade CapAcomodacao
-    TUCapAcomodacao capacidade_teste;
+    TUCapAcomodacao capacidadeTeste;
 
     cout << "Teste de unidade da classe CapAcomodacao:\n";
 
-    switch( capacidade_teste.RodarTestes() )
+    switch( capacidadeTeste.rodarTestes() )
     {
     case TUCapAcomodacao::SUCESSO:
         cout << "Testes rodaram sem falhas\n";

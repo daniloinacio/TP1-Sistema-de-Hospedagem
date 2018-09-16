@@ -1,56 +1,56 @@
 #include "dominios.hpp"
 
-void Agencia::validar( string numero ) throw ( invalid_argument )
+void Agencia::validar( string agencia ) throw ( invalid_argument )
 {
-    if ( numero.size() != TAM )
+    if ( agencia.size() != TAM )
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
     for ( int i=0; i < TAM; i++ )
     {
-        if ( numero[i] < LIMITE_INF || numero[i] > LIMITE_SUP )
+        if ( agencia[i] < LIMITE_INF || agencia[i] > LIMITE_SUP )
         {
             throw invalid_argument{ "Argumeto Invalido." };
         }
     }
 }
 
-void Agencia::setAgencia( string numero ) throw ( invalid_argument )
+void Agencia::setAgencia( string agencia ) throw ( invalid_argument )
 {
-    validar( numero );
-    this->numero = numero;
+    validar( agencia );
+    this->agencia = agencia;
 }
 
-void Banco::validar( string numero ) throw ( invalid_argument )
+void Banco::validar( string banco ) throw ( invalid_argument )
 {
-        if ( numero.size() != TAM)
+        if ( banco.size() != TAM)
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
     for ( int i=0; i < TAM; i++)
     {
-        if ( numero[i] < LIMITE_INF || numero[i] > LIMITE_SUP )
+        if ( banco[i] < LIMITE_INF || banco[i] > LIMITE_SUP )
         {
             throw invalid_argument{ "Argumeto Invalido." };
         }
     }
 }
 
-void Banco::setBanco( string numero ) throw ( invalid_argument )
+void Banco::setBanco( string banco ) throw ( invalid_argument )
 {
-    validar( numero );
-    this->numero = numero;
+    validar( banco );
+    this->banco = banco;
 }
 
-void CapAcomodacao::validar( int valor ) throw ( invalid_argument )
+void CapAcomodacao::validar( int capAcomodacao ) throw ( invalid_argument )
 {
-    if ( valor < MIN_VALOR || valor > MAX_VALOR)
+    if ( capAcomodacao < MIN_VALOR || capAcomodacao > MAX_VALOR)
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
 }
 
-void CapAcomodacao::setCapAcomodacao( int valor ) throw ( invalid_argument ){
-    validar( valor );
-    this->valor = valor;
+void CapAcomodacao::setCapAcomodacao( int capAcomodacao ) throw ( invalid_argument ){
+    validar( capAcomodacao );
+    this->capAcomodacao = capAcomodacao;
 }

@@ -72,40 +72,44 @@ void Data::validar( string data ) throw ( invalid_argument )
         bissexto = true;
     }
     // verifica se é um ano válido
-    if (ano < 2000 || ano > 2099)
+    if (ano < ANO_MIN || ano > ANO_MAX)
     {
         throw invalid_argument{ "Argumeto Invalido." }; 
     }
 
     //verifica se é um mês válido e se o dia é valido
     //para esse mês
+
+    //meses de 31 dias
     if (mes == "jan" || mes == "mar" || mes == "mai" || mes == "ago" ||
      mes == "out" || mes == "dez")
     {
-        if(dia < 1 || dia > 31)
+        if(dia < DIA_MIN || dia > DIA_MAX4)
         {
             throw invalid_argument{ "Argumeto Invalido." };
         }
     }
     else if ( mes == "fev" )
     {
-        if( dia < 1 || ( dia > 28 && bissexto == false ) ||
-            ( dia > 29 && bissexto == true ) )
+        if( dia < DIA_MIN || ( dia > DIA_MAX1 && bissexto == false ) ||
+            ( dia > DIA_MAX2 && bissexto == true ) )
         {
             throw invalid_argument{ "Argumeto Invalido." }; 
         }
 
     }
+    //meses de 29 dias
     else if (mes == "abr" || mes == "jul" )
     {
-        if(dia < 1 || dia > 29 )
+        if(dia < DIA_MIN || dia > DIA_MAX2 )
         {
             throw invalid_argument{ "Argumeto Invalido." };
         }
     }
+    //meses de 30 dias
     else if (mes == "jun" || mes == "set" || mes == "nov" )
     {
-        if(dia < 1 || dia > 30 )
+        if(dia < DIA_MIN || dia > DIA_MAX3 )
         {
             throw invalid_argument{ "Argumeto Invalido." };
         }
@@ -114,8 +118,7 @@ void Data::validar( string data ) throw ( invalid_argument )
     {
             throw invalid_argument{ "Argumeto Invalido." };        
     }
-    
-    cout << "dia: " << dia << " mes: " << mes << " ano: " << ano << endl;
+
 }
 
 void Data::setData( string data ) throw ( invalid_argument )

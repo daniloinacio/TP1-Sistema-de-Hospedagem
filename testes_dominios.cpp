@@ -206,7 +206,7 @@ void TUData::testarCenarioFalha()
 {
     try
     {
-        capacidade->setCapAcomodacao( DATA_INVALIDA );
+        data->setData( DATA_INVALIDA );
         estado = FALHA;
     }
     catch( invalid_argument excecao )

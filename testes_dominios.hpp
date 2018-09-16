@@ -145,6 +145,6 @@ private:
     void testarCenarioSucesso();
 
     void testarCenarioFalha();
-}
+};
 
 #endif // TESTES_DOMINIOS_HPP

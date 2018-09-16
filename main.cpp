@@ -6,7 +6,7 @@ using namespace std;
 
 int main( )
 {
-    // Testes de unidade para a classe Agencia
+    // Testes de unidade da classe Agencia
     TUAgencia agenciaTeste;
 
     cout << "Teste de unidade da classe Agencia:\n";
@@ -23,7 +23,7 @@ int main( )
 
     cout << "\n";
 
-    // Testes de unidade para a classe Banco
+    // Testes de unidade da classe Banco
     TUBanco bancoTeste;
 
     cout << "Teste de unidade da classe Banco:\n";
@@ -40,7 +40,7 @@ int main( )
 
     cout << "\n";
 
-    // Testes de unidade para a classe CapAcomodacao
+    // Testes de unidade da classe CapAcomodacao
     TUCapAcomodacao capacidadeTeste;
 
     cout << "Teste de unidade da classe CapAcomodacao:\n";
@@ -55,10 +55,14 @@ int main( )
         break;
     }
 
-    // Testes de unidade para a classe Data
+    cout << "\n";
+
+    // Testes de unidade da classe Data
     TUData dataTeste;
 
-    switch( dataTest.rodarTestes() )
+    cout << "Teste de unidade da classe Data:\n";
+
+    switch( dataTeste.rodarTestes() )
     {
     case TUData::SUCESSO:
         cout << "Testes rodaram sem falhas\n";

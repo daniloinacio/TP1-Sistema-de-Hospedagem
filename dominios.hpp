@@ -141,6 +141,14 @@ private:
     int ano;
     bool bissexto = false;
 
+    const int ANO_MAX = 2099;
+    const int ANO_MIN = 2000;
+    const int DIA_MIN = 1;
+    const int DIA_MAX1 = 28;
+    const int DIA_MAX2 = 29;
+    const int DIA_MAX3 = 30;
+    const int DIA_MAX4 = 31;
+
     void validar( string ) throw ( invalid_argument );
 
 public:

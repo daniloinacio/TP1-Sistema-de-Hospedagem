@@ -72,5 +72,22 @@ int main( )
         break;
     }
 
+    cout << "\n";
+    
+    // Testes de unidade da classe DataValidade
+    TUDataValidade dataValidadeTeste;
+
+    cout << "Teste de unidade da classe DataValidade:\n";
+
+    switch( dataValidadeTeste.rodarTestes() )
+    {
+    case TUDataValidade::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUDataValidade::FALHA:
+        cout << "Houveram falhas nos testes\n";
+        break;
+    }
+
     return 0;
 }

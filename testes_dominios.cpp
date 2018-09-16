@@ -214,3 +214,58 @@ void TUData::testarCenarioFalha()
         return;
     }
 }
+
+//Métodos de teste da classe DataValidade
+
+void TUDataValidade::inicializar()
+{
+    estado = SUCESSO;
+    dataValidade = new DataValidade();
+}
+
+void TUDataValidade::finalizar()
+{
+    delete dataValidade;
+}
+
+int TUDataValidade::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUDataValidade::testarCenarioSucesso()
+{
+    try
+    {
+         dataValidade->setDataValidade(DATA_VALIDA);
+         if( dataValidade->getDataValidade() != DATA_VALIDA )
+         {
+             estado = FALHA;
+         }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+
+void TUDataValidade::testarCenarioFalha()
+{
+    try
+    {
+        dataValidade->setDataValidade( DATA_INVALIDA );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}

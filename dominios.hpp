@@ -13,7 +13,7 @@ class Agencia
 {
 private:
     string agencia;             ///< Representação numérica da Agência.
-    const int TAM = 5;          ///< Tamanho válido da representação.
+    const int TAMANHO_AGENCIA = 5;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
@@ -58,7 +58,7 @@ class Banco
 private:
 
     string banco;               ///< Representação numérica do Banco.
-    const int TAM = 3;          ///< Tamanho válido da representação.
+    const int TAMANHO_BANCO = 3;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
@@ -148,6 +148,13 @@ private:
     const int DIA_MAX2 = 29;
     const int DIA_MAX3 = 30;
     const int DIA_MAX4 = 31;
+    const int TAMANHO_DIA = 2;
+    const int TAMANHO_ANO = 4;
+    const int TAMANHO_MES = 3;
+    const int POSICAO_DIA = 0;
+    const int POSICAO_MES = 3;
+    const int POSICAO_ANO = 7;
+    const int TAMANHO_DATA = 11;
 
     void validar( string ) throw ( invalid_argument );
 
@@ -163,6 +170,35 @@ public:
 
 };
 
+class DataValidade{
+
+private:
+    string dataValidade;
+    int mes;
+    int ano;
+
+    const int ANO_MIN = 00;
+    const int ANO_MAX = 99;
+    const int MES_MIN = 1;
+    const int MES_MAX = 12;
+    const int POSICAO_MES = 0;
+    const int TAMANHO_MES = 2;
+    const int POSICAO_ANO = 3;
+    const int TAMANHO_ANO = 2;
+    const int TAMANHO_DATA_VALIDADE = 5;
+
+    void validar( string ) throw ( invalid_argument );
+
+public:
+
+    void setDataValidade( string ) throw ( invalid_argument );
+
+    string getDataValidade( ) const
+    {
+        return dataValidade;
+    }
+
+};
 
 
 #endif // DOMINIOS_HPP_INCLUDED

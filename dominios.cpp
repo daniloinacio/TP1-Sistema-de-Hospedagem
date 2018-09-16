@@ -6,11 +6,11 @@ using namespace std;
 
 void Agencia::validar( string agencia ) throw ( invalid_argument )
 {
-    if ( agencia.size() != TAM )
+    if ( agencia.size() != TAMANHO_AGENCIA )
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
-    for ( int i=0; i < TAM; i++ )
+    for ( int i=0; i < TAMANHO_AGENCIA; i++ )
     {
         if ( agencia[i] < LIMITE_INF || agencia[i] > LIMITE_SUP )
         {
@@ -27,11 +27,11 @@ void Agencia::setAgencia( string agencia ) throw ( invalid_argument )
 
 void Banco::validar( string banco ) throw ( invalid_argument )
 {
-        if ( banco.size() != TAM)
+        if ( banco.size() != TAMANHO_BANCO)
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
-    for ( int i=0; i < TAM; i++)
+    for ( int i=0; i < TAMANHO_BANCO; i++)
     {
         if ( banco[i] < LIMITE_INF || banco[i] > LIMITE_SUP )
         {
@@ -61,10 +61,13 @@ void CapAcomodacao::setCapAcomodacao( int capAcomodacao ) throw ( invalid_argume
 
 void Data::validar( string data ) throw ( invalid_argument )
 {
+    if ( data.size() != TAMANHO_DATA ){
+        throw invalid_argument{ "Argumeto Invalido." };
+    }
     // extrai o dia o mes e o ano da string
-    dia = atoi(data.substr(0, 2).c_str());
-    ano = atoi(data.substr(7, 4).c_str());
-    mes = data.substr(3, 3);
+    dia = atoi( data.substr( POSICAO_DIA, TAMANHO_DIA ).c_str( ) );
+    ano = atoi( data.substr( POSICAO_ANO, TAMANHO_ANO ).c_str( ) );
+    mes = data.substr( POSICAO_MES, TAMANHO_MES );
 
     // verifica se é uma ano bissexto
     if ( ano % 400 == 0 || ( ano % 4 == 0 && ano % 100 != 0 ))
@@ -125,4 +128,29 @@ void Data::setData( string data ) throw ( invalid_argument )
 {
     validar( data );
     this->data = data;
+}
+
+void DataValidade::validar( string dataValidade ) throw ( invalid_argument )
+{
+    if ( dataValidade.size() != TAMANHO_DATA_VALIDADE ){
+        throw invalid_argument{ "Argumeto Invalido." };
+    }
+    // separa mes e ano e converte para valores inteiros
+    mes = atoi( dataValidade.substr( POSICAO_MES, TAMANHO_MES ).c_str( ) );
+    ano = atoi( dataValidade.substr( POSICAO_ANO, TAMANHO_ANO ).c_str( ) );
+
+    if ( mes < MES_MIN || mes > MES_MAX )
+    {
+        throw invalid_argument{ "Argumento Invalido. "};
+    }
+    else if ( ano < ANO_MIN || ano > ANO_MAX )
+    {
+        throw invalid_argument{ "Argumento Invalido. "};   
+    }
+}
+
+void DataValidade::setDataValidade( string dataValidade ) throw ( invalid_argument )
+{
+    validar( dataValidade );
+    this->dataValidade = dataValidade;
 }

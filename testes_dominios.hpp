@@ -147,4 +147,28 @@ private:
     void testarCenarioFalha();
 };
 
+
+class TUDataValidade
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int rodarTestes();
+private:
+    string DATA_VALIDA = "09/18";
+    string DATA_INVALIDA = "20/100"; 
+
+    DataValidade *dataValidade;
+    int estado;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+
+    void testarCenarioFalha();
+};
+
 #endif // TESTES_DOMINIOS_HPP

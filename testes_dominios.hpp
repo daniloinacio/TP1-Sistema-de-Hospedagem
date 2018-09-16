@@ -124,4 +124,27 @@ private:
     void testarCenarioFalha();
 };
 
+class TUData
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int rodarTestes();
+private:
+    string DATA_VALIDA = "11/set/2003";
+    string DATA_INVALIDA = "29/fev/2018"; //não é bissexto
+
+    Data *data;
+    int estado;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+
+    void testarCenarioFalha();
+}
+
 #endif // TESTES_DOMINIOS_HPP

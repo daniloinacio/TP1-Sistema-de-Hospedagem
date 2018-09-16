@@ -1,6 +1,6 @@
 #include "testes_dominios.hpp"
 
-// Funções de teste da classe Agência
+// Métodos de teste da classe Agência
 void TUAgencia::inicializar()
 {
     agenciaTeste = new Agencia();
@@ -53,7 +53,7 @@ void TUAgencia::testarCenarioFalha()
     }
 }
 
-// Funções de teste da classe Banco
+// Métodos de teste da classe Banco
 void TUBanco::inicializar()
 {
     estado = SUCESSO;
@@ -106,7 +106,7 @@ void TUBanco::testarCenarioFalha()
     }
 }
 
-// Funções de teste da classe CapAcomodacao
+// Métodos de teste da classe CapAcomodacao
 void TUCapAcomodacao::inicializar()
 {
     estado = SUCESSO;
@@ -152,6 +152,61 @@ void TUCapAcomodacao::testarCenarioFalha()
     try
     {
         capacidade->setCapAcomodacao( CAP_ACOMODACAO_INVALIDA );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+//Métodos de teste da classe Data
+
+void TUData::inicializar()
+{
+    estado = SUCESSO;
+    data = new Data();
+}
+
+void TUData::finalizar()
+{
+    delete data;
+}
+
+int TUData::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUData::testarCenarioSucesso()
+{
+    try
+    {
+         data->setData(DATA_VALIDA);
+         if( data->getData() != DATA_VALIDA )
+         {
+             estado = FALHA;
+         }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+
+void TUData::testarCenarioFalha()
+{
+    try
+    {
+        capacidade->setCapAcomodacao( DATA_INVALIDA );
         estado = FALHA;
     }
     catch( invalid_argument excecao )

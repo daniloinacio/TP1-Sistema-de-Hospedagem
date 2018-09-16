@@ -2,11 +2,11 @@
 
 void Agencia::validar( string numero ) throw ( invalid_argument )
 {
-    if ( numero.size() != TAM)
+    if ( numero.size() != TAM )
     {
         throw invalid_argument{ "Argumento Invalido." };
     }
-    for ( int i=0; i < TAM; i++)
+    for ( int i=0; i < TAM; i++ )
     {
         if ( numero[i] < LIMITE_INF || numero[i] > LIMITE_SUP )
         {
@@ -36,7 +36,7 @@ void Banco::validar( string numero ) throw ( invalid_argument )
     }
 }
 
-void Banco::setBanco( string numero) throw ( invalid_argument )
+void Banco::setBanco( string numero ) throw ( invalid_argument )
 {
     validar( numero );
     this->numero = numero;

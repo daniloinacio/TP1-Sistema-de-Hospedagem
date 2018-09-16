@@ -5,22 +5,22 @@
 
 using namespace std;
 
-/// Representação numérica de uma Agência.
+/// Classe que representa numericamente uma Agência.
 /** Representa uma Agência com um valor numérico de 5 dígitos em que
 cada dígito é um número de 0 a 9. */
 
 class Agencia
 {
 private:
-    string numero;              ///< Representação numérica de uma Agência.
+    string numero;              ///< Representação numérica da Agência.
     const int TAM = 5;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Valida uma representação numérica de uma Agência.
+    /// Método que valida uma representação numérica de uma Agência.
     /** Verifica se a representação contém 5 caracteres e se cada um deles
     está no intervalo 0-9.
-        \param Uma string contendo uma representação de uma Agência.
+        \param Uma representação numérica de uma Agência.
         \return Void.
     */
 
@@ -28,18 +28,18 @@ private:
 
 public:
 
-    /// Atribui uma representação numérica ao atributo numero;
-    /** Valida o parametro recebido e atribui ao atributo numero;
-        \param Uma string contendo uma representação numérica válida.
+    /// Método que atribui um numero à Agência.
+    /** Valida o número recebido e atribui à Agência.
+        \param Uma representação numérica válida.
         \return Void.
     */
 
     void setAgencia( string numero ) throw ( invalid_argument );
 
-    /// Obtém o atributo número.
-    /** Retorna a representação numérica de uma Agência.
+    /// Método que obtém o número da Agência.
+    /** Retorna a representação numérica da Agência.
         \param Void.
-        \return Uma string contendo a representação numérica.
+        \return A representação numérica da Agência.
     */
 
     string getAgencia( ) const
@@ -49,7 +49,7 @@ public:
 
 };
 
-/// Representação numérica de um Banco.
+/// Classe que representa numericamente um Banco.
 /** Representa um banco com um valor numérico de 3 dígitos em que
 cada dígito é um número de 0 a 9. */
 
@@ -57,15 +57,15 @@ class Banco
 {
 private:
 
-    string numero;              ///< Representação numérica de um Banco.
+    string numero;              ///< Representação numérica do Banco.
     const int TAM = 3;          ///< Tamanho válido da representação.
     const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Valida uma representação numérica de um Banco.
+    /// Método que valida uma representação numérica de um Banco.
     /** Verifica se a representação contém 3 caracteres e se cada um deles
     está no intervalo 0-9.
-        \param Uma string contendo uma representação de um Banco.
+        \param Uma representação numérica de um Banco.
         \return Void.
     */
 
@@ -73,17 +73,17 @@ private:
 
 public:
 
-    /// Atribui uma representação numérica ao atributo numero;
-    /** Valida o parametro recebido e atribui ao atributo numero;
-        \param Uma string contendo uma representação numérica válida.
+    /// Método que atribui um número ao Banco;
+    /** Valida o número recebido e atribui ao Banco;
+        \param Uma representação numérica válida.
         \return Void.
     */
     void setBanco( string numero) throw ( invalid_argument );
 
-    /// Obtém o atributo número.
-    /** Retorna a representação numérica de um Banco.
+    /// Método que obtém o atributo número.
+    /** Retorna a representação numérica do Banco.
         \param Void.
-        \return Uma string contendo a representação numérica.
+        \return A representação numérica do Banco.
     */
     string getBanco( ) const
     {
@@ -91,7 +91,7 @@ public:
     }
 };
 
-/// Valor numérico de uma capacidade de acomodação.
+/// Classe que representa o valor numérico de uma capacidade de acomodação.
 /** Representa uma capacidade de acomodação com um valor numérico de 0 a 9. */
 
 class CapAcomodacao
@@ -102,9 +102,9 @@ private:
     const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
     const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
-    /// Valida um valor de capacidade de acomodação.
-    /** Verifica se a representação contém um inteiro no intervalo 0-9.
-        \param Um inteiro contendo um valor.
+    /// Método que valida um valor de capacidade de acomodação.
+    /** Verifica se o valor é um inteiro no intervalo 0-9.
+        \param Um valor inteiro.
         \return Void.
     */
 
@@ -112,18 +112,18 @@ private:
 
 public:
 
-    /// Atribui um valor válido ao atributo valor;
-    /** Valida o parametro recebido e atribui ao atributo valor;
-        \param Um inteiro contendo um valor válido;
+    /// Método que atribui um valor válido à capacidade de acomodação;
+    /** Valida o valor recebido e atribui à capacidade de acomodação;
+        \param Um valor inteiro válido;
         \return Void.
     */
 
     void setCapAcomodacao( int valor ) throw ( invalid_argument );
 
-    /// Obtém o atributo valor.
+    /// Método que btém o valor da capacidade de acomodação.
     /** Retorna o valor da capacidade de acomodação.
         \param Void.
-        \return Um inteiro contendo o valor da capacidade de acomodação.
+        \return O valor capacidade de acomodação.
     */
     int getCapAcomodacao( )
     {

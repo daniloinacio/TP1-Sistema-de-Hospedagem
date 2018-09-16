@@ -125,10 +125,36 @@ public:
         \param Void.
         \return O valor capacidade de acomodação.
     */
-    int getCapAcomodacao( )
+    int getCapAcomodacao( ) const
     {
         return capAcomodacao;
     }
 };
+
+class Data
+{
+private:
+
+    string data;
+    int dia;
+    string mes;
+    int ano;
+    bool bissexto = false;
+
+    void validar( string ) throw ( invalid_argument );
+
+public:
+
+    void setData( string ) throw ( invalid_argument );
+
+    string getData( ) const
+    {
+        return data;
+    }
+
+
+};
+
+
 
 #endif // DOMINIOS_HPP_INCLUDED

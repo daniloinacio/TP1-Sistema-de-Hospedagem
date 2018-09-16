@@ -55,5 +55,10 @@ int main( )
         break;
     }
 
+    Data dataTest;
+    string data = "01/jun/2018";
+
+    dataTest.setData(data);
+
     return 0;
 }

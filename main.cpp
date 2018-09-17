@@ -107,5 +107,22 @@ int main( )
         break;
     }
 
+    cout << "\n";
+
+    // Testes de unidade da classe Senha
+    TUSenha SenhaTeste;
+
+    cout << "Teste de unidade da classe Senha:\n";
+
+    switch( SenhaTeste.RodarTestes() )
+    {
+    case TUSenha::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUSenha::FALHA:
+        cout << "Hoveram falhas nos testes\n";
+        break;
+    }
+
     return 0;
 }

@@ -77,7 +77,7 @@ void Data::validar( string data ) throw ( invalid_argument )
     // verifica se é um ano válido
     if (ano < ANO_MIN || ano > ANO_MAX)
     {
-        throw invalid_argument{ "Argumeto Invalido." }; 
+        throw invalid_argument{ "Argumeto Invalido." };
     }
 
     //verifica se é um mês válido e se o dia é valido
@@ -97,7 +97,7 @@ void Data::validar( string data ) throw ( invalid_argument )
         if( dia < DIA_MIN || ( dia > DIA_MAX1 && bissexto == false ) ||
             ( dia > DIA_MAX2 && bissexto == true ) )
         {
-            throw invalid_argument{ "Argumeto Invalido." }; 
+            throw invalid_argument{ "Argumeto Invalido." };
         }
 
     }
@@ -119,7 +119,7 @@ void Data::validar( string data ) throw ( invalid_argument )
     }
     else
     {
-            throw invalid_argument{ "Argumeto Invalido." };        
+            throw invalid_argument{ "Argumeto Invalido." };
     }
 
 }
@@ -145,7 +145,7 @@ void DataValidade::validar( string dataValidade ) throw ( invalid_argument )
     }
     else if ( ano < ANO_MIN || ano > ANO_MAX )
     {
-        throw invalid_argument{ "Argumento Invalido. "};   
+        throw invalid_argument{ "Argumento Invalido. "};
     }
 }
 
@@ -156,7 +156,7 @@ void DataValidade::setDataValidade( string dataValidade ) throw ( invalid_argume
 }
 
 void NumCartaoCred::validar( string numCartaoCred ) throw ( invalid_argument )
-{   
+{
     if ( numCartaoCred.size() != TAMANHO_NUMERO )
     {
         throw invalid_argument{ "Argumeto Invalido."};
@@ -191,4 +191,50 @@ void NumCartaoCred::setNumCartaoCred( string numCartaoCred ) throw ( invalid_arg
 {
     validar( numCartaoCred );
     this->numCartaoCred = numCartaoCred;
+}
+
+void Senha::validar(string senha) throw ( invalid_argument )
+{
+    int i;
+
+    // Se o tamanho nao for permitido nao precisa verificar o resto
+    if (senha.size() != TamanhoMaximo)
+    {
+        throw invalid_argument( "Senha invalida." );
+    }
+
+    // Verificando letra a letra
+    for (i = 0; i < TamanhoMaximo; i++)
+    {
+        if (senha[i] >= 'A' && senha[i] <= 'Z')
+        {
+            continue;
+        }
+        else if (senha[i] >= 'a' && senha[i] <= 'z')
+        {
+            continue;
+        }
+        else if (senha[i] >= '#' && senha[i] <= '&') // sequencia ascii: # $ % &
+        {
+            continue;
+        }
+        else if (senha[i] == '!')
+        {
+            continue;
+        }
+        else if (senha[i] >= '0' && senha[i] <= '9')
+        {
+            continue;
+        }
+        else
+        {
+            throw invalid_argument ( "Senha invalida." );
+        }
+    }
+}
+
+void Senha::setSenha(string senha) throw ( invalid_argument )
+{
+    validar(senha);
+    this->senha = senha;
 }

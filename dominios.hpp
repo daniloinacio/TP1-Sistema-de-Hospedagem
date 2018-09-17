@@ -170,7 +170,8 @@ public:
 
 };
 
-class DataValidade{
+class DataValidade
+{
 
 private:
     string dataValidade;
@@ -200,7 +201,8 @@ public:
 
 };
 
-class NumCartaoCred{
+class NumCartaoCred
+{
 private:
     string numCartaoCred;
 
@@ -217,6 +219,24 @@ public:
         return numCartaoCred;
     }
 
+};
+
+class Senha
+{
+private:
+    string senha;
+
+    static const int TamanhoMaximo = 8;
+
+    void validar( string ) throw ( invalid_argument );
+
+public:
+    void setSenha( string ) throw ( invalid_argument );
+
+    string getSenha() const
+    {
+        return senha;
+    }
 };
 
 #endif // DOMINIOS_HPP_INCLUDED

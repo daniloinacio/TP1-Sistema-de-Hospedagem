@@ -324,3 +324,56 @@ void TUNumCartaoCred::testarCenarioFalha()
         return;
     }
 }
+
+// Testes para a classe Senha
+void TUSenha::inicializar()
+{
+    estado = SUCESSO;
+    SenhaTeste = new Senha();
+}
+
+void TUSenha::finalizar()
+{
+    delete SenhaTeste;
+}
+
+void TUSenha::testarCenarioSucesso()
+{
+    try
+    {
+        SenhaTeste->setSenha(SenhaValida);
+        if (SenhaTeste->getSenha() != SenhaValida)
+        {
+            estado = FALHA;
+        }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUSenha::testarCenarioFalha()
+{
+    try
+    {
+        SenhaTeste->setSenha(SenhaInvalida);
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+int TUSenha::RodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}

@@ -238,3 +238,23 @@ void Senha::setSenha(string senha) throw ( invalid_argument )
     validar(senha);
     this->senha = senha;
 }
+
+void Estado::validar(string estado) throw ( invalid_argument )
+{
+    int i;
+    for (i = 0; i < NumEstados; i++)
+    {
+        if ( estado == LSTEstados[i] )
+        {
+            return;
+        }
+    }
+
+    throw invalid_argument ( "Estado invalido" );
+}
+
+void Estado::setEstado(string estado) throw ( invalid_argument )
+{
+    validar(estado);
+    this->estado = estado;
+}

@@ -221,18 +221,38 @@ public:
 
 };
 
+/// Classe para representar uma senha de usuário
+/** A senha é uma sequência de 8 caracteres sendo permitidos letras maiúsculas
+    ou minúsculas, números ou alguns símbolos (! # $ % &) */
 class Senha
 {
 private:
-    string senha;
+    string senha; ///< Representação da senha em formato de string
 
-    static const int TamanhoMaximo = 8;
+    static const int TamanhoMaximo = 8; ///< Comprimento fixo da senha
 
+    /// Método que avalia se uma senha é válida ou não
+    /**
+        \param senha String que será avaliada como válida ou não como senha
+        \return void
+    */
     void validar( string ) throw ( invalid_argument );
 
 public:
+    /// Atribui uma senha para um certo usuário
+    /**
+        Esta função não trata uma exceção, apemas a lança para que seja tratada
+        em uma outra ocasião.
+        \param senha Srting a ser atribuída como senha do usuário
+        \return void
+    */
     void setSenha( string ) throw ( invalid_argument );
 
+    /// Retorna o valor da senha do objeto
+    /**
+        \param void
+        \return senha Senha adiquirida do objeto
+    */
     string getSenha() const
     {
         return senha;

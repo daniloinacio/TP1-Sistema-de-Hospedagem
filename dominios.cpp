@@ -154,3 +154,41 @@ void DataValidade::setDataValidade( string dataValidade ) throw ( invalid_argume
     validar( dataValidade );
     this->dataValidade = dataValidade;
 }
+
+void NumCartaoCred::validar( string numCartaoCred ) throw ( invalid_argument )
+{   
+    if ( numCartaoCred.size() != TAMANHO_NUMERO )
+    {
+        throw invalid_argument{ "Argumeto Invalido."};
+    }
+
+    for (int i = 0; i < TAMANHO_NUMERO; i++ )
+    {
+        if ( numCartaoCred[i] < LIMITE_INF || numCartaoCred[i] > LIMITE_SUP)
+        {
+            throw invalid_argument{ "Argumeto Invalido."};
+        }
+    }
+
+    int nDigits = numCartaoCred.size();            //INCOMPLETO
+    int shuma = 0;
+    for (int i = 0; i < nDigits; i++)
+    {
+        int   digit = numCartaoCred[i] - '0';   // Char to number
+        if  (i & 1)  // Digit 1, 3, 5 not 0, 2, 4 - "even digits" starting at 1
+            if  ((digit <<= 1) >= 10) //  Double it, check >= 10
+                digit -= 9;           //  Same as summing the digits
+        shuma += digit;
+    }
+    if (shuma % 10 != 0)
+    {
+        throw invalid_argument{ "Argumento Invalido."};
+    }
+
+}
+
+void NumCartaoCred::setNumCartaoCred( string numCartaoCred ) throw ( invalid_argument )
+{
+    validar( numCartaoCred );
+    this->numCartaoCred = numCartaoCred;
+}

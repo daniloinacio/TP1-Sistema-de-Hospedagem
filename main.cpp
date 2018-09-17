@@ -73,7 +73,7 @@ int main( )
     }
 
     cout << "\n";
-    
+
     // Testes de unidade da classe DataValidade
     TUDataValidade dataValidadeTeste;
 
@@ -85,6 +85,24 @@ int main( )
         cout << "Testes rodaram sem falhas\n";
         break;
     case TUDataValidade::FALHA:
+        cout << "Houveram falhas nos testes\n";
+        break;
+    }
+
+
+    cout << "\n";
+
+    // Testes de unidade da classe NumCartaoCred
+    TUNumCartaoCred numCartaoCredTeste;
+
+    cout << "Teste de unidade da classe NumCartaoCred:\n";
+
+    switch( numCartaoCredTeste.rodarTestes() )
+    {
+    case TUNumCartaoCred::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUNumCartaoCred::FALHA:
         cout << "Houveram falhas nos testes\n";
         break;
     }

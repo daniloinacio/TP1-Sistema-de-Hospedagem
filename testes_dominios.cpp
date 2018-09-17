@@ -269,3 +269,58 @@ void TUDataValidade::testarCenarioFalha()
         return;
     }
 }
+
+//Métodos de teste da classe DataValidade
+
+void TUNumCartaoCred::inicializar()
+{
+    estado = SUCESSO;
+    numCartaoCred = new NumCartaoCred();
+}
+
+void TUNumCartaoCred::finalizar()
+{
+    delete numCartaoCred;
+}
+
+int TUNumCartaoCred::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUNumCartaoCred::testarCenarioSucesso()
+{
+    try
+    {
+         numCartaoCred->setNumCartaoCred(NUMERO_VALIDO);
+         if( numCartaoCred->getNumCartaoCred() != NUMERO_VALIDO )
+         {
+             estado = FALHA;
+         }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+
+void TUNumCartaoCred::testarCenarioFalha()
+{
+    try
+    {
+        numCartaoCred->setNumCartaoCred( NUMERO_INVALIDO );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}

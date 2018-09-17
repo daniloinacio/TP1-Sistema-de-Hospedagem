@@ -200,5 +200,23 @@ public:
 
 };
 
+class NumCartaoCred{
+private:
+    string numCartaoCred;
+
+    const int TAMANHO_NUMERO = 16;
+    const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
+
+    void validar( string ) throw ( invalid_argument );
+public:
+    void setNumCartaoCred( string ) throw ( invalid_argument );
+
+    string getNumCartaoCred( ) const
+    {
+        return numCartaoCred;
+    }
+
+};
 
 #endif // DOMINIOS_HPP_INCLUDED

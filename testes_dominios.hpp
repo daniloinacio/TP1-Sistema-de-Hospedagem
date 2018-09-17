@@ -171,4 +171,29 @@ private:
     void testarCenarioFalha();
 };
 
+class TUNumCartaoCred
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int rodarTestes();
+private:
+    string NUMERO_VALIDO = "6011111111111117";
+    string NUMERO_INVALIDO = "6011111111"; 
+
+    NumCartaoCred *numCartaoCred;
+    int estado;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+
+    void testarCenarioFalha();
+};
+
+
+
 #endif // TESTES_DOMINIOS_HPP

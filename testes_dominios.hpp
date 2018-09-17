@@ -182,4 +182,29 @@ private:
     void testarCenarioFalha();
 };
 
+class TUEstado
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int RodarTestes();
+
+private:
+    int estado; // Indica se é sucesso ou se é falha
+
+    string EstadoValido = "AM";
+    string EstadoInvalido = "AV";
+
+    Estado *EstadoTeste;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+
+    void testarCenarioFalha();
+};
+
 #endif // TESTES_DOMINIOS_HPP

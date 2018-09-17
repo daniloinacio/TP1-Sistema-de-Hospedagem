@@ -260,19 +260,35 @@ public:
 };
 
 
+/// Classe para representar um estado brasileiro
 class Estado
 {
 private:
-    string estado;
+    string estado; ///< Identificador
     const string LSTEstados[27] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
-                                   "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-    const int NumEstados = 27;
+                                   "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}; ///< Lista de estados
+    const int NumEstados = 27; ///< Número de estados brasileiros.
 
+    /// Função que valida um dado estado
+    /**
+        \param Estado String que será avaliada como um estado válido ou não
+        \return void
+    */
     void validar( string ) throw ( invalid_argument );
 
 public:
+    /// Função que muda o identificador desta classe para o estado dado como argumento
+    /**
+        \param Estado String para a qual se quer mudar o identificador
+        \return void
+    */
     void setEstado( string ) throw ( invalid_argument );
 
+    /// Função que retorna o identificador de um objeto desta classe
+    /** O identificador de um objeto desta classe é a sigla do estado
+        \param void
+        \return void
+    */
     string getEstado() const
     {
         return estado;

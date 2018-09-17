@@ -377,3 +377,57 @@ int TUSenha::RodarTestes()
 
     return estado;
 }
+
+
+// Testes para a classe Estado
+void TUEstado::inicializar()
+{
+    EstadoTeste = new Estado();
+    estado = SUCESSO;
+}
+
+void TUEstado::finalizar()
+{
+    delete EstadoTeste;
+}
+
+void TUEstado::testarCenarioSucesso()
+{
+    try
+    {
+        EstadoTeste->setEstado(EstadoValido);
+        if (EstadoTeste->getEstado() != EstadoValido)
+        {
+            estado = FALHA;
+        }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUEstado::testarCenarioFalha()
+{
+    try
+    {
+        EstadoTeste->setEstado(EstadoInvalido);
+        estado = FALHA;
+    }
+    catch ( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+int TUEstado::RodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}

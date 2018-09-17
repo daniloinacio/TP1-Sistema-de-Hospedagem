@@ -124,5 +124,22 @@ int main( )
         break;
     }
 
+    cout << "\n";
+
+    // Testes de unidade da clase Estado
+    TUEstado EstadoTeste;
+
+    cout << "Teste de unidade da classe Estado:\n";
+
+    switch( EstadoTeste.RodarTestes() )
+    {
+    case TUEstado::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUEstado::FALHA:
+        cout << "Houveram falham nos testes\n";
+        break;
+    }
+
     return 0;
 }

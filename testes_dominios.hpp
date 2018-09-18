@@ -233,4 +233,29 @@ private:
 
 };
 
+class TUTpAcomodacao
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int RodarTestes();
+
+private:
+    int estado;
+
+    string TipoValido = "apartamento";
+    string TipoInvalido = "mansao";
+
+    TpAcomodacao *TpTeste;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+
+    void testarCenarioFalha();
+};
+
 #endif // TESTES_DOMINIOS_HPP

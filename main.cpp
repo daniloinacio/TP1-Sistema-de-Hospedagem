@@ -158,5 +158,22 @@ int main( )
         break;
     }
 
+    cout << "\n";
+
+    // Testes de unidade da clase TpAcomodacao
+    TUTpAcomodacao TpAcTeste;
+
+    cout << "Teste de unidade da classe TpAcomodacao:\n";
+
+    switch( TpAcTeste.RodarTestes() )
+    {
+    case TUTpAcomodacao::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUTpAcomodacao::FALHA:
+        cout << "Houveram falham nos testes\n";
+        break;
+    }
+
     return 0;
 }

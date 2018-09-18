@@ -295,21 +295,73 @@ public:
     }
 };
 
+/// Classe que implementa um identificador para o usuário
 class Identificador
 {
 private:
-    string identificador;
+    string identificador; ///< Variável principal
 
-    const int tamanho = 5;
+    const int tamanho = 5; ///< O identificador deve ter 5 caracteres
 
+    /// Função que valida se um certo valor de identificador é válido ou não
+    /**
+        A função lança a exceção caso o valor seja inválido
+       \param Identificador Identificador a ser validado
+       \return void
+    */
     void validar( string ) throw ( invalid_argument );
 
 public:
+    /// Função que seta um certo valor de identificador para a variável principal
+    /**
+        A função não cria a excecao, apenas a relança
+        \param Identificador valor a ser setado
+        \return void
+    */
     void setIdentificador( string ) throw ( invalid_argument );
 
+    /// Obtém a string do identificador
+    /**
+        \param void
+        \return Identificador Valor de identificação daquele objeto
+    */
     string getIdentificador() const
     {
         return identificador;
+    }
+};
+
+/// Classe para o tipo de acomodação do usuário
+class TpAcomodacao
+{
+private:
+    string tpAcomodacao; ///< Identificador da classe
+    string LstTipos[3] = {"apartamento", "casa", "flat"}; ///< Lista dos tipos permitidos
+    int qtdTipos = 3; ///< Quantidade de tipos permitidos
+
+    /// Valida um determinado tipo fornecido
+    /**
+        \param Tipo A string que será validada
+        \return void
+    */
+    void validar( string ) throw ( invalid_argument );
+
+public:
+    /// Irá setar o valor de TpAcomodacao do objeto para o valor desejado
+    /**
+        \param Tipo Tipo que se deseja mudar
+        \return void
+    */
+    void setTpAcomodacao( string ) throw ( invalid_argument );
+
+    /// Irá fornecer o tipo de acomodacao
+    /**
+        \param void
+        \return Tipo O tipo de acomodacao
+    */
+    string getTpAcomodacao()
+    {
+        return tpAcomodacao;
     }
 };
 

@@ -485,3 +485,56 @@ int TUIdentificador::RodarTestes()
 
     return estado;
 }
+
+// Testes para a classe TpAcomodacao
+void TUTpAcomodacao::inicializar()
+{
+    TpTeste = new TpAcomodacao();
+    estado = SUCESSO;
+}
+
+void TUTpAcomodacao::finalizar()
+{
+    delete TpTeste;
+}
+
+void TUTpAcomodacao::testarCenarioSucesso()
+{
+    try
+    {
+        TpTeste->setTpAcomodacao(TipoValido);
+        if (TpTeste->getTpAcomodacao() != TipoValido)
+        {
+            estado = FALHA;
+        }
+    }
+    catch ( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUTpAcomodacao::testarCenarioFalha()
+{
+    try
+    {
+        TpTeste->setTpAcomodacao(TipoInvalido);
+        estado = FALHA;
+    }
+    catch (invalid_argument excecao)
+    {
+        return;
+    }
+}
+
+int TUTpAcomodacao::RodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}

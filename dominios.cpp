@@ -282,3 +282,23 @@ void Identificador::setIdentificador( string identificador ) throw ( invalid_arg
     validar(identificador);
     this->identificador = identificador;
 }
+
+
+void TpAcomodacao::validar(string tpAcomodacao) throw ( invalid_argument )
+{
+    int i;
+    for (i = 0; i < qtdTipos; i++)
+    {
+        if ( tpAcomodacao == LstTipos[i] )
+        {
+            return;
+        }
+    }
+    throw invalid_argument ( "Tipo de acomodacao invalido" );
+}
+
+void TpAcomodacao::setTpAcomodacao( string tpAcomodacao ) throw ( invalid_argument )
+{
+    validar(tpAcomodacao);
+    this->tpAcomodacao = tpAcomodacao;
+}

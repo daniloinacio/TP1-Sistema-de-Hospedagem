@@ -258,3 +258,27 @@ void Estado::setEstado(string estado) throw ( invalid_argument )
     validar(estado);
     this->estado = estado;
 }
+
+void Identificador::validar(string identificador) throw ( invalid_argument )
+{
+    int i;
+
+    if (identificador.size() != tamanho)
+    {
+        throw invalid_argument ( "Identificador invalido" );
+    }
+
+    for(i = 0; i < tamanho; i++)
+    {
+        if(identificador[i] < 'a' || identificador[i] > 'z')
+        {
+            throw invalid_argument ( "Identificador invalido" );
+        }
+    }
+}
+
+void Identificador::setIdentificador( string identificador ) throw ( invalid_argument )
+{
+    validar(identificador);
+    this->identificador = identificador;
+}

@@ -431,3 +431,57 @@ int TUEstado::RodarTestes()
 
     return estado;
 }
+
+// Testes para a classe Identificador
+void TUIdentificador::inicializar()
+{
+    IdentificadorTeste = new Identificador();
+    estado = SUCESSO;
+}
+
+void TUIdentificador::finalizar()
+{
+    delete IdentificadorTeste;
+}
+
+
+void TUIdentificador::testarCenarioSucesso()
+{
+    try
+    {
+        IdentificadorTeste->setIdentificador(IdValido);
+        if (IdentificadorTeste->getIdentificador() != IdValido)
+        {
+            estado = FALHA;
+        }
+    }
+    catch ( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUIdentificador::testarCenarioFalha()
+{
+    try
+    {
+        IdentificadorTeste->setIdentificador(IdInvalido);
+        estado = FALHA;
+    }
+    catch ( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+int TUIdentificador::RodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}

@@ -295,4 +295,22 @@ public:
     }
 };
 
+class Identificador
+{
+private:
+    string identificador;
+
+    const int tamanho = 5;
+
+    void validar( string ) throw ( invalid_argument );
+
+public:
+    void setIdentificador( string ) throw ( invalid_argument );
+
+    string getIdentificador() const
+    {
+        return identificador;
+    }
+};
+
 #endif // DOMINIOS_HPP_INCLUDED

@@ -141,5 +141,22 @@ int main( )
         break;
     }
 
+    cout << "\n";
+
+    // Testes de unidade da clase Identificador
+    TUIdentificador IdTeste;
+
+    cout << "Teste de unidade da classe Identificador:\n";
+
+    switch( IdTeste.RodarTestes() )
+    {
+    case TUIdentificador::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUIdentificador::FALHA:
+        cout << "Houveram falham nos testes\n";
+        break;
+    }
+
     return 0;
 }

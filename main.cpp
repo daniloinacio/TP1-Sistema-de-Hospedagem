@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "testes_dominios.hpp"
+#include "testes_entidades.hpp"
 
 using namespace std;
 
@@ -172,6 +173,23 @@ int main( )
         break;
     case TUTpAcomodacao::FALHA:
         cout << "Houveram falham nos testes\n";
+        break;
+    }
+
+    cout << "\n";
+    cout << "Testes para as classes de entidades:\n\n";
+
+    // Testes de unidade da classe CartaoCredito
+    TUCartaoCred CarCredTeste;
+    cout << "Teste de unidade da classe CartaoCredito:\n";
+
+    switch( CarCredTeste.RodarTestes() )
+    {
+    case TUCartaoCred::SUCESSO:
+        cout << "Testes rodaram sem falhas\n";
+        break;
+    case TUCartaoCred::FALHA:
+        cout << "Houveram falhas nos testes\n";
         break;
     }
 

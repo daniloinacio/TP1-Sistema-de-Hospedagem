@@ -23,14 +23,15 @@
 
 1535847784 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes.cpp
 
-1536033017 source:c:\home\tp1-sistema-de-hospedagem\entidades.cpp
+1537536323 source:c:\home\tp1-sistema-de-hospedagem\entidades.cpp
+	"entidades.hpp"
 
-1537242620 source:c:\home\tp1-sistema-de-hospedagem\dominios.cpp
+1537532389 source:c:\home\tp1-sistema-de-hospedagem\dominios.cpp
 	"dominios.hpp"
 	<string>
 	<iostream>
 
-1537242450 c:\home\tp1-sistema-de-hospedagem\dominios.hpp
+1537243672 c:\home\tp1-sistema-de-hospedagem\dominios.hpp
 	<stdexcept>
 
 1537243247 source:c:\home\tp1-sistema-de-hospedagem\testes_dominios.cpp
@@ -41,13 +42,23 @@
 1537242875 c:\home\tp1-sistema-de-hospedagem\testes_dominios.hpp
 	"dominios.hpp"
 
-1537236115 source:c:\home\tp1-sistema-de-hospedagem\main.cpp
+1537538399 source:c:\home\tp1-sistema-de-hospedagem\main.cpp
 	<iostream>
 	"testes_dominios.hpp"
+	"testes_entidades.hpp"
 
 1537136267 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_dominios.hpp
 	"dominios.hpp"
 
 1537136689 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_dominios.cpp
 	"testes_dominios.hpp"
+
+1537538005 c:\home\tp1-sistema-de-hospedagem\entidades.hpp
+	"dominios.hpp"
+
+1537538504 source:c:\home\tp1-sistema-de-hospedagem\testes_entidades.cpp
+	"testes_entidades.hpp"
+
+1537537310 c:\home\tp1-sistema-de-hospedagem\testes_entidades.hpp
+	"entidades.hpp"
 

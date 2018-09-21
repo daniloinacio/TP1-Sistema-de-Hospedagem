@@ -193,7 +193,7 @@ void NumCartaoCred::setNumCartaoCred( string numCartaoCred ) throw ( invalid_arg
     this->numCartaoCred = numCartaoCred;
 }
 
-void Senha::validar(string senha) throw ( invalid_argument )
+void Senha::validar( string senha ) throw ( invalid_argument )
 {
     int i;
 

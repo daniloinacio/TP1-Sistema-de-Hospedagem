@@ -7,8 +7,8 @@
 class CartaoCredito
 {
 private:
-    NumCartaoCred *numero; ///< Número do cartão
-    DataValidade *validade; ///< Data de validade do mesmo
+    NumCartaoCred numero; ///< Número do cartão
+    DataValidade validade; ///< Data de validade do mesmo
 
 public:
     void setCartaoCredito( string, string ) throw ( invalid_argument );

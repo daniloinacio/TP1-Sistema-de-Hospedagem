@@ -16,8 +16,8 @@ private:
 
     string NumValido = "6011111111111117";
     string NumInvalido = "6011111111";
-    string DataValida = "11/set/2003";
-    string DataInvalida = "29/fev/2018";
+    string DataValida = "11/03";
+    string DataInvalida = "13/18";
 
     CartaoCredito *CartaoTeste;
 

@@ -22,11 +22,25 @@ void TUCartaoCred::testarCenarioSucesso()
     }
 }
 
+void TUCartaoCred::testarCenarioFalha()
+{
+    try
+    {
+        CartaoTeste->setCartaoCredito(NumInvalido, DataInvalida);
+        estado = FALHA;
+    }
+    catch ( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
 int TUCartaoCred::RodarTestes()
 {
     inicializar();
 
     testarCenarioSucesso();
+    testarCenarioFalha();
 
     finalizar();
 

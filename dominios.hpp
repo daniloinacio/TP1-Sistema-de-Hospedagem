@@ -365,4 +365,60 @@ public:
     }
 };
 
+class Diaria
+{
+private:
+    float diaria;
+    const float DIARIA_MAX = 10000.0;
+    const float DIARIA_MIN = 1.0;
+
+    void validar ( float ) throw ( invalid_argument );
+
+public:
+
+    void setDiaria( float ) throw ( invalid_argument );
+
+    float getDiaria( ) const
+    {
+        return diaria;
+    }
+};
+
+class NumContaCorr
+{
+private:
+    string numContaCorr;
+    const int LIMITE_SUP = 57;
+    const int LIMITE_INF = 48;
+    const int TAMANHO_NUMERO = 6;
+
+    void validar ( string ) throw ( invalid_argument );
+public:
+    void setNumContaCorr( string ) throw ( invalid_argument );
+
+    string getNumContaCorr( ) const
+    {
+        return numContaCorr;
+    }
+};
+
+class Nome
+{
+private:
+    string nome;
+    const int TAMANHO_NOME_MAX = 15;
+    const int TAMANHO_NOME_MIN = 1;
+
+    void validar ( string ) throw ( invalid_argument );
+public:
+
+    void setNome( string ) throw ( invalid_argument );
+
+    string getNome() const
+    {
+        return nome;
+    }
+    
+};
+
 #endif // DOMINIOS_HPP_INCLUDED

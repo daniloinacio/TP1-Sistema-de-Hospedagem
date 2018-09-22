@@ -302,3 +302,77 @@ void TpAcomodacao::setTpAcomodacao( string tpAcomodacao ) throw ( invalid_argume
     validar(tpAcomodacao);
     this->tpAcomodacao = tpAcomodacao;
 }
+
+void Diaria::validar( float diaria ) throw ( invalid_argument )
+{
+    if ( diaria < DIARIA_MIN || diaria > DIARIA_MAX )
+    {
+        throw invalid_argument{ "Argumento Invalido." };
+    }
+}
+
+void Diaria::setDiaria( float diaria ) throw ( invalid_argument )
+{
+    validar(diaria);
+    this->diaria = diaria;
+}
+
+void NumContaCorr::validar( string numContaCorr ) throw ( invalid_argument )
+{
+    if ( numContaCorr.size() != TAMANHO_NUMERO )
+    {
+        throw invalid_argument{ "Argumento Invalido." };
+    }
+    for ( int i = 0; i < TAMANHO_NUMERO; i++ )
+    {
+        if ( numContaCorr[i] < LIMITE_INF || numContaCorr[i] > LIMITE_SUP )
+        {
+            throw invalid_argument{ "Argumento Invalido." };
+        }
+    }
+}
+
+void NumContaCorr::setNumContaCorr( string numContaCorr ) throw ( invalid_argument )
+{
+    validar( numContaCorr );
+    this->numContaCorr = numContaCorr;
+}
+
+void Nome::validar( string nome ) throw ( invalid_argument ) //INCOMPLETA
+{
+    if ( nome.size() < TAMANHO_NOME_MIN || nome.size() > TAMANHO_NOME_MAX )
+    {
+
+        throw invalid_argument{ "Argumento Invalido." };
+    }
+    for ( int i = 0; i < nome.size(); i++ ){
+        //caracter diferente de letra, ponto e espaço
+        if ( ( nome[i] < 65 || ( nome[i] > 90 && nome[i] < 97 ) || nome[i] > 122 ) &&
+        nome[i] != 46 && nome[i] != 32 )
+        {
+                throw invalid_argument{ "Argumento Invalido." };
+        }
+    //  if ( ( nome[i] > 65 && nome[i] < 90) || (nome[i] > 97 && nome[i] < 122 ) ){
+    //      letra = true;
+    //  }
+        // ponto não precedido por letra
+        if ( ( nome[i] == 46 && i == 0 ) || ( nome[i] == 46 && 
+            ( nome[i-1] < 65 || ( nome[i-1] > 90 && nome[i-1] < 97 ) || nome[i-1] > 122 ) ) )
+        {
+            throw invalid_argument{ "Argumento Invalido." };
+        }
+        // espaços seguidos
+        if ( i > 0 && nome[i] == 32 && nome[i - 1] == 32 )
+        {
+            throw invalid_argument{ "Argumento Invalido." }; 
+        }
+
+    }
+}
+
+void Nome::setNome( string nome ) throw ( invalid_argument )
+{
+    
+    validar( nome );
+    this->nome = nome;
+}

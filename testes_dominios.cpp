@@ -538,3 +538,166 @@ int TUTpAcomodacao::RodarTestes()
 
     return estado;
 }
+
+//Métodos de teste da classe Diaria
+
+void TUDiaria::inicializar()
+{
+    estado = SUCESSO;
+    diaria = new Diaria();
+}
+
+void TUDiaria::finalizar()
+{
+    delete diaria;
+}
+
+int TUDiaria::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUDiaria::testarCenarioSucesso()
+{
+    try
+    {
+         diaria->setDiaria(DIARIA_VALIDA);
+         if( diaria->getDiaria() != DIARIA_VALIDA )
+         {
+             estado = FALHA;
+         }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUDiaria::testarCenarioFalha()
+{
+    try
+    {
+        diaria->setDiaria( DIARIA_INVALIDA );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+//Métodos de teste da classe NumContaCorr
+
+void TUNumContaCorr::inicializar()
+{
+    estado = SUCESSO;
+    numContaCorr = new NumContaCorr();
+}
+
+void TUNumContaCorr::finalizar()
+{
+    delete numContaCorr;
+}
+
+int TUNumContaCorr::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUNumContaCorr::testarCenarioSucesso()
+{
+    try
+    {
+        numContaCorr->setNumContaCorr(NUMERO_VALIDO);
+        if( numContaCorr->getNumContaCorr() != NUMERO_VALIDO )
+        {
+            estado = FALHA;
+        }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUNumContaCorr::testarCenarioFalha()
+{
+    try
+    {
+        numContaCorr->setNumContaCorr( NUMERO_INVALIDO );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}
+
+//Métodos de teste da classe Nome
+
+void TUNome::inicializar()
+{
+    estado = SUCESSO;
+    nome = new Nome();
+}
+
+void TUNome::finalizar()
+{
+    delete nome;
+}
+
+int TUNome::rodarTestes()
+{
+    inicializar();
+
+    testarCenarioSucesso();
+    testarCenarioFalha();
+
+    finalizar();
+
+    return estado;
+}
+
+void TUNome::testarCenarioSucesso()
+{
+    try
+    {
+        nome->setNome(NOME_VALIDO);
+        if( nome->getNome() != NOME_VALIDO )
+        {
+            
+            estado = FALHA;
+        }
+    }
+    catch( invalid_argument excecao )
+    {
+        estado = FALHA;
+    }
+}
+
+void TUNome::testarCenarioFalha()
+{
+    try
+    {
+        nome->setNome( NOME_INVALIDO );
+        estado = FALHA;
+    }
+    catch( invalid_argument excecao )
+    {
+        return;
+    }
+}

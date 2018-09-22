@@ -38,6 +38,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="testes_dominios.cpp" />
 		<Unit filename="testes_dominios.hpp" />
+		<Unit filename="testes_entidades.cpp" />
+		<Unit filename="testes_entidades.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

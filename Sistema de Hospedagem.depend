@@ -5,13 +5,15 @@
 	<string>
 	<iostream>
 
-1536801473 hpp"
+1537532389 
+
+1537548266 hpp"
 
 1537142363 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.hpp
 	<stdexcept>
 	<stdexcept>
 
-1536214539 >
+1537243672 >
 
 1535847681 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/entidades.cpp
 
@@ -21,10 +23,14 @@
 	<iostream>
 	"testes_dominios.hpp"
 
+1537136689 minios.hpp"
+
 1535847784 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes.cpp
 
 1537548300 source:c:\home\tp1-sistema-de-hospedagem\entidades.cpp
 	"entidades.hpp"
+
+1537548687 .hpp"
 
 1537532389 source:c:\home\tp1-sistema-de-hospedagem\dominios.cpp
 	"dominios.hpp"
@@ -37,8 +43,6 @@
 1537243247 source:c:\home\tp1-sistema-de-hospedagem\testes_dominios.cpp
 	"testes_dominios.hpp"
 
-1536801159 minios.hpp"
-
 1537242875 c:\home\tp1-sistema-de-hospedagem\testes_dominios.hpp
 	"dominios.hpp"
 
@@ -46,6 +50,8 @@
 	<iostream>
 	"testes_dominios.hpp"
 	"testes_entidades.hpp"
+
+1537548790 tidades.hpp"
 
 1537136267 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_dominios.hpp
 	"dominios.hpp"
@@ -61,4 +67,35 @@
 
 1537548687 c:\home\tp1-sistema-de-hospedagem\testes_entidades.hpp
 	"entidades.hpp"
+
+1537635787 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.cpp
+	"dominios.hpp"
+	<string>
+	<iostream>
+
+1537635783 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.hpp
+	<stdexcept>
+
+1537635601 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/entidades.cpp
+	"entidades.hpp"
+
+1537635601 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/entidades.hpp
+	"dominios.hpp"
+
+1537636461 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/main.cpp
+	<iostream>
+	"testes_dominios.hpp"
+	"testes_entidades.hpp"
+
+1537636044 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_dominios.hpp
+	"dominios.hpp"
+
+1537635601 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_entidades.hpp
+	"entidades.hpp"
+
+1537636059 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_dominios.cpp
+	"testes_dominios.hpp"
+
+1537635601 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_entidades.cpp
+	"testes_entidades.hpp"
 

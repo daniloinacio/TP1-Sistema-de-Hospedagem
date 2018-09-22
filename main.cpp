@@ -177,6 +177,59 @@ int main( )
     }
 
     cout << "\n";
+
+        // Testes de unidade da classe Diaria
+    TUDiaria diaria;
+
+    cout << "Teste de unidade da classe Diaria:\n";
+
+    switch( diaria.rodarTestes() )
+    {
+    case TUDiaria::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+    case TUDiaria::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+
+    cout << "\n";
+    // Testes de unidade da classe NumContaCorr
+    TUNumContaCorr numContaCorr;
+
+    cout << "Teste de unidade da classe NumContaCorr:\n";
+
+    switch( numContaCorr.rodarTestes() )
+    {
+    case TUNumContaCorr::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+    case TUNumContaCorr::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+
+    cout << "\n";
+
+    // Testes de unidade da classe Nome
+    TUNome nome;
+
+    cout << "Teste de unidade da classe Nome:\n";
+
+    switch( nome.rodarTestes() )
+    {
+    case TUNome::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+    case TUNome::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+
+    cout << "\n";
     cout << "-----------------------------------------------\n";
     cout << "Testes para as classes de entidades:\n\n";
 

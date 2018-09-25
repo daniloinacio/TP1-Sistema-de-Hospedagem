@@ -111,43 +111,51 @@ void TUAcomodacao::finalizar()
 
 void TUAcomodacao::testarCenarioSucesso()
 {
+    IDENTIFICADOR_VALIDO.setIdentificador( ID );
     acomodacaoTeste->setIdentificador( IDENTIFICADOR_VALIDO );
-    if( acomodacaoTeste->getIdentificador() != IDENTIFICADOR_VALIDO )
+    if( acomodacaoTeste->getIdentificador().getIdentificador() != IDENTIFICADOR_VALIDO.getIdentificador() )
     {
         estado = FALHA;
     }
+    TIPO_VALIDO.setTpAcomodacao( TIPO );
     acomodacaoTeste->setTipo( TIPO_VALIDO );
-    if( acomodacaoTeste->getTipo() != TIPO_VALIDO )
+    if( acomodacaoTeste->getTipo().getTpAcomodacao() != TIPO_VALIDO.getTpAcomodacao() )
     {
         estado = FALHA;
     }
+    CAPACIDADE_VALIDA.setCapAcomodacao( CAP_ACOMODACAO );
     acomodacaoTeste->setCapacidade( CAPACIDADE_VALIDA );
-    if( acomodacaoTeste->getCapacidade() != CAPACIDADE_VALIDA )
+    if( acomodacaoTeste->getCapacidade().getCapAcomodacao() != CAPACIDADE_VALIDA.getCapAcomodacao() )
     {
         estado = FALHA;
     }
+    DATA_INICIO_VALIDA.setData( DATA );
     acomodacaoTeste->setDataInicio( DATA_INICIO_VALIDA );
-    if( acomodacaoTeste->getDataInicio() != DATA_INICIO_VALIDA )
+    if( acomodacaoTeste->getDataInicio().getData() != DATA_INICIO_VALIDA.getData() )
     {
         estado = FALHA;
     }
+    DATA_TERMINO_VALIDA.setData( DATA );
     acomodacaoTeste->setDataTermino( DATA_TERMINO_VALIDA );
-    if( acomodacaoTeste->getDataTermino() != DATA_TERMINO_VALIDA )
+    if( acomodacaoTeste->getDataTermino().getData() != DATA_TERMINO_VALIDA.getData() )
     {
         estado = FALHA;
     }
+    CIDADE_VALIDA.setNome( NOME );
     acomodacaoTeste->setCidade( CIDADE_VALIDA );
-    if( acomodacaoTeste->getCidade() != CIDADE_VALIDA )
+    if( acomodacaoTeste->getCidade().getNome() != CIDADE_VALIDA.getNome() )
     {
         estado = FALHA;
     }
+    ESTADO_VALIDO.setEstado( ESTADO );
     acomodacaoTeste->setEstado( ESTADO_VALIDO );
-    if( acomodacaoTeste->getEstado() != ESTADO_VALIDO )
+    if( acomodacaoTeste->getEstado().getEstado() != ESTADO_VALIDO.getEstado() )
     {
         estado = FALHA;
     }
+    DIARIA_VALIDA.setDiaria( DIARIA );
     acomodacaoTeste->setDiaria( DIARIA_VALIDA );
-    if( acomodacaoTeste->getDiaria() != DIARIA_VALIDA )
+    if( acomodacaoTeste->getDiaria().getDiaria() != DIARIA_VALIDA.getDiaria() )
     {
         estado = FALHA;
     }       
@@ -178,18 +186,21 @@ void TUContaCorrente::finalizar()
 
 void TUContaCorrente::testarCenarioSucesso()
 {
+    NUMERO_VALIDO.setNumContaCorr( NUMERO_CONTA_CORR );
     contaCorrenteTeste->setNumero( NUMERO_VALIDO );
-    if( contaCorrenteTeste->getNumero() != NUMERO_VALIDO )
+    if( contaCorrenteTeste->getNumero().getNumContaCorr() != NUMERO_VALIDO.getNumContaCorr() )
     {
         estado = FALHA;
     }
+    AGENCIA_VALIDA.setAgencia( NUMERO_AGENCIA );
     contaCorrenteTeste->setAgencia( AGENCIA_VALIDA );
-    if( contaCorrenteTeste->getAgencia() != AGENCIA_VALIDA )
+    if( contaCorrenteTeste->getAgencia().getAgencia() != AGENCIA_VALIDA.getAgencia() )
     {
         estado = FALHA;
     }
+    BANCO_VALIDO.setBanco( NUMERO_BANCO );
     contaCorrenteTeste->setBanco( BANCO_VALIDO );
-    if( contaCorrenteTeste->getBanco() != BANCO_VALIDO )
+    if( contaCorrenteTeste->getBanco().getBanco() != BANCO_VALIDO.getBanco() )
     {
         estado = FALHA;
     }     

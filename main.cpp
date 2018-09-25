@@ -247,6 +247,7 @@ int main( )
         break;
     }
 
+    cout << "\n";
     // Testes de unidade da classe Usuario
     TUUsuario UsuarioTeste;
     cout << "Testes classe Usuario:\n";

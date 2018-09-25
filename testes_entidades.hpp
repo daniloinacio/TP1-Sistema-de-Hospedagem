@@ -62,14 +62,21 @@ private:
     int estado;
 
     Identificador IDENTIFICADOR_VALIDO;
-    IDENTIFICADOR_VALIDO.setIdentificador("nubia");
-    TpAcomodacao TIPO_VALIDO.setTpAcomodacao("apartamento");
-    CapAcomodacao CAPACIDADE_VALIDA.setCapAcomodacao(3);
-    Data DATA_INICIO_VALIDA.setData("01/jun/2007");
-    Data DATA_TERMINO_VALIDA.setData("07/jun/2007");
-    Nome CIDADE_VALIDA.setNome("Brasilia");
-    Estado ESTADO_VALIDO.setEstado("DF");
-    Diaria DIARIA_VALIDA.setDiaria(1.0);
+    TpAcomodacao TIPO_VALIDO;
+    CapAcomodacao CAPACIDADE_VALIDA;
+    Data DATA_INICIO_VALIDA;
+    Data DATA_TERMINO_VALIDA;
+    Nome CIDADE_VALIDA;
+    Estado ESTADO_VALIDO;
+    Diaria DIARIA_VALIDA;
+
+    string ID = "nubia";
+    string TIPO = "apartamento";
+    int CAP_ACOMODACAO = 6;
+    string DATA = "11/set/2003";
+    string NOME = "Danilo";
+    string ESTADO = "AM";
+    float DIARIA = 5425.0;
 
     Acomodacao *acomodacaoTeste;
 
@@ -91,9 +98,12 @@ public:
 private:
     int estado;
 
-    NumContaCorr NUMERO_VALIDO.setNumContaCorr("123456");
-    Agencia AGENCIA_VALIDA.setAgencia("12345");
-    Banco BANCO_VALIDO.setBanco("123");
+    NumContaCorr NUMERO_VALIDO;
+    Agencia AGENCIA_VALIDA;
+    Banco BANCO_VALIDO;
+    string NUMERO_CONTA_CORR = "123456";
+    string NUMERO_AGENCIA = "12345";
+    string NUMERO_BANCO = "123";
 
     ContaCorrente *contaCorrenteTeste;
 

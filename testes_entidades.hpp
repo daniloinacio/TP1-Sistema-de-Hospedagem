@@ -3,6 +3,30 @@
 
 #include "entidades.hpp"
 
+class TUUsuario
+{
+public:
+    static const int SUCESSO = 1;
+    static const int FALHA = -1;
+
+    int RodarTestes();
+
+private:
+    int estado;
+
+    string NomeValido = "Wilkerson";
+    string Idvalido = "joaop";
+    string SenhaValida = "Kall30!#";
+
+    Usuario *UsuarioTeste;
+
+    void inicializar();
+
+    void finalizar();
+
+    void testarCenarioSucesso();
+};
+
 class TUCartaoCred
 {
 public:
@@ -15,9 +39,7 @@ private:
     int estado;
 
     string NumValido = "6011111111111117";
-    string NumInvalido = "6011111111";
     string DataValida = "11/03";
-    string DataInvalida = "13/18";
 
     CartaoCredito *CartaoTeste;
 
@@ -26,8 +48,6 @@ private:
     void finalizar();
 
     void testarCenarioSucesso();
-
-    void testarCenarioFalha();
 };
 
 #endif // TESTES_ENTIDADES_HPP

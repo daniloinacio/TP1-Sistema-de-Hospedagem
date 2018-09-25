@@ -247,5 +247,22 @@ int main( )
         break;
     }
 
+    // Testes de unidade da classe Usuario
+    TUUsuario UsuarioTeste;
+    cout << "Testes classe Usuario:\n";
+
+    switch( UsuarioTeste.RodarTestes() )
+    {
+    case TUUsuario::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+
+    case TUUsuario::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+    cout << "\n";
+
     return 0;
 }

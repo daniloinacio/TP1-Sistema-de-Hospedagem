@@ -3,6 +3,8 @@
 
 #include "dominios.hpp"
 
+using namespace std;
+
 /// Classe para que identifica um usuário do sistema
 class Usuario
 {
@@ -92,6 +94,118 @@ public:
     {
         return validade.getDataValidade();
     }
+};
+
+class Acomodacao
+{
+private:
+	Identificador identificador;
+	TpAcomodacao tipo;
+	CapAcomodacao capacidade;
+	Data dataInicio;
+	Data dataTermino;
+	Nome cidade;
+	Estado estado;
+	Diaria diaria;
+public:
+	void setIdentificador( const Identificador &identificador )
+	{
+		this->identificador = identificador;
+	}
+	void setTipo( TpAcomodacao tipo )
+	{
+		this->tipo = tipo;
+	}
+	void setCapacidade( CapAcomodacao capacidade )
+	{
+		this->capacidade = capacidade;
+	}
+	void setDataInicio( Data dataInicio )
+	{
+		this->dataInicio = dataInicio;
+	}
+	void setDataTermino( Data dataTermino )
+	{
+		this->dataTermino = dataTermino;
+	}
+	void setCidade( Nome cidade )
+	{
+		this->cidade = cidade;
+	}
+	void setEstado( Estado estado )
+	{
+		this->estado = estado;
+	}
+	void setDiaria( Diaria diaria )
+	{
+		this->diaria = diaria;
+	}
+	Identificador getIdentificador()
+	{
+		return identificador;
+	}
+	TpAcomodacao getTipo()
+	{
+		return tipo;
+	}
+	CapAcomodacao getCapacidade()
+	{
+		return capacidade;
+	}
+	Data getDataInicio()
+	{
+		return dataInicio;
+	}
+	Data getDataTermino()
+	{
+		return dataTermino;
+	}
+	Nome getCidade()
+	{
+		return cidade;
+	}
+	Estado getEstado()
+	{
+		return estado;
+	}
+	Diaria getDiaria()
+	{
+		return diaria;
+	}
+};
+
+class ContaCorrente
+{
+private:
+	NumContaCorr numero;
+	Agencia agencia;
+	Banco banco;
+public:
+	void setNumero( NumContaCorr numero )
+	{
+		this->numero = numero;
+	}
+	void setAgencia( Agencia agencia )
+	{
+		this->agencia = agencia;
+	}
+	void setBanco( Banco banco)
+	{
+		this->banco = banco;
+	}
+
+	NumContaCorr getNumero()
+	{
+		return numero;
+	}
+	Agencia getAgencia()
+	{
+		return agencia;
+	}
+	Banco getBanco()
+	{
+		return banco;
+	}
 };
 
 #endif // ENTIDADES_HPP

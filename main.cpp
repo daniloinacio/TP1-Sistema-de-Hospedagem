@@ -263,6 +263,38 @@ int main( )
     }
 
     cout << "\n";
+    // Testes de unidade da classe Acomodacao
+    TUAcomodacao acomodacaoTeste;
+    cout << "Testes classe Acomodacao:\n";
+
+    switch( acomodacaoTeste.RodarTestes() )
+    {
+    case TUAcomodacao::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+
+    case TUAcomodacao::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+    cout << "\n";
+    // Testes de unidade da classe ContaCorrente
+    TUContaCorrente contaCorrenteTeste;
+    cout << "Testes classe ContaCorrente:\n";
+
+    switch( contaCorrenteTeste.RodarTestes() )
+    {
+    case TUContaCorrente::SUCESSO:
+        cout << "Sucesso\n";
+        break;
+
+    case TUContaCorrente::FALHA:
+        cout << "Falha\n";
+        break;
+    }
+
+    cout << "\n";
 
     return 0;
 }

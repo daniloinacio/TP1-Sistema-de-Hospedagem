@@ -13,9 +13,9 @@ class Agencia
 {
 private:
     string agencia;             ///< Representação numérica da Agência.
-    const int TAMANHO_AGENCIA = 5;          ///< Tamanho válido da representação.
-    const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
-    const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
+    static const int TAMANHO_AGENCIA = 5;          ///< Tamanho válido da representação.
+    static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
     /// Método que valida uma representação numérica de uma Agência.
     /** Verifica se a representação contém 5 caracteres e se cada um deles
@@ -58,9 +58,9 @@ class Banco
 private:
 
     string banco;               ///< Representação numérica do Banco.
-    const int TAMANHO_BANCO = 3;          ///< Tamanho válido da representação.
-    const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
-    const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
+    static const int TAMANHO_BANCO = 3;          ///< Tamanho válido da representação.
+    static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
     /// Método que valida uma representação numérica de um Banco.
     /** Verifica se a representação contém 3 caracteres e se cada um deles
@@ -99,8 +99,8 @@ class CapAcomodacao
 private:
 
     int capAcomodacao;         ///< Valor da capacidade.
-    const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
-    const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
+    static const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
+    static const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
     /// Método que valida um valor de capacidade de acomodação.
     /** Verifica se o valor é um inteiro no intervalo 0-9.
@@ -141,20 +141,20 @@ private:
     int ano;
     bool bissexto = false;
 
-    const int ANO_MAX = 2099;
-    const int ANO_MIN = 2000;
-    const int DIA_MIN = 1;
-    const int DIA_MAX1 = 28;
-    const int DIA_MAX2 = 29;
-    const int DIA_MAX3 = 30;
-    const int DIA_MAX4 = 31;
-    const int TAMANHO_DIA = 2;
-    const int TAMANHO_ANO = 4;
-    const int TAMANHO_MES = 3;
-    const int POSICAO_DIA = 0;
-    const int POSICAO_MES = 3;
-    const int POSICAO_ANO = 7;
-    const int TAMANHO_DATA = 11;
+    static const int ANO_MAX = 2099;
+    static const int ANO_MIN = 2000;
+    static const int DIA_MIN = 1;
+    static const int DIA_MAX1 = 28;
+    static const int DIA_MAX2 = 29;
+    static const int DIA_MAX3 = 30;
+    static const int DIA_MAX4 = 31;
+    static const int TAMANHO_DIA = 2;
+    static const int TAMANHO_ANO = 4;
+    static const int TAMANHO_MES = 3;
+    static const int POSICAO_DIA = 0;
+    static const int POSICAO_MES = 3;
+    static const int POSICAO_ANO = 7;
+    static const int TAMANHO_DATA = 11;
 
     void validar( string ) throw ( invalid_argument );
 
@@ -178,15 +178,15 @@ private:
     int mes;
     int ano;
 
-    const int ANO_MIN = 00;
-    const int ANO_MAX = 99;
-    const int MES_MIN = 1;
-    const int MES_MAX = 12;
-    const int POSICAO_MES = 0;
-    const int TAMANHO_MES = 2;
-    const int POSICAO_ANO = 3;
-    const int TAMANHO_ANO = 2;
-    const int TAMANHO_DATA_VALIDADE = 5;
+    static const int ANO_MIN = 00;
+    static const int ANO_MAX = 99;
+    static const int MES_MIN = 1;
+    static const int MES_MAX = 12;
+    static const int POSICAO_MES = 0;
+    static const int TAMANHO_MES = 2;
+    static const int POSICAO_ANO = 3;
+    static const int TAMANHO_ANO = 2;
+    static const int TAMANHO_DATA_VALIDADE = 5;
 
     void validar( string ) throw ( invalid_argument );
 
@@ -206,9 +206,9 @@ class NumCartaoCred
 private:
     string numCartaoCred;
 
-    const int TAMANHO_NUMERO = 16;
-    const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
-    const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
+    static const int TAMANHO_NUMERO = 16;
+    static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
     void validar( string ) throw ( invalid_argument );
 public:
@@ -265,9 +265,9 @@ class Estado
 {
 private:
     string estado; ///< Identificador
-    const string LSTEstados[27] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
+    static const int NumEstados = 27; ///< Número de estados brasileiros.
+    string LSTEstados[NumEstados] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
                                    "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}; ///< Lista de estados
-    const int NumEstados = 27; ///< Número de estados brasileiros.
 
     /// Função que valida um dado estado
     /**
@@ -301,7 +301,7 @@ class Identificador
 private:
     string identificador; ///< Variável principal
 
-    const int tamanho = 5; ///< O identificador deve ter 5 caracteres
+    static const int tamanho = 5; ///< O identificador deve ter 5 caracteres
 
     /// Função que valida se um certo valor de identificador é válido ou não
     /**
@@ -359,7 +359,7 @@ public:
         \param void
         \return Tipo O tipo de acomodacao
     */
-    string getTpAcomodacao()
+    string getTpAcomodacao() const
     {
         return tpAcomodacao;
     }
@@ -369,8 +369,8 @@ class Diaria
 {
 private:
     float diaria;
-    const float DIARIA_MAX = 10000.0;
-    const float DIARIA_MIN = 1.0;
+    float DIARIA_MAX = 10000.0;
+    float DIARIA_MIN = 1.0;
 
     void validar ( float ) throw ( invalid_argument );
 
@@ -388,9 +388,9 @@ class NumContaCorr
 {
 private:
     string numContaCorr;
-    const int LIMITE_SUP = 57;
-    const int LIMITE_INF = 48;
-    const int TAMANHO_NUMERO = 6;
+    static const int LIMITE_SUP = 57;
+    static const int LIMITE_INF = 48;
+    static const int TAMANHO_NUMERO = 6;
 
     void validar ( string ) throw ( invalid_argument );
 public:
@@ -406,8 +406,8 @@ class Nome
 {
 private:
     string nome;
-    const int TAMANHO_NOME_MAX = 15;
-    const int TAMANHO_NOME_MIN = 1;
+    static const int TAMANHO_NOME_MAX = 15;
+    static const int TAMANHO_NOME_MIN = 1;
 
     void validar ( string ) throw ( invalid_argument );
 public:
@@ -418,7 +418,7 @@ public:
     {
         return nome;
     }
-    
+
 };
 
 #endif // DOMINIOS_HPP_INCLUDED

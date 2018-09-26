@@ -14,9 +14,13 @@ public:
 private:
     int estado;
 
-    string NomeValido = "Wilkerson";
-    string Idvalido = "joaop";
-    string SenhaValida = "Kall30!#";
+    Nome NOME_VALIDO;
+    Identificador ID_VALIDO;
+    Senha SENHA_VALIDA;
+
+    string NOME = "Wilkerson";
+    string ID = "joaop";
+    string SENHA = "Kall30!#";
 
     Usuario *UsuarioTeste;
 
@@ -38,8 +42,11 @@ public:
 private:
     int estado;
 
-    string NumValido = "6011111111111117";
-    string DataValida = "11/03";
+    NumCartaoCred NUM_VALIDO;
+    DataValidade DATA_VALIDA;
+
+    string NUM = "6011111111111117";
+    string DATA = "11/03";
 
     CartaoCredito *CartaoTeste;
 

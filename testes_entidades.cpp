@@ -15,15 +15,18 @@ void TUCartaoCred::testarCenarioSucesso()
 {
     try
     {
-        CartaoTeste->setNumero(NumValido);
-        CartaoTeste->setValidade(DataValida);
+        NUM_VALIDO.setNumCartaoCred( NUM );
+        CartaoTeste->setNumero( NUM_VALIDO );
 
-        if ( CartaoTeste->getNumero() != NumValido )
+        DATA_VALIDA.setDataValidade( DATA );
+        CartaoTeste->setValidade( DATA_VALIDA );
+
+        if ( CartaoTeste->getNumero().getNumCartaoCred() != NUM_VALIDO.getNumCartaoCred() )
         {
             estado = FALHA;
         }
 
-        if ( CartaoTeste->getValidade() != DataValida )
+        if ( CartaoTeste->getValidade().getDataValidade() != DATA_VALIDA.getDataValidade() )
         {
             estado = FALHA;
         }
@@ -62,20 +65,23 @@ void TUUsuario::testarCenarioSucesso()
 {
     try
     {
-        UsuarioTeste->setNome(NomeValido);
-        if ( UsuarioTeste->getNome() != NomeValido )
+        NOME_VALIDO.setNome( NOME );
+        UsuarioTeste->setNome( NOME_VALIDO );
+        if ( UsuarioTeste->getNome().getNome() != NOME_VALIDO.getNome() )
         {
             estado = FALHA;
         }
 
-        UsuarioTeste->setIdentificador(Idvalido);
-        if ( UsuarioTeste->getIdentificador() != Idvalido )
+        ID_VALIDO.setIdentificador( ID );
+        UsuarioTeste->setIdentificador( ID_VALIDO );
+        if ( UsuarioTeste->getIdentificador().getIdentificador() != ID_VALIDO.getIdentificador() )
         {
             estado = FALHA;
         }
 
-        UsuarioTeste->setSenha(SenhaValida);
-        if ( UsuarioTeste->getSenha() != SenhaValida )
+        SENHA_VALIDA.setSenha( SENHA );
+        UsuarioTeste->setSenha( SENHA_VALIDA );
+        if ( UsuarioTeste->getSenha().getSenha() != SENHA_VALIDA.getSenha() )
         {
             estado = FALHA;
         }
@@ -158,7 +164,7 @@ void TUAcomodacao::testarCenarioSucesso()
     if( acomodacaoTeste->getDiaria().getDiaria() != DIARIA_VALIDA.getDiaria() )
     {
         estado = FALHA;
-    }       
+    }
 }
 
 int TUAcomodacao::RodarTestes()
@@ -203,7 +209,7 @@ void TUContaCorrente::testarCenarioSucesso()
     if( contaCorrenteTeste->getBanco().getBanco() != BANCO_VALIDO.getBanco() )
     {
         estado = FALHA;
-    }     
+    }
 }
 
 int TUContaCorrente::RodarTestes()

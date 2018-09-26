@@ -16,48 +16,57 @@ private:
 public:
     /// Associa um nome ao usuário
     /**
-        \param Nome String de até 15 caracteres
+        \param nome Objeto com o nome a ser estabelecido
     */
-    void setNome ( string ) throw ( invalid_argument );
+    void setNome ( Nome nome )
+    {
+        this->nome = nome;
+    }
 
     /// Associa um identificador a um certo usuário
     /**
-        \param Identificador String de 5 letras
+        \param identificador Objeto com o identificador que se quer associar
     */
-    void setIdentificador ( string ) throw ( invalid_argument );
+    void setIdentificador ( Identificador identificador )
+    {
+        this->identificador = identificador;
+    }
 
     /// Associa uma senha a um certo usuário
     /**
-        \param Senha string de 8 caracteres
+        \param Senha Objeto com a senha que se quer atribuir
     */
-    void setSenha ( string ) throw ( invalid_argument );
+    void setSenha ( Senha senha )
+    {
+        this->senha = senha;
+    }
 
 
     /// Retorna o nome do usuário
     /**
-        \return Nome Nome do usuário
+        \return Nome Objeto com o nome do usuário
     */
-    string getNome()
+    Nome getNome()
     {
-        return nome.getNome();
+        return nome;
     }
 
     /// Retorna o identificador do usuário
     /**
-        \return Identificador Identificador do usuário
+        \return Identificador objeto que identifica o usuário
     */
-    string getIdentificador()
+    Identificador getIdentificador()
     {
-        return identificador.getIdentificador();
+        return identificador;
     }
 
     /// Retorna a senha do usuário
     /**
-        \return Senha Senha do usuário
+        \return Senha Objeto com a senha do usuário
     */
-    string getSenha()
+    Senha getSenha()
     {
-        return senha.getSenha();
+        return senha;
     }
 };
 
@@ -71,28 +80,34 @@ private:
 public:
     /// Seta o número do cartão de crédito
     /**
-        \param Numero Número do cartão de crédito em formato de string
+        \param numero Objeto com o número de cartão de crédito que se quer associar
         \return void
     */
-    void setNumero ( string ) throw ( invalid_argument );
+    void setNumero ( NumCartaoCred numero )
+    {
+        this->numero = numero;
+    }
 
     /// Seta a data de validade do cartão
     /**
-        \param Validade Data de validade em forma de string, por exemplo: "11/19"
+        \param validade Objeto com a data de validade que se quer associar
         \return void
     */
-    void setValidade ( string ) throw ( invalid_argument );
-
-    /// Retorna o número do cartão em formato de string
-    string getNumero()
+    void setValidade ( DataValidade validade)
     {
-        return numero.getNumCartaoCred();
+        this->validade = validade;
     }
 
-    /// Retorna o número do cartão em formato de string
-    string getValidade()
+    /// Retorna um objeto com o número do cartão
+    NumCartaoCred getNumero()
     {
-        return validade.getDataValidade();
+        return numero;
+    }
+
+    /// Retorna um objetivo de validade com a validade com cartão
+    DataValidade getValidade()
+    {
+        return validade;
     }
 };
 

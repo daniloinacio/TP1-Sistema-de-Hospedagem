@@ -270,7 +270,7 @@ void TUDataValidade::testarCenarioFalha()
     }
 }
 
-//Métodos de teste da classe DataValidade
+//Métodos de teste da classe NumCartaoCred
 
 void TUNumCartaoCred::inicializar()
 {

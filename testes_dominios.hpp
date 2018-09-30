@@ -144,7 +144,7 @@ public:
     int rodarTestes();
 private:
     string NUMERO_VALIDO = "6011111111111117";
-    string NUMERO_INVALIDO = "6011111111";
+    string NUMERO_INVALIDO = "123456789101112";
 
     NumCartaoCred *numCartaoCred;
     int estado;
@@ -313,7 +313,7 @@ public:
     int rodarTestes();
 private:
     string NOME_VALIDO = "Danilo";
-    string NOME_INVALIDO = ".Dan  ilo"; 
+    string NOME_INVALIDO = "Dan .lo"; 
 
     Nome *nome;
     int estado;

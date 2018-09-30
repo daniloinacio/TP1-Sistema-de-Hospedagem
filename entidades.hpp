@@ -111,112 +111,242 @@ public:
     }
 };
 
+/// Classe que representa a entidade Acomodação e seus atributos.
 class Acomodacao
 {
 private:
-	Identificador identificador;
-	TpAcomodacao tipo;
-	CapAcomodacao capacidade;
-	Data dataInicio;
-	Data dataTermino;
-	Nome cidade;
-	Estado estado;
-	Diaria diaria;
+	Identificador identificador; ///< Identificação da acomodação.
+	TpAcomodacao tipo; ///< O tipo ao qual a acomodação pertence.
+	CapAcomodacao capacidade; ///< Valor da capacidade da acomodação.
+	Data dataInicio; ///< Data de inicio do período de disponibilidade da acomodação.
+	Data dataTermino; ///< Data de termino do período de disponibilidade da acomodação.
+	Nome cidade; ///< Nome da cidade em que a acomodação está localizada.
+	Estado estado; ///< Sigla do estado em que a acomodação está localizada.
+	Diaria diaria; ///< Valor da diária da acomodação.
 public:
+
+	/// Método que atribui um identificador a acomodação
+	/** 
+		\param Um identificador.
+		\return Void.
+	*/
 	void setIdentificador( const Identificador &identificador )
 	{
 		this->identificador = identificador;
 	}
+
+	/// Método que atribui um tipo a acomodação
+	/** 
+		\param Um tipo de acomodação.
+		\return Void.
+	*/
 	void setTipo( TpAcomodacao tipo )
 	{
 		this->tipo = tipo;
 	}
+
+	/// Método que atribui uma capacidade a acomodação
+	/** 
+		\param Um valor de capacidade.
+		\return Void.
+	*/
 	void setCapacidade( CapAcomodacao capacidade )
 	{
 		this->capacidade = capacidade;
 	}
+
+	/// Método que atribui uma data de inicio a acomodação
+	/** 
+		\param Uma data.
+		\return Void.
+	*/
 	void setDataInicio( Data dataInicio )
 	{
 		this->dataInicio = dataInicio;
 	}
+
+	/// Método que atribui uma data de termino a acomodação
+	/** 
+		\param Uma data.
+		\return Void.
+	*/
 	void setDataTermino( Data dataTermino )
 	{
 		this->dataTermino = dataTermino;
 	}
+
+	/// Método que atribui uma cidade a acomodação
+	/** 
+		\param O nome de uma cidade.
+		\return Void.
+	*/
 	void setCidade( Nome cidade )
 	{
 		this->cidade = cidade;
 	}
+
+	/// Método que atribui um Estado a acomodação
+	/** 
+		\param A sigla de um estado brasileiro.
+		\return Void.
+	*/
 	void setEstado( Estado estado )
 	{
 		this->estado = estado;
 	}
+
+	/// Método que atribui um valor de diária a acomodação
+	/** 
+		\param Um valor de diária.
+		\return Void.
+	*/
 	void setDiaria( Diaria diaria )
 	{
 		this->diaria = diaria;
 	}
+
+	/// Método que obtém o identificador da acomodação
+	/**
+		\param Void.
+		\return O identificador da acomodação.
+	*/
 	Identificador getIdentificador()
 	{
 		return identificador;
 	}
+
+	/// Método que obtém o tipo da acomodação
+	/**
+		\param Void.
+		\return O tipo da acomodação.
+	*/
 	TpAcomodacao getTipo()
 	{
 		return tipo;
 	}
+
+	/// Método que obtém a capacidade da acomodação
+	/**
+		\param Void.
+		\return A capacidade da acomodação.
+	*/
 	CapAcomodacao getCapacidade()
 	{
 		return capacidade;
 	}
+
+	/// Método que obtém a data de inicio da disponibilidade da acomodação
+	/**
+		\param Void.
+		\return A data de inicio da disponibilidade da acomodação.
+	*/
 	Data getDataInicio()
 	{
 		return dataInicio;
 	}
+
+	/// Método que obtém a data de termino da disponibilidade da acomodação
+	/**
+		\param Void.
+		\return A data de termino da disponibilidade da acomodação.
+	*/
 	Data getDataTermino()
 	{
 		return dataTermino;
 	}
+
+	/// Método que obtém a cidade da acomodação
+	/**
+		\param Void.
+		\return A cidade da acomodação.
+	*/
 	Nome getCidade()
 	{
 		return cidade;
 	}
+
+	/// Método que obtém o estado da acomodação
+	/**
+		\param Void.
+		\return O estado da acomodação.
+	*/
 	Estado getEstado()
 	{
 		return estado;
 	}
+
+	/// Método que obtém a diária da acomodação.
+	/**
+		\param Void.
+		\return A diária da acomodação.
+	*/
 	Diaria getDiaria()
 	{
 		return diaria;
 	}
 };
 
+///Classe que representa a entidade conta corrente e seu atributos.
 class ContaCorrente
 {
 private:
-	NumContaCorr numero;
-	Agencia agencia;
-	Banco banco;
+	NumContaCorr numero; ///< número associado a conta.
+	Agencia agencia; ///< número da agência da qual a conta pertence.
+	Banco banco; ///< número do banco do qual a agência pertence.
 public:
+
+	/// Método que atribui um numero a conta corrente.
+	/** 
+		\param Um número de conta corrente.
+		\return Void.
+	*/
 	void setNumero( NumContaCorr numero )
 	{
 		this->numero = numero;
 	}
+	/// Método que atribui uma agência a conta corrente.
+	/** 
+		\param Um número de agência.
+		\return Void.
+	*/
 	void setAgencia( Agencia agencia )
 	{
 		this->agencia = agencia;
 	}
+
+	/// Método que atribui um banco a conta corrente.
+	/** 
+		\param Um número de banco.
+		\return Void.
+	*/
 	void setBanco( Banco banco)
 	{
 		this->banco = banco;
 	}
 
+	/// Método que obtém o numero da conta corrente.
+	/**
+		\param Void.
+		\return O número da conta corrente.
+	*/
 	NumContaCorr getNumero()
 	{
 		return numero;
 	}
+	/// Método que obtém a agência da conta corrente.
+	/**
+		\param Void.
+		\return O número da agência.
+	*/
 	Agencia getAgencia()
 	{
 		return agencia;
 	}
+	/// Método que obtém o banco da conta corrente.
+	/**
+		\param Void.
+		\return O número do banco.
+	*/
 	Banco getBanco()
 	{
 		return banco;

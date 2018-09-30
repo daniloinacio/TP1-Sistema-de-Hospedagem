@@ -170,17 +170,26 @@ void NumCartaoCred::validar( string numCartaoCred ) throw ( invalid_argument )
         }
     }
 
-    int nDigits = numCartaoCred.size();            //INCOMPLETO
-    int shuma = 0;
-    for (int i = 0; i < nDigits; i++)
-    {
-        int   digit = numCartaoCred[i] - '0';   // Char to number
-        if  (i & 1)  // Digit 1, 3, 5 not 0, 2, 4 - "even digits" starting at 1
-            if  ((digit <<= 1) >= 10) //  Double it, check >= 10
-                digit -= 9;           //  Same as summing the digits
-        shuma += digit;
-    }
-    if (shuma % 10 != 0)
+    // Algoritimo de Luhn para verificar se o número é válido
+    int nDigits = numCartaoCred.length(); 
+    int nSum = 0; 
+    bool isSecond = false; 
+    for (int i = nDigits - 1; i >= 0; i--) { 
+  
+        int d = numCartaoCred[i] - 'a'; 
+  
+        if (isSecond == true)
+        {
+            d = d * 2; 
+        }
+
+        nSum += d / 10; 
+        nSum += d % 10; 
+  
+        isSecond = !isSecond; 
+    } 
+
+    if (nSum % 10 != 0)
     {
         throw invalid_argument{ "Argumento Invalido."};
     }
@@ -338,35 +347,43 @@ void NumContaCorr::setNumContaCorr( string numContaCorr ) throw ( invalid_argume
     this->numContaCorr = numContaCorr;
 }
 
-void Nome::validar( string nome ) throw ( invalid_argument ) //INCOMPLETA
+void Nome::validar( string nome ) throw ( invalid_argument )
 {
+    letra = false;
     if ( nome.size() < TAMANHO_NOME_MIN || nome.size() > TAMANHO_NOME_MAX )
     {
-
         throw invalid_argument{ "Argumento Invalido." };
     }
     for ( int i = 0; i < nome.size(); i++ ){
         //caracter diferente de letra, ponto e espaço
-        if ( ( nome[i] < 65 || ( nome[i] > 90 && nome[i] < 97 ) || nome[i] > 122 ) &&
-        nome[i] != 46 && nome[i] != 32 )
+        if ( ( nome[i] < MIN_LETRA_MAIUSCULA || ( nome[i] > MAX_LETRA_MAIUSCULA && nome[i] < MIN_LETRA_MINUSCULA ) || 
+            nome[i] > MAX_LETRA_MINUSCULA ) && nome[i] != PONTO && nome[i] != ESPACO )
         {
                 throw invalid_argument{ "Argumento Invalido." };
         }
-    //  if ( ( nome[i] > 65 && nome[i] < 90) || (nome[i] > 97 && nome[i] < 122 ) ){
-    //      letra = true;
-    //  }
+        //verifica se é uma letra
+        if ((nome[i] >= MIN_LETRA_MAIUSCULA && nome[i] <= MAX_LETRA_MAIUSCULA) || (nome[i] >= MIN_LETRA_MINUSCULA && 
+            nome[i]<= MAX_LETRA_MINUSCULA))
+        {
+            letra = true;
+        }
         // ponto não precedido por letra
-        if ( ( nome[i] == 46 && i == 0 ) || ( nome[i] == 46 && 
-            ( nome[i-1] < 65 || ( nome[i-1] > 90 && nome[i-1] < 97 ) || nome[i-1] > 122 ) ) )
+        if ( ( nome[i] == PONTO && i == 0 ) || ( nome[i] == PONTO && ( nome[i-1] < MIN_LETRA_MAIUSCULA || 
+            ( nome[i-1] > MAX_LETRA_MAIUSCULA && nome[i-1] < MIN_LETRA_MINUSCULA ) || nome[i-1] > MAX_LETRA_MINUSCULA ) ) )
         {
             throw invalid_argument{ "Argumento Invalido." };
         }
         // espaços seguidos
-        if ( i > 0 && nome[i] == 32 && nome[i - 1] == 32 )
+        if ( i > 0 && nome[i] == ESPACO && nome[i - 1] == ESPACO )
         {
             throw invalid_argument{ "Argumento Invalido." }; 
         }
 
+    }
+    //não tem pelo menos uma letra
+    if ( letra == false )
+    {
+        throw invalid_argument{ "Argumento Invalido." };
     }
 }
 

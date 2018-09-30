@@ -17,9 +17,8 @@ private:
     static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Método que valida uma representação numérica de uma Agência.
-    /** Verifica se a representação contém 5 caracteres e se cada um deles
-    está no intervalo 0-9.
+    /// Método que verifica se a representação contém 5 caracteres e se cada um deles está no intervalo 0-9.
+    /**
         \param Uma representação numérica de uma Agência.
         \return Void.
     */
@@ -28,8 +27,8 @@ private:
 
 public:
 
-    /// Método que atribui um numero à Agência.
-    /** Valida o número recebido e atribui à Agência.
+    /// Método que atribui um numero válido à Agência.
+    /**
         \param Uma representação numérica válida.
         \return Void.
     */
@@ -37,7 +36,7 @@ public:
     void setAgencia( string agencia ) throw ( invalid_argument );
 
     /// Método que obtém o número da Agência.
-    /** Retorna a representação numérica da Agência.
+    /**
         \param Void.
         \return A representação numérica da Agência.
     */
@@ -62,9 +61,8 @@ private:
     static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
-    /// Método que valida uma representação numérica de um Banco.
-    /** Verifica se a representação contém 3 caracteres e se cada um deles
-    está no intervalo 0-9.
+    /// Método que verifica se a representação contém 3 caracteres e se cada um deles está no intervalo 0-9.
+    /**
         \param Uma representação numérica de um Banco.
         \return Void.
     */
@@ -73,15 +71,15 @@ private:
 
 public:
 
-    /// Método que atribui um número ao Banco;
-    /** Valida o número recebido e atribui ao Banco;
+    /// Método que atribui um número válido ao Banco;
+    /** 
         \param Uma representação numérica válida.
         \return Void.
     */
     void setBanco( string ) throw ( invalid_argument );
 
-    /// Método que obtém o atributo número.
-    /** Retorna a representação numérica do Banco.
+    /// Método que obtém o número do Banco;
+    /** 
         \param Void.
         \return A representação numérica do Banco.
     */
@@ -102,8 +100,8 @@ private:
     static const int MIN_VALOR = 0;   ///< Valor mínimo de capacidade.
     static const int MAX_VALOR = 9;   ///< Valor máximo de capacidade.
 
-    /// Método que valida um valor de capacidade de acomodação.
-    /** Verifica se o valor é um inteiro no intervalo 0-9.
+    /// Método que verifica se o valor de capacidade é um inteiro no intervalo 0-9.
+    /**
         \param Um valor inteiro.
         \return Void.
     */
@@ -113,7 +111,7 @@ private:
 public:
 
     /// Método que atribui um valor válido à capacidade de acomodação;
-    /** Valida o valor recebido e atribui à capacidade de acomodação;
+    /**
         \param Um valor inteiro válido;
         \return Void.
     */
@@ -121,9 +119,9 @@ public:
     void setCapAcomodacao( int ) throw ( invalid_argument );
 
     /// Método que btém o valor da capacidade de acomodação.
-    /** Retorna o valor da capacidade de acomodação.
+    /**
         \param Void.
-        \return O valor capacidade de acomodação.
+        \return O valor da capacidade de acomodação.
     */
     int getCapAcomodacao( ) const
     {
@@ -131,37 +129,56 @@ public:
     }
 };
 
+///Classe que representa uma Data.
+/**Representa uma data com seus componentes dia, mes e ano separados por /, com os meses representados pelas
+3 primeiras letras do seu nome e considerando anos bissextos  */
+
 class Data
 {
 private:
 
-    string data;
-    int dia;
-    string mes;
-    int ano;
-    bool bissexto = false;
+    string data; ///< Representação da data.
+    int dia; ///< Valor do dia contido na data.
+    string mes; ///< Nome do mês contido na data.
+    int ano; ///< Valor do ano contido na data.
+    bool bissexto = false; ///< Indicador de ano bissexto.
 
-    static const int ANO_MAX = 2099;
-    static const int ANO_MIN = 2000;
-    static const int DIA_MIN = 1;
-    static const int DIA_MAX1 = 28;
-    static const int DIA_MAX2 = 29;
-    static const int DIA_MAX3 = 30;
-    static const int DIA_MAX4 = 31;
-    static const int TAMANHO_DIA = 2;
-    static const int TAMANHO_ANO = 4;
-    static const int TAMANHO_MES = 3;
-    static const int POSICAO_DIA = 0;
-    static const int POSICAO_MES = 3;
-    static const int POSICAO_ANO = 7;
-    static const int TAMANHO_DATA = 11;
+    static const int ANO_MAX = 2099; ///< Valor máximo que o ano pode assumir.
+    static const int ANO_MIN = 2000; ///< Valor mínimo que o ano pode assumir.
+    static const int DIA_MIN = 1; ///< Valor mínimo que o dia pode assumir.
+    static const int DIA_MAX1 = 28; ///< Valor máximo que o dia pode assumir.
+    static const int DIA_MAX2 = 29; ///< Valor máximo que o dia pode assumir.
+    static const int DIA_MAX3 = 30; ///< Valor máximo que o dia pode assumir.
+    static const int DIA_MAX4 = 31; ///< Valor máximo que o dia pode assumir.
+    static const int TAMANHO_DIA = 2; ///< Espaço ocupado pelo dia na data
+    static const int TAMANHO_ANO = 4; ///< Espaço ocupado pelo ano na data.
+    static const int TAMANHO_MES = 3; ///< Espaço ocupado pelo mês na data.
+    static const int POSICAO_DIA = 0; ///< Posição do dia na data
+    static const int POSICAO_MES = 3; ///< Posição do mes na data
+    static const int POSICAO_ANO = 7; ///< Posição do ano na data
+    static const int TAMANHO_DATA = 11; ///< Tamanho da representação da data
 
+    /// Método que verifica a validade dos valores assumidos pelo dia, mes e ano e a coerencia entre eles.
+    /** 
+        \param Uma data.
+        \return Void.
+    */
     void validar( string ) throw ( invalid_argument );
 
 public:
 
+    /// Método que atribui valores válidos para à data.
+    /** 
+        \param Uma representação válida de uma data.
+        \return Void.
+    */
     void setData( string ) throw ( invalid_argument );
 
+    /// Método que obtém a representação da data.
+    /** 
+        \param Void.
+        \return A representação da data.
+    */
     string getData( ) const
     {
         return data;
@@ -170,30 +187,46 @@ public:
 
 };
 
+///Classe que representa uma data de validade.
+/** Representa uma data de validade com os valores de mes e ano separados por /. */
 class DataValidade
 {
 
 private:
-    string dataValidade;
-    int mes;
-    int ano;
+    string dataValidade; ///< Representação da data de validade.
+    int mes; ///< Valor do mês.
+    int ano; ///< Valor do ano.
 
-    static const int ANO_MIN = 00;
-    static const int ANO_MAX = 99;
-    static const int MES_MIN = 1;
-    static const int MES_MAX = 12;
-    static const int POSICAO_MES = 0;
-    static const int TAMANHO_MES = 2;
-    static const int POSICAO_ANO = 3;
-    static const int TAMANHO_ANO = 2;
-    static const int TAMANHO_DATA_VALIDADE = 5;
+    static const int ANO_MIN = 00; ///< Valor mínimo que o ano pode assumir.
+    static const int ANO_MAX = 99; ///< Valor máximo que o ano pode assumir.
+    static const int MES_MIN = 1; ///< Valor mínimo que o mês pode assumir.
+    static const int MES_MAX = 12; ///< Valor máximo que o mês pode assumir.
+    static const int POSICAO_MES = 0; ///< Posição do mês na data de validade.
+    static const int TAMANHO_MES = 2; ///< Espaço ocupado pelo mês na data de validade.
+    static const int POSICAO_ANO = 3; ///< Posição do ano na data de validade.
+    static const int TAMANHO_ANO = 2; ///< Espaço ocupado pelo ano na data de validade.
+    static const int TAMANHO_DATA_VALIDADE = 5; ///< Tamanho da representação da data de validade
 
+    /// Método que verifica se os valores de mes e ano estão dentro do intervalo válido e se a data de validade está no formato correto.
+    /** 
+        \param Uma data de validade contendo os valores de mês e ano.
+        \return Void.
+    */
     void validar( string ) throw ( invalid_argument );
 
 public:
-
+    /// Método que atribui uma valores válidos para data de validade.
+    /** 
+        \param Uma data de validade válida.
+        \return Void.
+    */
     void setDataValidade( string ) throw ( invalid_argument );
 
+    /// Método que obtém a representação da data de validade.
+    /**
+        \param Void.
+        \return A representação da data de validade.
+    */
     string getDataValidade( ) const
     {
         return dataValidade;
@@ -201,19 +234,38 @@ public:
 
 };
 
+/// Classe que representa um número de cartão de crédito.
+/** Representa um número de cartão de crédito com um total de 16 digitos em que cada dígito
+está no intervalo de 0 a 9.*/
 class NumCartaoCred
 {
 private:
-    string numCartaoCred;
+    string numCartaoCred; ///< Representação do número de cartão de crédito.
 
-    static const int TAMANHO_NUMERO = 16;
+    static const int TAMANHO_NUMERO = 16; ///< Tamanho da representação do número de cartão de crédito.
     static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
     static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
 
+    /// Método que verifica se o número está no formato adequado e se é válido.
+    /** 
+        \param Um número de cartão de crédito.
+        \return Void.
+    */
     void validar( string ) throw ( invalid_argument );
 public:
+
+    /// Método que atribui um número válido ao número de cartão de crédito.
+    /**
+        \param Um número de cartão de crédito válido.
+        \return Void.
+    */
     void setNumCartaoCred( string ) throw ( invalid_argument );
 
+    /// Método que obtém o número do cartão de crédito.
+    /**
+        \param Void.
+        \return O número do cartão de crédito.
+    */
     string getNumCartaoCred( ) const
     {
         return numCartaoCred;
@@ -365,55 +417,115 @@ public:
     }
 };
 
+/// Classe que representa o valor de uma diária.
 class Diaria
 {
 private:
-    float diaria;
-    float DIARIA_MAX = 10000.0;
-    float DIARIA_MIN = 1.0;
+    float diaria; ///< Valor da diária.
+    float DIARIA_MAX = 10000.0; ///< Valor máximo que a diária pode assumir.
+    float DIARIA_MIN = 1.0; ///< Valor mínimo que a diária pode assumir.
 
+    /// Método se a diaria está no intervalo válido de valores.
+    /** 
+        \param Um valor de diária.
+        \return Void.
+    */
     void validar ( float ) throw ( invalid_argument );
 
 public:
 
+    /// Método que atribui um valor válido a diária.
+    /**
+        \param Um valor de diária válido.
+        \return void.
+    */
     void setDiaria( float ) throw ( invalid_argument );
 
+    /// Método que obtém o valor da diária.
+    /**
+        \param Void.
+        \return O valor da diária.
+    */
     float getDiaria( ) const
     {
         return diaria;
     }
 };
 
+/// Classe que representa um número de conta corrente.
+/** Representa um número de conta corrente com um total de 6 digitos em que cada dígito
+está no intervalo de 0 a 9.*/
+
 class NumContaCorr
 {
 private:
-    string numContaCorr;
-    static const int LIMITE_SUP = 57;
-    static const int LIMITE_INF = 48;
-    static const int TAMANHO_NUMERO = 6;
+    string numContaCorr; ///< Representação do número de conta corrente
+    static const int LIMITE_INF = 48;  ///< Valor mínimo que um caracter pode assumir, número 0 em ASCII.
+    static const int LIMITE_SUP = 57;  ///< Valor máximo que um caracter pode assumir, número 9 em ASCII.
+    static const int TAMANHO_NUMERO = 6; ///< Tamanho da representação do número de conta corrente
 
+    /// Método que verifica se o número está no formato adequado.
+    /**
+        \param Um número de conta corrente.
+        \return Void.
+    */
     void validar ( string ) throw ( invalid_argument );
 public:
+
+    /// Método que atribui um número válido ao número de conta corrente.
+    /**
+        \param Uḿ número de conta corrente válido.
+        \return Void.
+    */
     void setNumContaCorr( string ) throw ( invalid_argument );
 
+    /// Método que obtém o número da conta corrente.
+    /**
+        \param Void.
+        \return O número da conta corrente.
+    */
     string getNumContaCorr( ) const
     {
         return numContaCorr;
     }
 };
 
+/// Classe que representa um nome.
+/** Representa um nome com no máximo 15 caracters em que cada um pode ser letra, ponto ou espaço. Pelo menos um caracter é
+letra, não há espaços seguidos e ponto é precedido por letra.*/
 class Nome
 {
 private:
-    string nome;
-    static const int TAMANHO_NOME_MAX = 15;
-    static const int TAMANHO_NOME_MIN = 1;
-
+    string nome; ///< Representação do nome.
+    static const int TAMANHO_NOME_MAX = 15; ///< Tamanho máximo do nome.
+    static const int TAMANHO_NOME_MIN = 1; ///< Tamanho mínimo do nome.
+    static const int PONTO = 46; ///< Valor caracter ponto, ASCII.
+    static const int ESPACO = 32; ///< Valor caracter espaço, ASCII.
+    static const int MIN_LETRA_MINUSCULA = 97; ///< Valor mínimo que um caracter pode assumir, número a em ASCII.
+    static const int MAX_LETRA_MINUSCULA = 122; ///< Valor máximo que um caracter pode assumir, número z em ASCII.
+    static const int MIN_LETRA_MAIUSCULA = 65; ///< Valor mínimo que um caracter pode assumir, número A em ASCII.
+    static const int MAX_LETRA_MAIUSCULA = 90; ///< Valor máxomo que um caracter pode assumir, número Z em ASCII.
+    bool letra; ///< Indicador da existencia de letra no nome.
+    /// Método que verifica se o nome está no formato correto.
+    /** 
+        \param Um nome.
+        \return Void.
+    */
     void validar ( string ) throw ( invalid_argument );
 public:
 
+    /// Método que atribui uma representação válida ao nome.
+    /**
+        \param Um nome válido.
+        \return Void.
+    */
     void setNome( string ) throw ( invalid_argument );
 
+    /// Método que obtém o nome.
+    /**
+        \param Void.
+        \return O nome.
+    */
     string getNome() const
     {
         return nome;

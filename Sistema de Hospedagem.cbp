@@ -31,10 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="containers.cpp" />
+		<Unit filename="containers.hpp" />
+		<Unit filename="controladoras.cpp" />
+		<Unit filename="controladoras.hpp" />
 		<Unit filename="dominios.cpp" />
 		<Unit filename="dominios.hpp" />
 		<Unit filename="entidades.cpp" />
 		<Unit filename="entidades.hpp" />
+		<Unit filename="interfaces.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="testes_dominios.cpp" />
 		<Unit filename="testes_dominios.hpp" />

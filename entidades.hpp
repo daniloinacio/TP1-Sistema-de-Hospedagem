@@ -5,71 +5,6 @@
 
 using namespace std;
 
-/// Classe para que identifica um usuário do sistema
-class Usuario
-{
-private:
-    Nome nome; ///< String de até 15 caracteres
-    Identificador identificador; ///< Srting 5 caracteres somente de letras
-    Senha senha; ///< String de até 8 caracteres
-
-public:
-    /// Associa um nome ao usuário
-    /**
-        \param nome Objeto com o nome a ser estabelecido
-    */
-    void setNome ( Nome nome )
-    {
-        this->nome = nome;
-    }
-
-    /// Associa um identificador a um certo usuário
-    /**
-        \param identificador Objeto com o identificador que se quer associar
-    */
-    void setIdentificador ( Identificador identificador )
-    {
-        this->identificador = identificador;
-    }
-
-    /// Associa uma senha a um certo usuário
-    /**
-        \param Senha Objeto com a senha que se quer atribuir
-    */
-    void setSenha ( Senha senha )
-    {
-        this->senha = senha;
-    }
-
-
-    /// Retorna o nome do usuário
-    /**
-        \return Nome Objeto com o nome do usuário
-    */
-    Nome getNome()
-    {
-        return nome;
-    }
-
-    /// Retorna o identificador do usuário
-    /**
-        \return Identificador objeto que identifica o usuário
-    */
-    Identificador getIdentificador()
-    {
-        return identificador;
-    }
-
-    /// Retorna a senha do usuário
-    /**
-        \return Senha Objeto com a senha do usuário
-    */
-    Senha getSenha()
-    {
-        return senha;
-    }
-};
-
 /// Classe da entidade de cartão de crédito
 class CartaoCredito
 {
@@ -111,11 +46,167 @@ public:
     }
 };
 
+///Classe que representa a entidade conta corrente e seu atributos.
+class ContaCorrente
+{
+private:
+	NumContaCorr numero; ///< número associado a conta.
+	Agencia agencia; ///< número da agência da qual a conta pertence.
+	Banco banco; ///< número do banco do qual a agência pertence.
+public:
+
+	/// Método que atribui um numero a conta corrente.
+	/**
+		\param Um número de conta corrente.
+		\return Void.
+	*/
+	void setNumero( NumContaCorr numero )
+	{
+		this->numero = numero;
+	}
+	/// Método que atribui uma agência a conta corrente.
+	/**
+		\param Um número de agência.
+		\return Void.
+	*/
+	void setAgencia( Agencia agencia )
+	{
+		this->agencia = agencia;
+	}
+
+	/// Método que atribui um banco a conta corrente.
+	/**
+		\param Um número de banco.
+		\return Void.
+	*/
+	void setBanco( Banco banco)
+	{
+		this->banco = banco;
+	}
+
+	/// Método que obtém o numero da conta corrente.
+	/**
+		\param Void.
+		\return O número da conta corrente.
+	*/
+	NumContaCorr getNumero()
+	{
+		return numero;
+	}
+	/// Método que obtém a agência da conta corrente.
+	/**
+		\param Void.
+		\return O número da agência.
+	*/
+	Agencia getAgencia()
+	{
+		return agencia;
+	}
+	/// Método que obtém o banco da conta corrente.
+	/**
+		\param Void.
+		\return O número do banco.
+	*/
+	Banco getBanco()
+	{
+		return banco;
+	}
+};
+
+/// Classe para que identifica um usuário do sistema
+class Usuario
+{
+private:
+    Nome nome; ///< String de até 15 caracteres
+    Identificador identificador; ///< Srting 5 caracteres somente de letras
+    Senha senha; ///< String de até 8 caracteres
+    CartaoCredito cartao;
+    ContaCorrente conta;
+
+public:
+    /// Associa um nome ao usuário
+    /**
+        \param nome Objeto com o nome a ser estabelecido
+    */
+    void setNome ( Nome nome )
+    {
+        this->nome = nome;
+    }
+
+    /// Associa um identificador a um certo usuário
+    /**
+        \param identificador Objeto com o identificador que se quer associar
+    */
+    void setIdentificador ( Identificador identificador )
+    {
+        this->identificador = identificador;
+    }
+
+    /// Associa uma senha a um certo usuário
+    /**
+        \param Senha Objeto com a senha que se quer atribuir
+    */
+    void setSenha ( Senha senha )
+    {
+        this->senha = senha;
+    }
+
+    /// Associa um cartão ao usuário
+    void setCartao( CartaoCredito cartao )
+    {
+        this->cartao = cartao;
+    }
+
+    /// Associa uma conta ao usuário
+    void setConta( ContaCorrente conta )
+    {
+        this->conta = conta;
+    }
+
+    /// Retorna o nome do usuário
+    /**
+        \return Nome Objeto com o nome do usuário
+    */
+    Nome getNome()
+    {
+        return nome;
+    }
+
+    /// Retorna o identificador do usuário
+    /**
+        \return Identificador objeto que identifica o usuário
+    */
+    Identificador getIdentificador()
+    {
+        return identificador;
+    }
+
+    /// Retorna a senha do usuário
+    /**
+        \return Senha Objeto com a senha do usuário
+    */
+    Senha getSenha()
+    {
+        return senha;
+    }
+
+    CartaoCredito getCartao()
+    {
+        return cartao;
+    }
+
+    ContaCorrente getConta()
+    {
+        return conta;
+    }
+};
+
 /// Classe que representa a entidade Acomodação e seus atributos.
 class Acomodacao
 {
 private:
 	Identificador identificador; ///< Identificação da acomodação.
+	Identificador idUsuario;
 	TpAcomodacao tipo; ///< O tipo ao qual a acomodação pertence.
 	CapAcomodacao capacidade; ///< Valor da capacidade da acomodação.
 	Data dataInicio; ///< Data de inicio do período de disponibilidade da acomodação.
@@ -123,10 +214,11 @@ private:
 	Nome cidade; ///< Nome da cidade em que a acomodação está localizada.
 	Estado estado; ///< Sigla do estado em que a acomodação está localizada.
 	Diaria diaria; ///< Valor da diária da acomodação.
+
 public:
 
 	/// Método que atribui um identificador a acomodação
-	/** 
+	/**
 		\param Um identificador.
 		\return Void.
 	*/
@@ -135,8 +227,13 @@ public:
 		this->identificador = identificador;
 	}
 
+	void setIdUsuario( Identificador idUsuario )
+	{
+	    this->idUsuario = idUsuario;
+	}
+
 	/// Método que atribui um tipo a acomodação
-	/** 
+	/**
 		\param Um tipo de acomodação.
 		\return Void.
 	*/
@@ -146,7 +243,7 @@ public:
 	}
 
 	/// Método que atribui uma capacidade a acomodação
-	/** 
+	/**
 		\param Um valor de capacidade.
 		\return Void.
 	*/
@@ -156,7 +253,7 @@ public:
 	}
 
 	/// Método que atribui uma data de inicio a acomodação
-	/** 
+	/**
 		\param Uma data.
 		\return Void.
 	*/
@@ -166,7 +263,7 @@ public:
 	}
 
 	/// Método que atribui uma data de termino a acomodação
-	/** 
+	/**
 		\param Uma data.
 		\return Void.
 	*/
@@ -176,7 +273,7 @@ public:
 	}
 
 	/// Método que atribui uma cidade a acomodação
-	/** 
+	/**
 		\param O nome de uma cidade.
 		\return Void.
 	*/
@@ -186,7 +283,7 @@ public:
 	}
 
 	/// Método que atribui um Estado a acomodação
-	/** 
+	/**
 		\param A sigla de um estado brasileiro.
 		\return Void.
 	*/
@@ -196,7 +293,7 @@ public:
 	}
 
 	/// Método que atribui um valor de diária a acomodação
-	/** 
+	/**
 		\param Um valor de diária.
 		\return Void.
 	*/
@@ -284,72 +381,10 @@ public:
 	{
 		return diaria;
 	}
-};
 
-///Classe que representa a entidade conta corrente e seu atributos.
-class ContaCorrente
-{
-private:
-	NumContaCorr numero; ///< número associado a conta.
-	Agencia agencia; ///< número da agência da qual a conta pertence.
-	Banco banco; ///< número do banco do qual a agência pertence.
-public:
-
-	/// Método que atribui um numero a conta corrente.
-	/** 
-		\param Um número de conta corrente.
-		\return Void.
-	*/
-	void setNumero( NumContaCorr numero )
+	Identificador getIdUsuario()
 	{
-		this->numero = numero;
-	}
-	/// Método que atribui uma agência a conta corrente.
-	/** 
-		\param Um número de agência.
-		\return Void.
-	*/
-	void setAgencia( Agencia agencia )
-	{
-		this->agencia = agencia;
-	}
-
-	/// Método que atribui um banco a conta corrente.
-	/** 
-		\param Um número de banco.
-		\return Void.
-	*/
-	void setBanco( Banco banco)
-	{
-		this->banco = banco;
-	}
-
-	/// Método que obtém o numero da conta corrente.
-	/**
-		\param Void.
-		\return O número da conta corrente.
-	*/
-	NumContaCorr getNumero()
-	{
-		return numero;
-	}
-	/// Método que obtém a agência da conta corrente.
-	/**
-		\param Void.
-		\return O número da agência.
-	*/
-	Agencia getAgencia()
-	{
-		return agencia;
-	}
-	/// Método que obtém o banco da conta corrente.
-	/**
-		\param Void.
-		\return O número do banco.
-	*/
-	Banco getBanco()
-	{
-		return banco;
+	    return idUsuario;
 	}
 };
 

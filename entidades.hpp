@@ -120,8 +120,6 @@ private:
     Nome nome; ///< String de até 15 caracteres
     Identificador identificador; ///< Srting 5 caracteres somente de letras
     Senha senha; ///< String de até 8 caracteres
-    CartaoCredito cartao;
-    ContaCorrente conta;
 
 public:
     /// Associa um nome ao usuário
@@ -151,18 +149,6 @@ public:
         this->senha = senha;
     }
 
-    /// Associa um cartão ao usuário
-    void setCartao( CartaoCredito cartao )
-    {
-        this->cartao = cartao;
-    }
-
-    /// Associa uma conta ao usuário
-    void setConta( ContaCorrente conta )
-    {
-        this->conta = conta;
-    }
-
     /// Retorna o nome do usuário
     /**
         \return Nome Objeto com o nome do usuário
@@ -188,16 +174,6 @@ public:
     Senha getSenha()
     {
         return senha;
-    }
-
-    CartaoCredito getCartao()
-    {
-        return cartao;
-    }
-
-    ContaCorrente getConta()
-    {
-        return conta;
     }
 };
 

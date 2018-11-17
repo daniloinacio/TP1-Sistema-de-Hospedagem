@@ -89,7 +89,7 @@
 	"testes_dominios.hpp"
 	"testes_dominios.hpp"
 
-1542366871 c:\home\tp1-sistema-de-hospedagem\entidades.hpp
+1542473167 c:\home\tp1-sistema-de-hospedagem\entidades.hpp
 	"dominios.hpp"
 
 1537927905 source:c:\home\tp1-sistema-de-hospedagem\testes_entidades.cpp
@@ -113,7 +113,13 @@
 	"testes_entidades.hpp"
 	"testes_entidades.hpp"
 
-1542363735 source:c:\home\tp1-sistema-de-hospedagem\containers.cpp
+1542466858 source:c:\home\tp1-sistema-de-hospedagem\containers.cpp
+	"containers.hpp"
 
 1542363735 source:c:\home\tp1-sistema-de-hospedagem\controladoras.cpp
+
+1542466866 c:\home\tp1-sistema-de-hospedagem\containers.hpp
+	"dominios.hpp"
+	"entidades.hpp"
+	<list>
 

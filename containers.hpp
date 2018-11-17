@@ -20,11 +20,15 @@ class ContainerUsuario
 {
 private:
     list<Usuario> container;
+    list<ContaCorrente> container_contas;
+    list<CartaoCredito> container_cartoes;
 
 public:
-    bool incluir(Usuario usuario);
-    bool remover(Identificador idUsuario);
-    bool buscar(Identificador idUsuario);
+    bool incluir_usuario ( Usuario usuario );
+    bool incluit_conta ( ContaCorrente conta );
+    bool incluir_cartao ( CartaoCredito cartao );
+    bool remover ( Identificador idUsuario );
+    bool buscar ( Identificador idUsuario );
 };
 
 #endif // CONTAINERS_HPP_INCLUDED

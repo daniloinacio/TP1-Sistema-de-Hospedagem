@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class IAAutenticacao 
+class IAAutenticacao
 {
 
 public:
@@ -17,7 +17,7 @@ public:
 
 };
 
-class ISAutenticacao 
+class ISAutenticacao
 {
 
 public:

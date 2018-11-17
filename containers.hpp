@@ -24,6 +24,7 @@ private:
 public:
     bool incluir(Usuario usuario);
     bool remover(Identificador idUsuario);
+    bool buscar(Identificador idUsuario);
 };
 
 #endif // CONTAINERS_HPP_INCLUDED

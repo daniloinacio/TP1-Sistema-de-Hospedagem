@@ -11,6 +11,7 @@ class CartaoCredito
 private:
     NumCartaoCred numero; ///< Número do cartão
     DataValidade validade; ///< Data de validade do mesmo
+    Identificador idUsuario;
 
 public:
     /// Seta o número do cartão de crédito
@@ -33,6 +34,11 @@ public:
         this->validade = validade;
     }
 
+    void setIdUsuario ( Identificador idUsuario)
+    {
+        this->idUsuario = idUsuario;
+    }
+
     /// Retorna um objeto com o número do cartão
     NumCartaoCred getNumero()
     {
@@ -44,6 +50,11 @@ public:
     {
         return validade;
     }
+
+    Identificador getIdUsuario()
+    {
+        return idUsuario;
+    }
 };
 
 ///Classe que representa a entidade conta corrente e seu atributos.
@@ -53,6 +64,8 @@ private:
 	NumContaCorr numero; ///< número associado a conta.
 	Agencia agencia; ///< número da agência da qual a conta pertence.
 	Banco banco; ///< número do banco do qual a agência pertence.
+	Identificador idUsuario;
+
 public:
 
 	/// Método que atribui um numero a conta corrente.
@@ -84,6 +97,11 @@ public:
 		this->banco = banco;
 	}
 
+	void setIdUsuario ( Identificador idUsuario )
+	{
+	    this->idUsuario = idUsuario;
+	}
+
 	/// Método que obtém o numero da conta corrente.
 	/**
 		\param Void.
@@ -110,6 +128,11 @@ public:
 	Banco getBanco()
 	{
 		return banco;
+	}
+
+	Identificador getIdUsuario()
+	{
+	    return idUsuario;
 	}
 };
 

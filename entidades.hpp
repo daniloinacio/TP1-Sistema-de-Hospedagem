@@ -2,8 +2,28 @@
 #define ENTIDADES_HPP
 
 #include "dominios.hpp"
+#include <list>
 
 using namespace std;
+
+class Resultado {
+
+protected:
+    int valor;
+
+public:
+
+    const static int SUCESSO = 0;
+    const static int FALHA   = 1;
+
+    void setValor(int valor){
+        this->valor = valor;
+    }
+
+    int getValor() const {
+        return valor;
+    }
+};
 
 /// Classe da entidade de cartão de crédito
 class CartaoCredito
@@ -54,6 +74,21 @@ public:
     Identificador getIdUsuario()
     {
         return idUsuario;
+    }
+};
+
+class ResultadoCartao:public Resultado {
+
+private:
+    CartaoCredito cartao;
+
+public:
+    void setCartao(const CartaoCredito &cartao){
+        this->cartao = cartao;
+    }
+
+    CartaoCredito getCartao() const {
+        return cartao;
     }
 };
 
@@ -136,6 +171,21 @@ public:
 	}
 };
 
+class ResultadoConta:public Resultado {
+
+private:
+    ContaCorrente conta;
+
+public:
+    void setConta(const ContaCorrente &conta){
+        this->conta = conta;
+    }
+
+    ContaCorrente getConta() const {
+        return conta;
+    }
+};
+
 /// Classe para que identifica um usuário do sistema
 class Usuario
 {
@@ -200,24 +250,6 @@ public:
     }
 };
 
-class Resultado {
-
-protected:
-    int valor;
-
-public:
-
-    const static int SUCESSO = 0;
-    const static int FALHA   = 1;
-
-    void setValor(int valor){
-        this->valor = valor;
-    }
-
-    int getValor() const {
-        return valor;
-    }
-};
 
 class ResultadoUsuario:public Resultado {
 
@@ -421,18 +453,107 @@ public:
 	}
 };
 
-class ResultadoAcomodacao:public Resultado {
+class ResultadoAcomodacao:public Resultado
+{
 
 private:
     Acomodacao acomodacao;
 
 public:
-    void setAcomodacao(const Acomodacao &acomodacao){
+    void setAcomodacao( const Acomodacao &acomodacao )
+    {
         this->acomodacao = acomodacao;
     }
 
-    Acomodacao getAcomodacao() const {
+    Acomodacao getAcomodacao() const
+    {
         return acomodacao;
+    }
+};
+
+class Disponibilidade
+{
+private:
+    Identificador idAcomodacao;
+    Data dataInicio;
+    Data dataTermino;
+public:
+    void setIdAcomodacao( const Identificador &idAcomodacao )
+    {
+        this->idAcomodacao = idAcomodacao;
+    }
+    void setDataInicio( const Data &dataInicio )
+    {
+        this->dataInicio = dataInicio;
+    }
+    void setDataTermino( const Data &dataTermino )
+    {
+        this->dataTermino = dataTermino;
+    }
+
+    Identificador getIdAcomodacao()
+    {
+        return idAcomodacao;
+    }
+    Data getDataInicio()
+    {
+        return dataInicio;
+    }
+    Data getDataTermino()
+    {
+        return dataTermino;
+    }
+};
+
+class ResultadoDisponib:public Resultado
+{
+private:
+    list<Disponibilidade> disponibilidades;
+
+public:
+    void setDisponibilidades( const list<Disponibilidade> &disponibilidades )
+    {
+        this->disponibilidades = disponibilidades;
+    }
+
+    list<Disponibilidade> getDisponibilidades()
+    {
+        return disponibilidades;
+    }
+};
+
+class Reserva:public Disponibilidade
+{
+private:
+    Identificador idUsuario;
+    Identificador idAcomodacao;
+    Data dataInicio;
+    Data dataTermino;
+public:
+    void setIdUsuario( const Identificador &idUsuario )
+    {
+        this->idUsuario = idUsuario;
+    }
+
+    Identificador getIdUsuario()
+    {
+        return idUsuario;
+    }
+};
+
+class ResultadoReserva:public Resultado
+{
+private:
+    list<Reserva> reservas;
+public:
+    void setReservas( const list<Reserva> &reservas )
+    {
+        this->reservas = reservas;
+    }
+
+    list<Reserva> getReservas()
+    {
+        return reservas;
     }
 };
 #endif // ENTIDADES_HPP

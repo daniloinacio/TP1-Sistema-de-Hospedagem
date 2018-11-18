@@ -5,6 +5,8 @@
 #include "entidades.hpp"
 #include "dominios.hpp"
 
+using namespace std;
+
 int main()
 {
 

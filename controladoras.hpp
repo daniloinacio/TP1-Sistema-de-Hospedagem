@@ -24,11 +24,11 @@ private:
 public:
 
 	bool autenticar( Identificador *id );
-    void setCntrMAAutenticacao( ISAutenticacao *cntrMSAutenticacao );
+    void setCntrMSAutenticacao( ISAutenticacao *cntrMSAutenticacao );
 
 };
 
-void inline void CntrMAAutenticacao::setCntrMAAutenticacao( ISAutenticacao *cntrMSAutenticacao )
+void inline CntrMAAutenticacao::setCntrMSAutenticacao( ISAutenticacao *cntrMSAutenticacao )
 {
         this->cntrMSAutenticacao = cntrMSAutenticacao;
 }
@@ -38,6 +38,8 @@ class CntrMSAutenticacao:public ISAutenticacao
 private:
 
 	ContainerUsuario *container;
+	Senha senhaTemp;
+	list<Usuario>::iterator usuario;
 
 public:
 
@@ -45,7 +47,7 @@ public:
 	void setContainer( ContainerUsuario *container );
 };
 
-void inline void CntrMSAutenticacao::setContainer( ContainerUsuario *container )
+void inline CntrMSAutenticacao::setContainer( ContainerUsuario *container )
 {
 	this->container = container;
 }

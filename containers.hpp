@@ -9,26 +9,28 @@
 class ContainerAcomodacao
 {
 private:
-    list<Acomodacao> container;
+    list<Acomodacao> containerAcomodacoes;
 
 public:
-    bool incluir(Acomodacao acomodacao);
-    bool remover(Identificador acomodacao);
+    bool incluirAcomodacao( Acomodacao acomodacao );
+    bool removerAcomodacao( Identificador acomodacao );
+    ResultadoAcomodacao buscar( Identificador acomodacao );
 };
 
 class ContainerUsuario
 {
 private:
-    list<Usuario> container;
-    list<ContaCorrente> container_contas;
-    list<CartaoCredito> container_cartoes;
-
+    list<Usuario> containerUsuarios;
+    list<ContaCorrente> containerContas;
+    list<CartaoCredito> containerCartoes;
+    Senha senhaNull;
 public:
-    bool incluir_usuario ( Usuario usuario );
-    bool incluit_conta ( ContaCorrente conta );
-    bool incluir_cartao ( CartaoCredito cartao );
-    bool remover ( Identificador idUsuario );
-    bool buscar ( Identificador idUsuario );
+    bool incluirUsuario ( Usuario usuario );
+    bool incluitConta ( ContaCorrente conta );
+    bool incluirCartao ( CartaoCredito cartao );
+    bool removerUsuario( Identificador idUsuario );
+    ResultadoUsuario buscarUsuario( Identificador idUsuario );
+   // Senha checarSenha( Identificador idUsuario );
 };
 
 #endif // CONTAINERS_HPP_INCLUDED

@@ -1,8 +1,10 @@
 #include "controladoras.hpp"
 #include "dominios.hpp"
+#include "containers.hpp"
 #include <stdexcept>
 #include <iostream>
 #include <cstdlib>
+#include <list>
 
 using namespace std;
 
@@ -10,27 +12,27 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 {
 
 	cout << "Insira o Identificador:" << endl;
-	cin >> identificadorStr >> endl;
+	cin >> identificadorStr;
 	cout << "Insira a senha:" << endl;
-	cin >> senhaStr >> endl;
+	cin >> senhaStr;
 
 	try
 	{
-	identificadorTemp.setIdentificador( identificadorStr );
-	senha.setSenha( senhaTemp );
+        identificadorTemp.setIdentificador( identificadorStr );
+        senha.setSenha( senhaStr );
 	}
 	catch( invalid_argument excecao )
 	{
 		cout << "Identificador ou senha em formato errado." << endl;
-		return FALSE;
+		return false;
 	}
 
-	resultadoOperacao = cntrMSAutenticacao->autenticacao( &identificadorTemp, &senha );
+	resultadoOperacao = cntrMSAutenticacao->autenticar( identificadorTemp, senha );
 
-	if ( resultadoOperacao == TRUE )
+	if ( resultadoOperacao == true )
 	{
 		cout << "Atenticacao bem sucedida." << endl;
-		identificador->setIdentificador(identificadorTemp.getIdentificador());S
+		identificador->setIdentificador(identificadorTemp.getIdentificador());
 	}
 	else
 	{
@@ -39,7 +41,16 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 	return resultadoOperacao;
 }
 
-bool CntrMSAutenticacao::autenticar( const Identificador &id, const Senha &senha)
+bool CntrMSAutenticacao::autenticar( const Identificador &identificador, const Senha &senha)
 {
+    ResultadoUsuario resultado;
+    resultado = container->buscarUsuario( identificador );
 
+	if ( ( resultado.getValor() == Resultado::SUCESSO ) &&
+	 (resultado.getUsuario().getSenha().getSenha() == senha.getSenha() ) )
+	{
+        return true;
+	}
+
+    return false;
 }

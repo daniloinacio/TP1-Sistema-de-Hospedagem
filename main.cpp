@@ -4,7 +4,7 @@
 #include "testes_entidades.hpp"
 
 using namespace std;
-
+/*
 int main( )
 {
     // Testes de unidade da classe Agencia
@@ -299,3 +299,4 @@ int main( )
 
     return 0;
 }
+*/

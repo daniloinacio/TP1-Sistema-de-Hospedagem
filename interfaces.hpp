@@ -1,8 +1,8 @@
 #ifndef INTERFACES_H_INCLUDED
 #define INTERFACES_H_INCLUDED
 
-#include "dominios.h"
-#include "entidades.h"
+#include "dominios.hpp"
+#include "entidades.hpp"
 
 #include <stdexcept>
 
@@ -21,7 +21,7 @@ class ISAutenticacao
 {
 
 public:
-	virtual bool autenticar( const Identificador&, const Senha &) = 0;
+	virtual bool autenticar( const Identificador &, const Senha &) = 0;
 };
 
 #endif // INTERFACES_H_INCLUDED

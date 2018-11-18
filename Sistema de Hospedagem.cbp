@@ -41,6 +41,7 @@
 		<Unit filename="entidades.hpp" />
 		<Unit filename="interfaces.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main2.cpp" />
 		<Unit filename="testes_dominios.cpp" />
 		<Unit filename="testes_dominios.hpp" />
 		<Unit filename="testes_entidades.cpp" />

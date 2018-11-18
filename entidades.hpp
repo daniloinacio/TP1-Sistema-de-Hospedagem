@@ -200,6 +200,40 @@ public:
     }
 };
 
+class Resultado {
+
+protected:
+    int valor;
+
+public:
+
+    const static int SUCESSO = 0;
+    const static int FALHA   = 1;
+
+    void setValor(int valor){
+        this->valor = valor;
+    }
+
+    int getValor() const {
+        return valor;
+    }
+};
+
+class ResultadoUsuario:public Resultado {
+
+private:
+    Usuario usuario;
+
+public:
+    void setUsuario(const Usuario &usuario){
+        this->usuario = usuario;
+    }
+
+    Usuario getUsuario() const {
+        return usuario;
+    }
+};
+
 /// Classe que representa a entidade Acomodação e seus atributos.
 class Acomodacao
 {
@@ -387,4 +421,18 @@ public:
 	}
 };
 
+class ResultadoAcomodacao:public Resultado {
+
+private:
+    Acomodacao acomodacao;
+
+public:
+    void setAcomodacao(const Acomodacao &acomodacao){
+        this->acomodacao = acomodacao;
+    }
+
+    Acomodacao getAcomodacao() const {
+        return acomodacao;
+    }
+};
 #endif // ENTIDADES_HPP

@@ -1,85 +1,90 @@
 #include "containers.hpp"
 
-bool ContainerAcomodacao::incluir(Acomodacao acomodacao)
+bool ContainerAcomodacao::incluirAcomodacao( Acomodacao acomodacao )
 {
     string identificador = acomodacao.getIdentificador().getIdentificador();
     list<Acomodacao>::iterator elemento;
 
-    for(elemento = container.begin(); elemento != container.end(); elemento++)
+    for( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
     {
-        if(elemento->getIdentificador().getIdentificador() == identificador)
+        if( elemento->getIdentificador().getIdentificador() == identificador )
         {
             return false;
         }
     }
 
-    container.push_back(acomodacao);
+    containerAcomodacoes.push_back(acomodacao);
     return true;
 }
 
-bool ContainerUsuario::incluir_usuario(Usuario usuario)
+bool ContainerUsuario::incluirUsuario( Usuario usuario )
 {
     string identificador = usuario.getIdentificador().getIdentificador();
     list<Usuario>::iterator elemento;
 
-    for(elemento = container.begin(); elemento != container.end(); elemento++)
+    for ( elemento = containerUsuarios.begin(); elemento != containerUsuarios.end(); elemento++ )
     {
-        if(elemento->getIdentificador().getIdentificador() == identificador)
+        if ( elemento->getIdentificador().getIdentificador() == identificador )
         {
             return false;
         }
     }
 
-    container.push_back(usuario);
+    containerUsuarios.push_back( usuario );
     return true;
 }
 
-bool ContainerUsuario::incluit_conta(ContaCorrente conta)
+bool ContainerUsuario::incluitConta( ContaCorrente conta )
 {
     string numero = conta.getNumero().getNumContaCorr();
     list<ContaCorrente>::iterator elemento;
 
-    for(elemento = container_contas.begin(); elemento != container_contas.end(); elemento++)
+    for ( elemento = containerContas.begin(); elemento != containerContas.end(); elemento++ )
     {
-        if(elemento->getNumero().getNumContaCorr() == numero)
+        if ( elemento->getNumero().getNumContaCorr() == numero )
         {
             return false;
         }
     }
 
-    container_contas.push_back(conta);
+    containerContas.push_back( conta );
     return true;
 }
 
-bool ContainerUsuario::incluir_cartao(CartaoCredito cartao)
+bool ContainerUsuario::incluirCartao( CartaoCredito cartao )
 {
     string numero = cartao.getNumero().getNumCartaoCred();
     list<CartaoCredito>::iterator elemento;
 
-    for(elemento = container_cartoes.begin(); elemento != container_cartoes.end(); elemento++)
+    for ( elemento = containerCartoes.begin(); elemento != containerCartoes.end(); elemento++ )
     {
-        if(elemento->getNumero().getNumCartaoCred() == numero)
+        if ( elemento->getNumero().getNumCartaoCred() == numero )
         {
             return false;
         }
     }
 
-    container_cartoes.push_back(cartao);
+    containerCartoes.push_back( cartao );
     return true;
 }
 
-bool ContainerUsuario::buscar(Identificador idUsuario)
+ResultadoUsuario ContainerUsuario::buscarUsuario( Identificador idUsuario )
 {
+    ResultadoUsuario resultado;
     string identificador = idUsuario.getIdentificador();
     list<Usuario>::iterator elemento;
 
-    for(elemento = container.begin(); elemento != container.end(); elemento++)
+    for ( elemento = containerUsuarios.begin(); elemento != containerUsuarios.end(); elemento++ )
     {
-        if(elemento->getIdentificador().getIdentificador() == identificador)
+        if ( elemento->getIdentificador().getIdentificador() == identificador )
         {
-            return true;
+            resultado.setUsuario( *elemento );
+            resultado.setValor( Resultado::SUCESSO );
+            return resultado;
         }
     }
 
-    return false;
+    resultado.setValor( Resultado::FALHA );
+    return resultado;
 }
+

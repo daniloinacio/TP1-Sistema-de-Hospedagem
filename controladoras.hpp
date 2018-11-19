@@ -47,7 +47,7 @@ private:
     Usuario novoUsuario;
 
 public:
-    bool cadastrarUsuario( Nome nome, Identificador id, Senha senha );
+    bool cadastrarUsuario( Identificador *identificador );
 };
 
 class CntrMSUsuario : public ISAutenticacao, public ISUsuario

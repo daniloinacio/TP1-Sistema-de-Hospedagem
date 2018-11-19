@@ -41,7 +41,7 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 	return resultadoOperacao;
 }
 
-bool CntrMAUsuario::cadastrarUsuario(Nome nome, Identificador id, Senha senha)
+bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
 {
     cout << "Insira o nome do usuario:" << endl;
     cin >> nomeStr;
@@ -69,6 +69,7 @@ bool CntrMAUsuario::cadastrarUsuario(Nome nome, Identificador id, Senha senha)
     }
     else
     {
+        identificador->setIdentificador( identificadorStr );
         novoUsuario.setIdentificador( idTemp );
         novoUsuario.setSenha( senhaTemp );
         novoUsuario.setNome( nomeTemp );

@@ -73,7 +73,7 @@ bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
         novoUsuario.setIdentificador( idTemp );
         novoUsuario.setSenha( senhaTemp );
         novoUsuario.setNome( nomeTemp );
-        cntrMSUsuario->incluirUsuario(novoUsuario);
+        resultadoOperacao = cntrMSUsuario->incluirUsuario(novoUsuario);
         cout << "Operacao bem sucedida." << endl;
     }
     return resultadoOperacao;

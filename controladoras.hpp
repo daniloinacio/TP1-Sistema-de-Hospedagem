@@ -33,7 +33,24 @@ void inline CntrMAAutenticacao::setCntrMSAutenticacao( ISAutenticacao *cntrMSAut
         this->cntrMSAutenticacao = cntrMSAutenticacao;
 }
 
-class CntrMSAutenticacao:public ISAutenticacao
+class CntrMAUsuario : public IAUsuario
+{
+private:
+    bool resultadoOperacao;
+    ISUsuario *cntrMSUsuario;
+    string nomeStr;
+    string identificadorStr;
+    string senhaStr;
+    Senha senhaTemp;
+    Identificador idTemp;
+    Nome nomeTemp;
+    Usuario novoUsuario;
+
+public:
+    bool cadastrarUsuario( Nome nome, Identificador id, Senha senha );
+};
+
+class CntrMSUsuario : public ISAutenticacao, public ISUsuario
 {
 private:
 
@@ -45,9 +62,11 @@ public:
 
 	bool autenticar( const Identificador&, const Senha& );
 	void setContainer( ContainerUsuario *container );
+	bool validarUsuario( const Identificador &, const Senha & );
+	bool incluirUsuario( const Usuario & );
 };
 
-void inline CntrMSAutenticacao::setContainer( ContainerUsuario *container )
+void inline CntrMSUsuario::setContainer( ContainerUsuario *container )
 {
 	this->container = container;
 }

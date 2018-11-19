@@ -12,10 +12,10 @@ int main()
 
 ContainerUsuario container;
 CntrMAAutenticacao cntrMAAutenticacao;
-CntrMSAutenticacao cntrMSAutenticacao;
+CntrMSUsuario cntrMSUsuario;
 
-cntrMSAutenticacao.setContainer( &container );
-cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSAutenticacao );
+cntrMSUsuario.setContainer( &container );
+cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSUsuario );
 
 return 0;
 }

@@ -41,7 +41,44 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 	return resultadoOperacao;
 }
 
-bool CntrMSAutenticacao::autenticar( const Identificador &identificador, const Senha &senha)
+bool CntrMAUsuario::cadastrarUsuario(Nome nome, Identificador id, Senha senha)
+{
+    cout << "Insira o nome do usuario:" << endl;
+    cin >> nomeStr;
+    cout << "Insira o identificador do usuario:" << endl;
+    cin >> identificadorStr;
+    cout << "Insira a senha do usuario:" << endl;
+    cin >> senhaStr;
+
+    try
+    {
+        idTemp.setIdentificador( identificadorStr );
+        nomeTemp.setNome( nomeStr );
+        senhaTemp.setSenha( senhaStr );
+    }
+    catch( invalid_argument excecao )
+    {
+        cout << "Identificador, nome ou senha em formato errado." << endl;
+        return false;
+    }
+
+    resultadoOperacao = cntrMSUsuario->validarUsuario(idTemp, senhaTemp);
+    if( resultadoOperacao == false )
+    {
+        cout << "Erro, usuario ja existe." << endl;
+    }
+    else
+    {
+        novoUsuario.setIdentificador( idTemp );
+        novoUsuario.setSenha( senhaTemp );
+        novoUsuario.setNome( nomeTemp );
+        cntrMSUsuario->incluirUsuario(novoUsuario);
+        cout << "Operacao bem sucedida." << endl;
+    }
+    return resultadoOperacao;
+}
+
+bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha &senha)
 {
     ResultadoUsuario resultado;
     resultado = container->buscarUsuario( identificador );
@@ -53,4 +90,32 @@ bool CntrMSAutenticacao::autenticar( const Identificador &identificador, const S
 	}
 
     return false;
+}
+
+bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Senha &senha )
+{
+    ResultadoUsuario resultado;
+    resultado = container->buscarUsuario( identificador );
+
+    if( resultado.getValor() == Resultado::SUCESSO )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
+{
+    ResultadoUsuario resultado;
+    resultado = container->incluirUsuario( novoUsuario );
+
+    if( resultado.getValor() == Resultado::SUCESSO )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

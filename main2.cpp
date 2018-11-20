@@ -9,20 +9,23 @@ using namespace std;
 
 int main()
 {
-
 ContainerUsuario container;
 CntrMAAutenticacao cntrMAAutenticacao;
 CntrMSUsuario cntrMSUsuario;
 CntrMAUsuario cntrUsuario;
 
+// Setando os objetos acima criados
 cntrMSUsuario.setContainer( &container );
 cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSUsuario );
 cntrUsuario.setCntrMSUsuario( &cntrMSUsuario );
+
+// Criando identificador temporario e bool de resultado
 Identificador *identificador = new Identificador();
 bool resultado;
 
 resultado = cntrUsuario.cadastrarUsuario( identificador );
-cout << endl << "Resultado: " << resultado << endl;
+cntrMAAutenticacao.autenticar( identificador );
+
 delete identificador;
 return 0;
 }

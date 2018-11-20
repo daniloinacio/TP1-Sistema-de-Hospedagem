@@ -69,7 +69,7 @@ bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
     }
     else
     {
-        identificador->setIdentificador( identificadorStr );
+        identificador->setIdentificador( idTemp.getIdentificador() );
         novoUsuario.setIdentificador( idTemp );
         novoUsuario.setSenha( senhaTemp );
         novoUsuario.setNome( nomeTemp );

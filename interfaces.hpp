@@ -23,7 +23,7 @@ public:
 class IAUsuario
 {
 public:
-    virtual bool cadastrarUsuario( Nome nome, Identificador id, Senha senha ) = 0;
+    virtual bool cadastrarUsuario( Identificador *identificador ) = 0;
 };
 
 class ISUsuario

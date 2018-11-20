@@ -33,7 +33,7 @@ void inline CntrMAAutenticacao::setCntrMSAutenticacao( ISAutenticacao *cntrMSAut
         this->cntrMSAutenticacao = cntrMSAutenticacao;
 }
 
-class CntrMAUsuario : public IAUsuario
+class CntrMAUsuario:public IAUsuario
 {
 private:
     bool resultadoOperacao;
@@ -48,7 +48,13 @@ private:
 
 public:
     bool cadastrarUsuario( Identificador *identificador );
+    void setCntrMSUsuario( ISUsuario *cntrMSUsuario );
 };
+
+void inline CntrMAUsuario::setCntrMSUsuario(ISUsuario *cntrMSUsuario)
+{
+    this->cntrMSUsuario = cntrMSUsuario;
+}
 
 class CntrMSUsuario : public ISAutenticacao, public ISUsuario
 {

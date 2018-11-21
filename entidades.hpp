@@ -457,17 +457,17 @@ class ResultadoAcomodacao:public Resultado
 {
 
 private:
-    Acomodacao acomodacao;
+    list<Acomodacao> acomodacoes;
 
 public:
-    void setAcomodacao( const Acomodacao &acomodacao )
+    void setAcomodacoes( const list<Acomodacao> &acomodacoes )
     {
-        this->acomodacao = acomodacao;
+        this->acomodacoes = acomodacoes;
     }
 
-    Acomodacao getAcomodacao() const
+    list<Acomodacao> getAcomodacoes() const
     {
-        return acomodacao;
+        return acomodacoes;
     }
 };
 

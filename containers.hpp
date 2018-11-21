@@ -16,10 +16,11 @@ public:
     ResultadoAcomodacao incluirAcomodacao( Acomodacao acomodacao );
     ResultadoAcomodacao removerAcomodacao( Identificador idAcomodacao );
     /* Parametro da busca ainda pode mudar */
-    ResultadoAcomodacao buscarAcomodacao( Identificador idAcomodacao );
+    ResultadoAcomodacao buscarAcomodacao( Identificador idUsuario );
     ResultadoDisponib incluirDisponib( Disponibilidade disponibilidade );
     ResultadoDisponib removerDisponib( Disponibilidade disponibilidade );
-    ResultadoDisponib buscarDisponib( Identificador idAcomodacao );
+    ResultadoDisponib removerTodasDisponibAcomod( Identificador idAcomodacao );
+    ResultadoDisponib buscarDisponib( Data dataInicio, Data dataTermino );
     ResultadoReserva incluirReserva( Reserva reserva );
     ResultadoReserva removerReserva( Reserva reserva );
     ResultadoReserva buscarReservaAcomodacao( Identificador idAcomodacao );

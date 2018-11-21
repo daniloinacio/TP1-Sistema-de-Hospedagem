@@ -43,23 +43,27 @@ ResultadoAcomodacao ContainerAcomodacao::removerAcomodacao( Identificador idAcom
     return resultado;
 }
 
-ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacao( Identificador idAcomodacao )
+ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacao( Identificador idUsuario )
 {
     ResultadoAcomodacao resultado;
-    string identificador = idAcomodacao.getIdentificador();
+    string identificador = idUsuario.getIdentificador();
     list<Acomodacao>::iterator elemento;
+    list<Acomodacao> acomodacoes;
 
     for ( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
     {
-        if ( elemento->getIdentificador().getIdentificador() == identificador )
+        if ( elemento->getIdUsuario().getIdentificador() == identificador )
         {
-            resultado.setAcomodacao( *elemento );
+            acomodacoes.push_back( *elemento );
             resultado.setValor( Resultado::SUCESSO );
-            return resultado;
+
         }
     }
 
-    resultado.setValor( Resultado::FALHA );
+    if ( resultado.getValor() == Resultado::SUCESSO )
+    {
+        resultado.setAcomodacoes( acomodacoes );
+    }
     return resultado;
 }
 
@@ -113,17 +117,37 @@ ResultadoDisponib ContainerAcomodacao::removerDisponib( Disponibilidade disponib
     return resultado;
 }
 
-ResultadoDisponib ContainerAcomodacao::buscarDisponib( Identificador idAcomodacao )
+ResultadoDisponib ContainerAcomodacao::removerTodasDisponibAcomod( Identificador idAcomodacao )
 {
     ResultadoDisponib resultado;
     string identificador = idAcomodacao.getIdentificador();
+    list<Disponibilidade>::iterator elemento;
+    resultado.setValor( Resultado::FALHA );
+
+    for ( elemento = containerDisponibilidades.begin(); elemento != containerDisponibilidades.end(); elemento++ )
+    {
+        if ( elemento->getIdAcomodacao().getIdentificador() == identificador )
+        {
+            resultado.setValor( Resultado::SUCESSO );
+            containerDisponibilidades.erase( elemento );
+        }
+    }
+
+    return resultado;
+}
+
+ResultadoDisponib ContainerAcomodacao::buscarDisponib( Data dataInicio, Data dataTermino )
+{
+    ResultadoDisponib resultado;
+    string dataInic = dataInicio.getData();
+    string dataTer = dataTermino.getData();
     list<Disponibilidade> disponibilidades;
     list<Disponibilidade>::iterator elemento;
 
     resultado.setValor( Resultado::FALHA );
     for ( elemento = containerDisponibilidades.begin(); elemento != containerDisponibilidades.end(); elemento++ )
     {
-        if ( elemento->getIdAcomodacao().getIdentificador() == identificador )
+        if( ( elemento->getDataInicio().getData() == dataInic ) && ( elemento->getDataTermino().getData() == dataTer ) )
         {
             resultado.setValor( Resultado::SUCESSO );
             disponibilidades.push_back( *elemento );

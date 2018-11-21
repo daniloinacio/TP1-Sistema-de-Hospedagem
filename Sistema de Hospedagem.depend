@@ -17,8 +17,6 @@
 	<string>
 	<iostream>
 
-1542671298 
-
 1542514740 
 
 1542671776 hpp"
@@ -237,4 +235,41 @@
 
 1538091650 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_entidades.cpp
 	"testes_entidades.hpp"
+
+1542825581 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.cpp
+	"containers.hpp"
+
+1542825791 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.hpp
+	"dominios.hpp"
+	"entidades.hpp"
+	<list>
+
+1542818819 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/controladoras.cpp
+	"controladoras.hpp"
+	"dominios.hpp"
+	"containers.hpp"
+	<stdexcept>
+	<iostream>
+	<cstdlib>
+	<list>
+
+1542818819 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/controladoras.hpp
+	"interfaces.hpp"
+	"dominios.hpp"
+	"containers.hpp"
+	<stdexcept>
+	<iostream>
+
+1542829603 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/interfaces.hpp
+	"dominios.hpp"
+	"entidades.hpp"
+	<stdexcept>
+
+1542818819 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/main2.cpp
+	<iostream>
+	"containers.hpp"
+	"controladoras.hpp"
+	"interfaces.hpp"
+	"entidades.hpp"
+	"dominios.hpp"
 

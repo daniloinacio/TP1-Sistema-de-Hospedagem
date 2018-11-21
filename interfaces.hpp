@@ -33,4 +33,23 @@ public:
     virtual bool incluirUsuario( const Usuario & ) = 0;
 };
 
+class IAAcomodacao
+{
+public:
+    virtual void iniciarMenuAcomodacao( const Identificador & );
+};
+
+class ISAcomodacao
+{
+public:
+    virtual bool cadastrarAcomodacao( const Acomodacao & );
+    virtual bool descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao );
+    virtual bool cadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade );
+    virtual bool descadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade);
+    virtual bool reservarAcomodacao( const Reserva &reserva );
+    virtual bool cancelarReserva( const Reserva &reserva );
+
+};
+
+
 #endif // INTERFACES_H_INCLUDED

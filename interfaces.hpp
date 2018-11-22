@@ -11,7 +11,7 @@ using namespace std;
 class IAAutenticacao
 {
 public:
-	virtual bool autenticar( Identificador *id ) = 0;
+	virtual bool autenticar( Identificador* ) = 0;
 };
 
 class ISAutenticacao
@@ -23,8 +23,8 @@ public:
 class IAUsuario
 {
 public:
-    virtual bool iniciarMenuUsuario( Identificador *identificador ) = 0;
-    virtual bool cadastrarUsuario( Identificador *identificador ) = 0;
+    virtual bool iniciarMenuUsuario( const Identificador & ) = 0;
+    virtual bool cadastrarUsuario() = 0;
 };
 
 class ISUsuario

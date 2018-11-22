@@ -27,8 +27,8 @@ private:
     const static int MENU_USUARIO = 1;
 
 public:
-    bool menuPrincipal( Identificador *idUsuario );
-    bool menuLogin( Identificador *idUsuario );
+    bool menuPrincipal( Identificador* );
+    bool menuLogin( const Identificador & );
     void setCntrMAUsuario( IAUsuario *cntrMAUsuario );
     void setCntrMAAcomodacao( IAAcomodacao *cntrMAAcomodacao );
     void setCntrMAAutenticacao( IAAutenticacao *cntrMAAutenticacao );
@@ -62,7 +62,7 @@ private:
 
 public:
 
-	bool autenticar( Identificador *id );
+	bool autenticar( Identificador* );
     void setCntrMSAutenticacao( ISAutenticacao *cntrMSAutenticacao );
 
 };
@@ -110,12 +110,12 @@ private:
     const static int SAIR = 4;
 
 public:
-    bool cadastrarUsuario( Identificador *identificador );
-    bool descadastrarUsuario( Identificador *idUsuario );
-    bool cadastrarConta( Identificador *idUsuario );
-    bool cadastrarCartao( Identificador *idUsuario );
+    bool cadastrarUsuario();
+    bool descadastrarUsuario( const Identificador & );
+    bool cadastrarConta( const Identificador & );
+    bool cadastrarCartao( const Identificador & );
+    bool iniciarMenuUsuario( const Identificador & );
     void setCntrMSUsuario( ISUsuario *cntrMSUsuario );
-    bool iniciarMenuUsuario( Identificador *identificador );
 };
 
 void inline CntrMAUsuario::setCntrMSUsuario(ISUsuario *cntrMSUsuario)
@@ -135,12 +135,12 @@ private:
 public:
 
 	bool autenticar( const Identificador&, const Senha& );
-	void setContainer( ContainerUsuario *container );
 	bool validarUsuario( const Identificador &, const Senha & );
 	bool incluirUsuario( const Usuario & );
 	bool removerUsuario( const Identificador & );
 	bool incluirConta( const ContaCorrente & );
 	bool incluirCartao( const CartaoCredito & );
+	void setContainer( ContainerUsuario *container );
 };
 
 void inline CntrMSUsuario::setContainer( ContainerUsuario *container )

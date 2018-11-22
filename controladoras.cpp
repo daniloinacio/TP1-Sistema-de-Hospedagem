@@ -8,7 +8,7 @@
 
 using namespace std;
 
-bool CntrMASistema::menuPrincipal(Identificador *idUsuario)
+bool CntrMASistema::menuPrincipal( Identificador *idUsuario)
 {
     int opcao = -1;
 
@@ -30,14 +30,14 @@ bool CntrMASistema::menuPrincipal(Identificador *idUsuario)
         switch( opcao )
         {
         case CADASTRAR_USUARIO:
-            resultado = cntrMAUsuario->cadastrarUsuario( idUsuario );
+            resultado = cntrMAUsuario->cadastrarUsuario();
             break;
 
         case FAZER_LOGIN:
             resultado = cntrMAAutenticacao->autenticar( idUsuario );
             if ( resultado == true )
             {
-                resultado = menuLogin( idUsuario );
+                resultado = menuLogin( *idUsuario );
             }
             break;
 
@@ -50,7 +50,7 @@ bool CntrMASistema::menuPrincipal(Identificador *idUsuario)
     return resultado;
 }
 
-bool CntrMASistema::menuLogin(Identificador *idUsuario)
+bool CntrMASistema::menuLogin(const Identificador &idUsuario)
 {
     int opcao = -1;
     resultado = true;
@@ -73,7 +73,7 @@ bool CntrMASistema::menuLogin(Identificador *idUsuario)
         switch( opcao )
         {
         case MENU_ACOMODACAO:
-            cntrMAAcomodacao->iniciarMenuAcomodacao( *idUsuario );
+            cntrMAAcomodacao->iniciarMenuAcomodacao( idUsuario );
             break;
 
         case MENU_USUARIO:
@@ -91,10 +91,10 @@ bool CntrMASistema::menuLogin(Identificador *idUsuario)
 
 bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 {
-
-	cout << "Insira o Identificador:" << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+	cout <<         "Insira o Identificador:" << endl;
 	cin >> identificadorStr;
-	cout << "Insira a senha:" << endl;
+	cout <<         "Insira a senha:" << endl;
 	cin >> senhaStr;
 
 	try
@@ -104,7 +104,7 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 	}
 	catch( invalid_argument excecao )
 	{
-		cout << "Identificador ou senha em formato errado." << endl;
+		cout << endl << "** Identificador ou senha em formato errado. **" << endl;
 		return false;
 	}
 
@@ -112,23 +112,24 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 
 	if ( resultadoOperacao == true )
 	{
-		cout << "Atenticacao bem sucedida." << endl;
+		cout << endl << "** Atenticacao bem sucedida. **" << endl;
 		identificador->setIdentificador(identificadorTemp.getIdentificador());
 	}
 	else
 	{
-		cout << "Falha na autenticacao. Identificador ou senha incorretos." << endl;
+		cout << endl << "** Falha na autenticacao. Identificador ou senha incorretos. **" << endl;
 	}
 	return resultadoOperacao;
 }
 
-bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
+bool CntrMAUsuario::cadastrarUsuario()
 {
-    cout << "Insira o nome do usuario:" << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+    cout <<         "Insira o nome do usuario:" << endl;
     cin >> nomeStr;
-    cout << "Insira o identificador do usuario:" << endl;
+    cout <<         "Insira o identificador do usuario:" << endl;
     cin >> identificadorStr;
-    cout << "Insira a senha do usuario:" << endl;
+    cout <<         "Insira a senha do usuario:" << endl;
     cin >> senhaStr;
 
     try
@@ -139,49 +140,49 @@ bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
     }
     catch( invalid_argument excecao )
     {
-        cout << "Identificador, nome ou senha em formato errado." << endl;
+        cout << endl << "** Identificador, nome ou senha em formato errado ** " << endl;
         return false;
     }
 
     resultadoOperacao = cntrMSUsuario->validarUsuario(idTemp, senhaTemp);
     if( resultadoOperacao == false )
     {
-        cout << "Erro, usuario ja existe." << endl;
+        cout << endl << "** Erro, usuario ja existe **" << endl;
     }
     else
     {
-        identificador->setIdentificador( idTemp.getIdentificador() );
         novoUsuario.setIdentificador( idTemp );
         novoUsuario.setSenha( senhaTemp );
         novoUsuario.setNome( nomeTemp );
         resultadoOperacao = cntrMSUsuario->incluirUsuario(novoUsuario);
-        cout << "Operacao bem sucedida." << endl;
+        cout << endl << "** Operacao bem sucedida **" << endl;
     }
     return resultadoOperacao;
 }
 
-bool CntrMAUsuario::descadastrarUsuario( Identificador *idUsuario )
+bool CntrMAUsuario::descadastrarUsuario( const Identificador &idUsuario )
 {
-    resultadoOperacao = cntrMSUsuario->removerUsuario( *idUsuario );
+    resultadoOperacao = cntrMSUsuario->removerUsuario( idUsuario );
     if( resultadoOperacao == false )
     {
-        cout << "Nao foi possivel realizar o descadastro." << endl;
+        cout << endl << "** Nao foi possivel realizar o descadastro **" << endl;
         return false;
     }
     else
     {
-        cout << "Descadastramento realizado com sucesso." << endl;
+        cout << endl << "** Descadastramento realizado com sucesso **" << endl;
         return true;
     }
 }
 
-bool CntrMAUsuario::cadastrarConta( Identificador *idUsuario)
+bool CntrMAUsuario::cadastrarConta( const Identificador &idUsuario )
 {
-    cout << "Insira a agencia:" << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+    cout <<         "Insira a agencia:" << endl;
     cin >> agenciaStr;
-    cout << "Insira o banco:" << endl;
+    cout <<         "Insira o banco:" << endl;
     cin >> bancoStr;
-    cout << "Insira o numero da conta:" << endl;
+    cout <<         "Insira o numero da conta:" << endl;
     cin >> numContaStr;
 
     try
@@ -192,34 +193,35 @@ bool CntrMAUsuario::cadastrarConta( Identificador *idUsuario)
     }
     catch( invalid_argument excecao )
     {
-        cout << "Agencia, banco ou numero da conta em formato invalido" << endl;
+        cout << endl << "** Agencia, banco ou numero da conta em formato invalido **" << endl;
         return false;
     }
 
     novaConta.setAgencia(agenciaTemp);
     novaConta.setBanco(bancoTemp);
     novaConta.setNumero(contaTemp);
-    novaConta.setIdUsuario(*idUsuario);
+    novaConta.setIdUsuario(idUsuario);
 
     resultadoOperacao = cntrMSUsuario->incluirConta( novaConta );
 
     if( resultadoOperacao == true )
     {
-        cout << "Cadastro de conta realizado com sucesso" << endl;
+        cout << endl << "** Cadastro de conta realizado com sucesso **" << endl;
         return true;
     }
     else
     {
-        cout << "Nao foi possivel realizar o cadastro da conta" << endl;
+        cout << endl << "** Nao foi possivel realizar o cadastro da conta **" << endl;
         return false;
     }
 }
 
-bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
+bool CntrMAUsuario::cadastrarCartao( const Identificador &idUsuario )
 {
-    cout << "Insira o numero do cartao:" << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+    cout <<         "Insira o numero do cartao:" << endl;
     cin >> numCartStr;
-    cout << "Insira a data de validade:" << endl;
+    cout <<         "Insira a data de validade:" << endl;
     cin >> valiCartStr;
 
     try
@@ -229,11 +231,11 @@ bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
     }
     catch( invalid_argument excecao )
     {
-        cout << "Numero ou validade do cartao em formato invalido." << endl;
+        cout << endl << "** Numero ou validade do cartao em formato invalido **" << endl;
         return false;
     }
 
-    novoCartao.setIdUsuario( *idUsuario );
+    novoCartao.setIdUsuario( idUsuario );
     novoCartao.setNumero( numCartTemp );
     novoCartao.setValidade( valiTemp );
 
@@ -241,12 +243,12 @@ bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
 
     if( resultadoOperacao == true )
     {
-        cout << "Cadastro realizado com sucesso." << endl;
+        cout << endl << "** Cadastro realizado com sucesso **" << endl;
         return true;
     }
     else
     {
-        cout << "Nao foi possivel terminar o cadastro." << endl;
+        cout << endl << "** Nao foi possivel terminar o cadastro **" << endl;
         return false;
     }
 }
@@ -348,12 +350,14 @@ bool CntrMSUsuario::removerUsuario(const Identificador &idUsuario)
     return false;
 }
 
-bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
+bool CntrMAUsuario::iniciarMenuUsuario(const Identificador &idUsuario)
 {
     int opcao = -1;
     int resultado = false;
 
-    cout << endl << "Menu do usuario." << endl << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+    cout <<         "                  Menu do usuario                   " << endl;
+    cout <<         "----------------------------------------------------" << endl;
     cout << "Descadastrar usuario     - " << DESCADASTRAR << endl;
     cout << "Cadastrar cartao         - " << CADASTRAR_CARTAO << endl;
     cout << "Cadastrar conta corrente - " << CADASTRAR_CONTA << endl;
@@ -392,8 +396,9 @@ void CntrMAAcomodacao::iniciarMenuAcomodacao( const Identificador &idUsuario )
     {
 
         // Apresentar as opções.
-        cout << "----------------------------------------------------" << endl;
-        cout << endl << "Menu Acomodacao" << endl << endl;
+        cout << endl << "----------------------------------------------------" << endl;
+        cout <<         "                  Menu Acomodacao                   " << endl;
+        cout <<         "----------------------------------------------------" << endl;
 
         cout << "Acomodacoes Disponiveis   - " << EXIBIR << endl;
         cout << "Cadastrar Acomodacao      - " << CADASTRAR << endl;
@@ -402,8 +407,8 @@ void CntrMAAcomodacao::iniciarMenuAcomodacao( const Identificador &idUsuario )
         cout << "Fazer Reserva             - " << FAZER_RESERVA << endl;
         cout << "Cancelar Reserva          - " << CANCELAR_RESERVA << endl;
         cout << "Sair                      - " << SAIR << endl;
-        cout << "Selecione uma opcao :";
 
+        cout << "Selecione uma opcao : ";
         cin >> opcao;
 
         switch(opcao)
@@ -462,7 +467,7 @@ void CntrMAAcomodacao::cadastrarAcomodacao( const Identificador &idUsuario)
     resultado = cntrMSAcomodacao->verificarConta(idUsuario);
     if(resultado == false)
     {
-        cout << "Usuario não possui conta corrente cadastrada." << endl;
+        cout << endl << "** Usuario não possui conta corrente cadastrada **" << endl;
         return;
 
     }
@@ -471,7 +476,7 @@ void CntrMAAcomodacao::cadastrarAcomodacao( const Identificador &idUsuario)
     {
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "----------------------------------------------------" << endl;
+        cout << endl << "----------------------------------------------------" << endl;
         cout << "Insira os dados da Acomodacao que deseja cadastrar: " << endl;
         cout << "Identificador: " << endl;
         cin >> identificadorStr;
@@ -497,7 +502,7 @@ void CntrMAAcomodacao::cadastrarAcomodacao( const Identificador &idUsuario)
         catch ( invalid_argument excecao )
         {
             operacao = FALHA;
-            cout << "Dados fornecidos em formato errado" << endl;
+            cout << endl << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
             cout << "Sim  -" << SIM << endl;
             cout << "Não  -" << NAO << endl;
@@ -522,11 +527,11 @@ void CntrMAAcomodacao::cadastrarAcomodacao( const Identificador &idUsuario)
     resultado = cntrMSAcomodacao->cadastrarAcomodacao(acomodacao);
     if ( resultado == true)
     {
-        cout << "Acomodacao cadastrada" << endl;
+        cout << endl << "** Acomodacao cadastrada **" << endl;
     }
     else
     {
-        cout << "Falha no cadastramento da Acomodacao" << endl;
+        cout << endl << "** Falha no cadastramento da Acomodacao **" << endl;
     }
 
     cout << "----------------------------------------------------" << endl;
@@ -545,7 +550,7 @@ void CntrMAAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario)
     {
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "Digite o identifcador da acomodacao que deseja descadastrar:" << endl;
+        cout << endl << "Digite o identifcador da acomodacao que deseja descadastrar:" << endl;
         cin >> identificador;
         try{
 
@@ -554,10 +559,10 @@ void CntrMAAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario)
         catch ( invalid_argument excecao )
         {
             operacao = FALHA;
-            cout << "Dados fornecidos em formato errado" << endl;
+            cout << endl << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
-            cout << "Sim  -" << SIM << endl;
-            cout << "Não  -" << NAO << endl;
+            cout << "Sim  - " << SIM << endl;
+            cout << "Não  - " << NAO << endl;
             cin >> resposta;
         }
         if ( resposta == NAO )
@@ -570,11 +575,11 @@ void CntrMAAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario)
     resultado = cntrMSAcomodacao->descadastrarAcomodacao(idUsuario, idAcomodacao);
     if ( resultado == Resultado::SUCESSO )
     {
-        cout << "Acomodacao descadastrada" << endl;
+        cout << endl << "** Acomodacao descadastrada **" << endl;
     }
     else
     {
-        cout << "Falha no descadastramento da Acomodacao" << endl;
+        cout << endl << "** Falha no descadastramento da Acomodacao **" << endl;
     }
 
     cout << "----------------------------------------------------" << endl;
@@ -604,7 +609,7 @@ void CntrMAAcomodacao::exibirAcomodDisp( const Identificador &idUsuario )
     {
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "----------------------------------------------------" << endl;
+        cout << endl << "----------------------------------------------------" << endl;
         cout << "Forneça os dados da Acomodação que deseja:\n" << endl;
         cout << "Estado:" << endl;
         cin >> estadoStr;
@@ -629,7 +634,7 @@ void CntrMAAcomodacao::exibirAcomodDisp( const Identificador &idUsuario )
         catch ( invalid_argument excecao )
         {
             operacao = FALHA;
-            cout << "Dados fornecidos em formato errado" << endl;
+            cout << endl << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
             cout << "Sim  -" << SIM << endl;
             cout << "Não  -" << NAO << endl;
@@ -657,18 +662,18 @@ void CntrMAAcomodacao::exibirAcomodDisp( const Identificador &idUsuario )
 
     if (resultado.getValor() == Resultado::FALHA)
     {
-        cout << "Não foram encontradas acomodacoes com essas caracteristicas." << endl;
+        cout << endl << "** Não foram encontradas acomodacoes com essas caracteristicas **" << endl;
         cout << "----------------------------------------------------" << endl;
     }
     else
     {
         cout << "----------------------------------------------------" << endl;
-        cout << "Acomodacões disponiveis:" << endl;
+        cout << "Acomodacões disponiveis:" << endl << endl;
         // Exibe na tela as caracteristicas das acomodações encontradas
         for( elemento = acomodDisp.begin(); elemento != acomodDisp.end(); elemento++ )
         {
             cout << "Identificador: " << elemento->getIdentificador().getIdentificador() << endl;
-            cout << "Tipo: " << elemento->getTipo().getTpAcomodacao();
+            cout << "Tipo: " << elemento->getTipo().getTpAcomodacao() << endl;
             cout << "Capacidade: " << elemento->getCapacidade().getCapAcomodacao() << endl;
             cout << "Diaria: " << elemento->getDiaria().getDiaria() << endl;
             cout << "Cidade: " << elemento->getCidade().getNome() << endl;
@@ -693,7 +698,7 @@ void CntrMAAcomodacao::cadastrarDisponibilidade(const Identificador &idUsuario )
     {
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "Digite o identifcador da acomodacao que deseja cadastrar uma disponibilidade" << endl;
+        cout << endl << "Digite o identifcador da acomodacao que deseja cadastrar uma disponibilidade" << endl;
         cin >> identificador;
         cout << "Digite a data de inicio da disponibilidade:" << endl;
         cin >> dataInicioStr;
@@ -708,7 +713,7 @@ void CntrMAAcomodacao::cadastrarDisponibilidade(const Identificador &idUsuario )
         catch ( invalid_argument excecao )
         {
             operacao = FALHA;
-            cout << "Dados fornecidos em formato errado" << endl;
+            cout << endl << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
             cout << "Sim  -" << SIM << endl;
             cout << "Não  -" << NAO << endl;
@@ -727,11 +732,11 @@ void CntrMAAcomodacao::cadastrarDisponibilidade(const Identificador &idUsuario )
     resultado = cntrMSAcomodacao->cadastrarDisponibilidade(idUsuario, disponibilidade);
     if ( resultado == Resultado::SUCESSO )
     {
-        cout << "Disponibilidade cadastrada" << endl;
+        cout << endl << "** Disponibilidade cadastrada **" << endl;
     }
     else
     {
-        cout << "Falha no cadastramento da disponibilidade" << endl;
+        cout << endl << "** Falha no cadastramento da disponibilidade **" << endl;
     }
 
     cout << "----------------------------------------------------" << endl;
@@ -761,7 +766,7 @@ void CntrMAAcomodacao::fazerReserva( const Identificador &idUsuario )
 
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "Digite o identificador da acomodacao que deseja reservar:" << endl;
+        cout << endl << "Digite o identificador da acomodacao que deseja reservar:" << endl;
         cin >> identificador;
         cout << "Digite a data de inicio da reserva:" << endl;
         cin >> dataInicioStr;
@@ -776,7 +781,7 @@ void CntrMAAcomodacao::fazerReserva( const Identificador &idUsuario )
         catch ( invalid_argument excecao )
         {
             operacao = FALHA;
-            cout << "Dados fornecidos em formato errado" << endl;
+            cout << endl << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
             cout << "Sim  -" << SIM << endl;
             cout << "Não  -" << NAO << endl;
@@ -798,10 +803,10 @@ void CntrMAAcomodacao::fazerReserva( const Identificador &idUsuario )
     resultado = cntrMSAcomodacao->fazerReserva(reserva);
     if (resultado == true)
     {
-        cout << "Reserva realizada com sucesso." << endl;
+        cout << endl << "** Reserva realizada com sucesso **" << endl;
     }
     else{
-        cout << "Falha na realização da reserva." << endl;
+        cout << endl << "** Falha na realização da reserva **" << endl;
     }
 
     cout << "----------------------------------------------------" << endl;
@@ -823,11 +828,11 @@ void CntrMAAcomodacao::cancelarReserva( const Identificador &idUsuario )
 
         operacao = SUCESSO;
         resposta = SIM;
-        cout << "Digite o identificador da acomodacao que foi reservada:" << endl;
+        cout << endl << "Digite o identificador da acomodacao que foi reservada:" << endl;
         cin >> identificador;
-        cout << "Digite a data de inicio da reserva:" << endl;
+        cout << "Digite a data de inicio da reserva: " << endl;
         cin >> dataInicioStr;
-        cout << "Digite a data de termino da reserva:" << endl;
+        cout << "Digite a data de termino da reserva: " << endl;
         cin >> dataTerminoStr;
         try
         {
@@ -840,8 +845,8 @@ void CntrMAAcomodacao::cancelarReserva( const Identificador &idUsuario )
             operacao = FALHA;
             cout << "Dados fornecidos em formato errado" << endl;
             cout << "Deseja tentar novamente?" << endl;
-            cout << "Sim  -" << SIM << endl;
-            cout << "Não  -" << NAO << endl;
+            cout << "Sim  - " << SIM << endl;
+            cout << "Não  - " << NAO << endl;
             cin >> resposta;
         }
         if ( resposta == NAO )
@@ -860,10 +865,10 @@ void CntrMAAcomodacao::cancelarReserva( const Identificador &idUsuario )
     resultado = cntrMSAcomodacao->cancelarReserva(reserva);
     if (resultado == true)
     {
-        cout << "Reserva cancelada com sucesso." << endl;
+        cout << endl << "** Reserva cancelada com sucesso **" << endl;
     }
     else{
-        cout << "Reserva não encontrada." << endl;
+        cout << endl << "** Reserva nao encontrada **" << endl;
     }
 
     cout << "----------------------------------------------------" << endl;

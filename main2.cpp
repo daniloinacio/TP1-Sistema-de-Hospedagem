@@ -14,44 +14,31 @@ ContainerAcomodacao containerAcomodacao;
 
 CntrMAAutenticacao cntrMAAutenticacao;
 CntrMAAcomodacao cntrMAAcomodacao;
-
-//CntrMAUsuario cntrUsuario;
-//CntrMSUsuario cntrMSUsuario;
-CntrMSAcomodacao cntrMSAcomodacao;
-
-//Identificador idUsuario;
-//idUsuario.setIdentificador("danil");
-
-cntrMSAcomodacao.setContainer( &containerAcomodacao );
-cntrMAAcomodacao.setCntrMSAcomodacao(&cntrMSAcomodacao);
-//cntrMAAcomodacao.iniciarMenuAcomodacao( idUsuario );
-
-//ContainerUsuario container;
-//CntrMAAutenticacao cntrMAAutenticacao;
-CntrMSUsuario cntrMSUsuario;
 CntrMAUsuario cntrUsuario;
 
-// Setando os objetos acima criados
+CntrMSAcomodacao cntrMSAcomodacao;
+CntrMSUsuario cntrMSUsuario;
+
+cntrMSAcomodacao.setContainer( &containerAcomodacao );
 cntrMSUsuario.setContainer( &containerUsuario );
-//cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSAcomodacao );
+
+// Setando valores das controladoras de apresentacao
+cntrMAAcomodacao.setCntrMSAcomodacao( &cntrMSAcomodacao );
+cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSUsuario );
 cntrUsuario.setCntrMSUsuario( &cntrMSUsuario );
 
-// Criando identificador temporario e bool de resultado
-//Identificador *identificador = new Identificador();
+// Criando bool de resultado
 bool resultado;
-
-//cntrUsuario.cadastrarUsuario( identificador );
-//resultado = cntrUsuario.iniciarMenuUsuario( identificador );
-//cout << resultado << endl;
-
-//delete identificador;
 
 CntrMASistema sistema;
 sistema.setCntrMAUsuario( &cntrUsuario );
 sistema.setCntrMAAcomodacao( &cntrMAAcomodacao );
 sistema.setCntrMAAutenticacao( &cntrMAAutenticacao );
+
 Identificador *idUsuario = new Identificador();
 resultado = sistema.menuPrincipal( idUsuario );
+cout << resultado << endl;
+delete idUsuario;
 
 return 0;
 }

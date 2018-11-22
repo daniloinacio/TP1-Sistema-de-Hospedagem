@@ -104,10 +104,10 @@ private:
     CartaoCredito novoCartao;
 
     // Menu do usuario
-    const static int DESCADASTRAR = 1;
-    const static int CADASTRAR_CARTAO = 2;
-    const static int CADASTRAR_CONTA = 3;
-    const static int SAIR = 4;
+    const static int DESCADASTRAR = 0;
+    const static int CADASTRAR_CARTAO = 1;
+    const static int CADASTRAR_CONTA = 2;
+    const static int SAIR = 3;
 
 public:
     bool cadastrarUsuario( Identificador *identificador );

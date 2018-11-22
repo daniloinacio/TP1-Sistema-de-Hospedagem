@@ -91,10 +91,10 @@ bool CntrMASistema::menuLogin(Identificador *idUsuario)
 
 bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 {
-
-	cout << "Insira o Identificador:" << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+	cout <<         "Insira o Identificador:" << endl;
 	cin >> identificadorStr;
-	cout << "Insira a senha:" << endl;
+	cout <<         "Insira a senha:" << endl;
 	cin >> senhaStr;
 
 	try
@@ -124,6 +124,7 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 
 bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
 {
+    cout << endl << "----------------------------------------------------" << endl;
     cout << "Insira o nome do usuario:" << endl;
     cin >> nomeStr;
     cout << "Insira o identificador do usuario:" << endl;
@@ -165,18 +166,19 @@ bool CntrMAUsuario::descadastrarUsuario( Identificador *idUsuario )
     resultadoOperacao = cntrMSUsuario->removerUsuario( *idUsuario );
     if( resultadoOperacao == false )
     {
-        cout << "Nao foi possivel realizar o descadastro." << endl;
+        cout << endl << "Nao foi possivel realizar o descadastro." << endl;
         return false;
     }
     else
     {
-        cout << "Descadastramento realizado com sucesso." << endl;
+        cout << endl << "Descadastramento realizado com sucesso." << endl;
         return true;
     }
 }
 
 bool CntrMAUsuario::cadastrarConta( Identificador *idUsuario)
 {
+    cout << endl << "----------------------------------------------------" << endl;
     cout << "Insira a agencia:" << endl;
     cin >> agenciaStr;
     cout << "Insira o banco:" << endl;
@@ -217,6 +219,7 @@ bool CntrMAUsuario::cadastrarConta( Identificador *idUsuario)
 
 bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
 {
+    cout << endl << "----------------------------------------------------" << endl;
     cout << "Insira o numero do cartao:" << endl;
     cin >> numCartStr;
     cout << "Insira a data de validade:" << endl;
@@ -353,11 +356,13 @@ bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
     int opcao = -1;
     int resultado = false;
 
-    cout << endl << "Menu do usuario." << endl << endl;
-    cout << "Descadastrar usuario     - " << DESCADASTRAR << endl;
-    cout << "Cadastrar cartao         - " << CADASTRAR_CARTAO << endl;
-    cout << "Cadastrar conta corrente - " << CADASTRAR_CONTA << endl;
-    cout << "Sair                     - " << SAIR << endl;
+    cout << endl << "----------------------------------------------------" << endl;
+    cout <<         "                Menu do usuario                     " << endl;
+    cout <<         "----------------------------------------------------" << endl;
+    cout <<         "Descadastrar usuario     - " << DESCADASTRAR << endl;
+    cout <<         "Cadastrar cartao         - " << CADASTRAR_CARTAO << endl;
+    cout <<         "Cadastrar conta corrente - " << CADASTRAR_CONTA << endl;
+    cout <<         "Sair                     - " << SAIR << endl;
 
     do
     {

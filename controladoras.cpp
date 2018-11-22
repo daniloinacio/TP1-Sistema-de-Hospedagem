@@ -11,37 +11,41 @@ using namespace std;
 bool CntrMASistema::menuPrincipal(Identificador *idUsuario)
 {
     int opcao = -1;
-    cout << endl << "----------------------------------------------------" << endl;
-    cout <<         "                Menu principal                      " << endl;
-    cout <<         "----------------------------------------------------" << endl;
-    cout <<         "Cadastrar usuario - " << CADASTRAR_USUARIO << endl;
-    cout <<         "Fazer login       - " << FAZER_LOGIN << endl;
-    cout <<         "Sair              - " << SAIR << endl;
 
-    do
+    while( opcao != SAIR )
     {
-        cout << "Escolha uma das opcoes: ";
-        cin >> opcao;
-    } while( opcao < CADASTRAR_USUARIO || opcao > SAIR );
+        cout << endl << "----------------------------------------------------" << endl;
+        cout <<         "                Menu principal                      " << endl;
+        cout <<         "----------------------------------------------------" << endl;
+        cout <<         "Cadastrar usuario - " << CADASTRAR_USUARIO << endl;
+        cout <<         "Fazer login       - " << FAZER_LOGIN << endl;
+        cout <<         "Sair              - " << SAIR << endl;
 
-    switch( opcao )
-    {
-    case CADASTRAR_USUARIO:
-        resultado = cntrMAUsuario->cadastrarUsuario( idUsuario );
-        break;
-
-    case FAZER_LOGIN:
-        resultado = cntrMAAutenticacao->autenticar( idUsuario );
-        if ( resultado == true )
+        do
         {
-            resultado = menuLogin( idUsuario );
-        }
-        break;
+            cout << "Escolha uma das opcoes: ";
+            cin >> opcao;
+        } while( opcao < CADASTRAR_USUARIO || opcao > SAIR );
 
-    case SAIR:
-        resultado = false;
-        break;
-    }
+        switch( opcao )
+        {
+        case CADASTRAR_USUARIO:
+            resultado = cntrMAUsuario->cadastrarUsuario( idUsuario );
+            break;
+
+        case FAZER_LOGIN:
+            resultado = cntrMAAutenticacao->autenticar( idUsuario );
+            if ( resultado == true )
+            {
+                resultado = menuLogin( idUsuario );
+            }
+            break;
+
+        case SAIR:
+            resultado = false;
+            break;
+        }
+    } // while( opcao != SAIR)
 
     return resultado;
 }
@@ -50,33 +54,37 @@ bool CntrMASistema::menuLogin(Identificador *idUsuario)
 {
     int opcao = -1;
     resultado = true;
-    cout << endl << "----------------------------------------------------" << endl;
-    cout <<         "                   Menu de login                    " << endl;
-    cout <<         "----------------------------------------------------" << endl;
-    cout <<         "Opcoes de acomodacao - " << MENU_ACOMODACAO << endl;
-    cout <<         "Opcoes de usuario    - " << MENU_USUARIO << endl;
-    cout <<         "Sair                 - " << SAIR << endl;
 
-    do
+    while( opcao != SAIR )
     {
-        cout << "Escolha uma opcao: ";
-        cin >> opcao;
-    } while( opcao < MENU_ACOMODACAO || opcao > SAIR );
+        cout << endl << "----------------------------------------------------" << endl;
+        cout <<         "                   Menu de login                    " << endl;
+        cout <<         "----------------------------------------------------" << endl;
+        cout <<         "Opcoes de acomodacao - " << MENU_ACOMODACAO << endl;
+        cout <<         "Opcoes de usuario    - " << MENU_USUARIO << endl;
+        cout <<         "Sair                 - " << SAIR << endl;
 
-    switch( opcao )
-    {
-    case MENU_ACOMODACAO:
-        cntrMAAcomodacao->iniciarMenuAcomodacao( *idUsuario );
-        break;
+        do
+        {
+            cout << "Escolha uma opcao: ";
+            cin >> opcao;
+        } while( opcao < MENU_ACOMODACAO || opcao > SAIR );
 
-    case MENU_USUARIO:
-        resultado = cntrMAUsuario->iniciarMenuUsuario( idUsuario );
-        break;
+        switch( opcao )
+        {
+        case MENU_ACOMODACAO:
+            cntrMAAcomodacao->iniciarMenuAcomodacao( *idUsuario );
+            break;
 
-    case SAIR:
-        resultado = false;
-        break;
-    }
+        case MENU_USUARIO:
+            resultado = cntrMAUsuario->iniciarMenuUsuario( idUsuario );
+            break;
+
+        case SAIR:
+            resultado = false;
+            break;
+        }
+    } // while( opcao != SAIR)
 
     return resultado;
 }

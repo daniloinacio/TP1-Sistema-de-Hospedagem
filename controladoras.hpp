@@ -38,6 +38,8 @@ class CntrMAUsuario:public IAUsuario
 private:
     bool resultadoOperacao;
     ISUsuario *cntrMSUsuario;
+
+    // Variaveis Usuario
     string nomeStr;
     string identificadorStr;
     string senhaStr;
@@ -46,8 +48,27 @@ private:
     Nome nomeTemp;
     Usuario novoUsuario;
 
+    // Variaveis conta
+    string numContaStr;
+    string agenciaStr;
+    string bancoStr;
+    NumContaCorr contaTemp;
+    Agencia agenciaTemp;
+    Banco bancoTemp;
+    ContaCorrente novaConta;
+
+    // Variaveis cartao
+    string numCartStr;
+    string valiCartStr;
+    NumCartaoCred numCartTemp;
+    DataValidade valiTemp;
+    CartaoCredito novoCartao;
+
 public:
     bool cadastrarUsuario( Identificador *identificador );
+    bool descadastrarUsuario( Identificador *idUsuario );
+    bool cadastrarConta( Identificador *idUsuario );
+    bool cadastrarCartao( Identificador *idUsuario );
     void setCntrMSUsuario( ISUsuario *cntrMSUsuario );
 };
 
@@ -60,7 +81,8 @@ class CntrMSUsuario : public ISAutenticacao, public ISUsuario
 {
 private:
 
-	ContainerUsuario *container;
+	ContainerUsuario container;
+	ContainerAcomodacao containerAcomodacoes;
 	Senha senhaTemp;
 	list<Usuario>::iterator usuario;
 
@@ -70,9 +92,12 @@ public:
 	void setContainer( ContainerUsuario *container );
 	bool validarUsuario( const Identificador &, const Senha & );
 	bool incluirUsuario( const Usuario & );
+	bool removerUsuario( const Identificador & );
+	bool incluirConta( const ContaCorrente & );
+	bool incluirCartao( const CartaoCredito & );
 };
 
-void inline CntrMSUsuario::setContainer( ContainerUsuario *container )
+void inline CntrMSUsuario::setContainer( ContainerUsuario container )
 {
 	this->container = container;
 }

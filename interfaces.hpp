@@ -22,8 +22,8 @@ public:
 
 class IAUsuario
 {
-public:
-    virtual bool cadastrarUsuario( Identificador *identificador ) = 0;
+//public:
+//    virtual bool IniciarMenuUsuario( Identificador *identificador ) = 0;
 };
 
 class ISUsuario
@@ -31,6 +31,9 @@ class ISUsuario
 public:
     virtual bool validarUsuario( const Identificador &, const Senha & ) = 0;
     virtual bool incluirUsuario( const Usuario & ) = 0;
+    virtual bool removerUsuario( const Identificador & ) = 0;
+    virtual bool incluirConta(const ContaCorrente &novaConta) = 0;
+    virtual bool incluirCartao( const CartaoCredito & ) = 0;
 };
 
 class IAAcomodacao

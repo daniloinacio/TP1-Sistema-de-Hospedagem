@@ -10,13 +10,21 @@ ResultadoAcomodacao ContainerAcomodacao::incluirAcomodacao( Acomodacao acomodaca
     string identificador = acomodacao.getIdentificador().getIdentificador();
     list<Acomodacao>::iterator elemento;
 
-    for( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
+    if(!containerAcomodacoes.empty())
     {
-        if( elemento->getIdentificador().getIdentificador() == identificador )
+        for( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
         {
-            resultado.setValor( Resultado::FALHA );
-            return resultado;
+            if( elemento->getIdentificador().getIdentificador() == identificador )
+            {
+                resultado.setValor( Resultado::FALHA );
+                return resultado;
+            }
         }
+    }
+    else
+    {
+        resultado.setValor( Resultado::FALHA );
+        return resultado;
     }
 
     containerAcomodacoes.push_back(acomodacao);
@@ -53,11 +61,10 @@ ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacao( Identificador idUsuar
     for ( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
     {
         if ( elemento->getIdUsuario().getIdentificador() == identificador )
-        {
-            acomodacoes.push_back( *elemento );
-            resultado.setValor( Resultado::SUCESSO );
-
-        }
+            {
+                acomodacoes.push_back( *elemento );
+                resultado.setValor( Resultado::SUCESSO );
+            }
     }
 
     if ( resultado.getValor() == Resultado::SUCESSO )
@@ -223,7 +230,7 @@ ResultadoReserva ContainerAcomodacao::buscarReservaAcomodacao( Identificador idA
     list<Reserva>::iterator elemento;
     list<Reserva> reservas;
 
-    resultado.setValor( Resultado::SUCESSO );
+    resultado.setValor( Resultado::FALHA );
     for ( elemento = containerReservas.begin(); elemento != containerReservas.end(); elemento++ )
     {
         if ( ( elemento->getIdAcomodacao().getIdentificador() == identificador ) )
@@ -247,7 +254,7 @@ ResultadoReserva ContainerAcomodacao::buscarReservaUsuario( Identificador idUsua
     list<Reserva>::iterator elemento;
     list<Reserva> reservas;
 
-    resultado.setValor( Resultado::SUCESSO );
+    resultado.setValor( Resultado::FALHA );
     for ( elemento = containerReservas.begin(); elemento != containerReservas.end(); elemento++ )
     {
         if ( ( elemento->getIdUsuario().getIdentificador() == identificador ) )

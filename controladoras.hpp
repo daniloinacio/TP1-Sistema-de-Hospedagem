@@ -10,6 +10,45 @@
 
 using namespace std;
 
+class CntrMASistema
+{
+private:
+    IAUsuario *cntrMAUsuario;
+    IAAcomodacao *cntrMAAcomodacao;
+    IAAutenticacao *cntrMAAutenticacao;
+
+    bool resultado;
+    // Menu principal
+    const static int CADASTRAR_USUARIO = 0;
+    const static int FAZER_LOGIN = 1;
+    const static int SAIR = 2;
+    // Menu de login
+    const static int MENU_ACOMODACAO = 0;
+    const static int MENU_USUARIO = 1;
+
+public:
+    bool menuPrincipal( Identificador *idUsuario );
+    bool menuLogin( Identificador *idUsuario );
+    void setCntrMAUsuario( IAUsuario *cntrMAUsuario );
+    void setCntrMAAcomodacao( IAAcomodacao *cntrMAAcomodacao );
+    void setCntrMAAutenticacao( IAAutenticacao *cntrMAAutenticacao );
+};
+
+void inline CntrMASistema::setCntrMAUsuario( IAUsuario *cntrMAUsuario )
+{
+    this->cntrMAUsuario = cntrMAUsuario;
+}
+
+void inline CntrMASistema::setCntrMAAcomodacao( IAAcomodacao *cntrMAAcomodacao )
+{
+    this->cntrMAAcomodacao = cntrMAAcomodacao;
+}
+
+void inline CntrMASistema::setCntrMAAutenticacao( IAAutenticacao *cntrMAAutenticacao )
+{
+    this->cntrMAAutenticacao = cntrMAAutenticacao;
+}
+
 class CntrMAAutenticacao:public IAAutenticacao
 {
 private:

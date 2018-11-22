@@ -70,6 +70,7 @@ public:
 void inline CntrMAAutenticacao::setCntrMSAutenticacao( ISAutenticacao *cntrMSAutenticacao )
 {
         this->cntrMSAutenticacao = cntrMSAutenticacao;
+<<<<<<< HEAD
 }
 
 class CntrMAUsuario:public IAUsuario
@@ -121,6 +122,59 @@ public:
 void inline CntrMAUsuario::setCntrMSUsuario(ISUsuario *cntrMSUsuario)
 {
     this->cntrMSUsuario = cntrMSUsuario;
+=======
+}
+
+class CntrMAUsuario:public IAUsuario
+{
+private:
+    bool resultadoOperacao;
+    ISUsuario *cntrMSUsuario;
+
+    // Variaveis Usuario
+    string nomeStr;
+    string identificadorStr;
+    string senhaStr;
+    Senha senhaTemp;
+    Identificador idTemp;
+    Nome nomeTemp;
+    Usuario novoUsuario;
+
+    // Variaveis conta
+    string numContaStr;
+    string agenciaStr;
+    string bancoStr;
+    NumContaCorr contaTemp;
+    Agencia agenciaTemp;
+    Banco bancoTemp;
+    ContaCorrente novaConta;
+
+    // Variaveis cartao
+    string numCartStr;
+    string valiCartStr;
+    NumCartaoCred numCartTemp;
+    DataValidade valiTemp;
+    CartaoCredito novoCartao;
+
+    // Menu do usuario
+    const static int DESCADASTRAR = 0;
+    const static int CADASTRAR_CARTAO = 1;
+    const static int CADASTRAR_CONTA = 2;
+    const static int SAIR = 3;
+
+public:
+    bool cadastrarUsuario( Identificador *identificador );
+    bool descadastrarUsuario( Identificador *idUsuario );
+    bool cadastrarConta( Identificador *idUsuario );
+    bool cadastrarCartao( Identificador *idUsuario );
+    void setCntrMSUsuario( ISUsuario *cntrMSUsuario );
+    bool iniciarMenuUsuario( Identificador *identificador );
+};
+
+void inline CntrMAUsuario::setCntrMSUsuario(ISUsuario *cntrMSUsuario)
+{
+    this->cntrMSUsuario = cntrMSUsuario;
+>>>>>>> 92279db8067ab157fc742345f33fd841c18c9639
 }
 
 class CntrMSUsuario : public ISAutenticacao, public ISUsuario

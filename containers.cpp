@@ -468,6 +468,7 @@ ResultadoCartao ContainerUsuario::removerCartao( Identificador idUsuario )
     string identificador = idUsuario.getIdentificador();
     list<CartaoCredito>::iterator elemento;
 
+    resultado.setValor( Resultado::FALHA );
     for ( elemento = containerCartoes.begin(); elemento != containerCartoes.end(); elemento++ )
     {
 
@@ -478,6 +479,8 @@ ResultadoCartao ContainerUsuario::removerCartao( Identificador idUsuario )
             return resultado;
         }
     }
+
+    return resultado;
 }
 
 ResultadoCartao ContainerUsuario::buscarCartao( Identificador idUsuario )

@@ -26,9 +26,9 @@
 	<string>
 	<iostream>
 
-1542860790 
+1542901104 
 
-1542892571 hpp"
+1542902426 hpp"
 
 1538527948 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.hpp
 	<stdexcept>
@@ -41,7 +41,7 @@
 	<stdexcept>
 	<stdexcept>
 
-1542885478 >
+1542901134 >
 
 1538091650 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/entidades.cpp
 	"entidades.hpp"
@@ -52,7 +52,7 @@
 	"entidades.hpp"
 	"entidades.hpp"
 
-1542878860 .hpp"
+1542901240 .hpp"
 
 1542504528 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/main.cpp
 	<iostream>
@@ -316,7 +316,8 @@
 	"dominios.hpp"
 	"entidades.hpp"
 	<stdexcept>
-<<<<<<< HEAD
+
+1542902426 D
 
 1538320551 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/dominios.cpp
 	"dominios.hpp"
@@ -350,11 +351,11 @@
 1538091650 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/testes_entidades.cpp
 	"testes_entidades.hpp"
 
-1542901275 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.cpp
+1542925626 source:/home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.cpp
 	"containers.hpp"
 	<iostream>
 
-1542901240 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.hpp
+1542925827 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/containers.hpp
 	"dominios.hpp"
 	"entidades.hpp"
 	<list>
@@ -368,14 +369,14 @@
 	<cstdlib>
 	<list>
 
-1542907476 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/controladoras.hpp
+1542925600 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/controladoras.hpp
 	"interfaces.hpp"
 	"dominios.hpp"
 	"containers.hpp"
 	<stdexcept>
 	<iostream>
 
-1542907491 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/interfaces.hpp
+1542925581 /home/danilo/TP1/TP1-Sistema-de-Hospedagem/interfaces.hpp
 	"dominios.hpp"
 	"entidades.hpp"
 	<stdexcept>
@@ -388,6 +389,7 @@
 	"entidades.hpp"
 	"dominios.hpp"
 
-=======
+1542901617 hpp"
 
->>>>>>> 92279db8067ab157fc742345f33fd841c18c9639
+1542901617 79db8067ab157fc742345f33fd841c18c9639
+

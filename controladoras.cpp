@@ -91,10 +91,10 @@ bool CntrMASistema::menuLogin(Identificador *idUsuario)
 
 bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 {
-    cout << endl << "----------------------------------------------------" << endl;
-	cout <<         "Insira o Identificador:" << endl;
+
+	cout << "Insira o Identificador:" << endl;
 	cin >> identificadorStr;
-	cout <<         "Insira a senha:" << endl;
+	cout << "Insira a senha:" << endl;
 	cin >> senhaStr;
 
 	try
@@ -120,7 +120,6 @@ bool CntrMAAutenticacao::autenticar( Identificador *identificador )
 		cout << "Falha na autenticacao. Identificador ou senha incorretos." << endl;
 	}
 	return resultadoOperacao;
-<<<<<<< HEAD
 }
 
 bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
@@ -251,141 +250,6 @@ bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
         return false;
     }
 }
-=======
-}
-
-bool CntrMAUsuario::cadastrarUsuario( Identificador *identificador )
-{
-    cout << endl << "----------------------------------------------------" << endl;
-    cout << "Insira o nome do usuario:" << endl;
-    cin >> nomeStr;
-    cout << "Insira o identificador do usuario:" << endl;
-    cin >> identificadorStr;
-    cout << "Insira a senha do usuario:" << endl;
-    cin >> senhaStr;
-
-    try
-    {
-        idTemp.setIdentificador( identificadorStr );
-        nomeTemp.setNome( nomeStr );
-        senhaTemp.setSenha( senhaStr );
-    }
-    catch( invalid_argument excecao )
-    {
-        cout << "Identificador, nome ou senha em formato errado." << endl;
-        return false;
-    }
-
-    resultadoOperacao = cntrMSUsuario->validarUsuario(idTemp, senhaTemp);
-    if( resultadoOperacao == false )
-    {
-        cout << "Erro, usuario ja existe." << endl;
-    }
-    else
-    {
-        identificador->setIdentificador( idTemp.getIdentificador() );
-        novoUsuario.setIdentificador( idTemp );
-        novoUsuario.setSenha( senhaTemp );
-        novoUsuario.setNome( nomeTemp );
-        resultadoOperacao = cntrMSUsuario->incluirUsuario(novoUsuario);
-        cout << "Operacao bem sucedida." << endl;
-    }
-    return resultadoOperacao;
-}
-
-bool CntrMAUsuario::descadastrarUsuario( Identificador *idUsuario )
-{
-    resultadoOperacao = cntrMSUsuario->removerUsuario( *idUsuario );
-    if( resultadoOperacao == false )
-    {
-        cout << endl << "Nao foi possivel realizar o descadastro." << endl;
-        return false;
-    }
-    else
-    {
-        cout << endl << "Descadastramento realizado com sucesso." << endl;
-        return true;
-    }
-}
-
-bool CntrMAUsuario::cadastrarConta( Identificador *idUsuario)
-{
-    cout << endl << "----------------------------------------------------" << endl;
-    cout << "Insira a agencia:" << endl;
-    cin >> agenciaStr;
-    cout << "Insira o banco:" << endl;
-    cin >> bancoStr;
-    cout << "Insira o numero da conta:" << endl;
-    cin >> numContaStr;
-
-    try
-    {
-        agenciaTemp.setAgencia(agenciaStr);
-        bancoTemp.setBanco(bancoStr);
-        contaTemp.setNumContaCorr(numContaStr);
-    }
-    catch( invalid_argument excecao )
-    {
-        cout << "Agencia, banco ou numero da conta em formato invalido" << endl;
-        return false;
-    }
-
-    novaConta.setAgencia(agenciaTemp);
-    novaConta.setBanco(bancoTemp);
-    novaConta.setNumero(contaTemp);
-    novaConta.setIdUsuario(*idUsuario);
-
-    resultadoOperacao = cntrMSUsuario->incluirConta( novaConta );
-
-    if( resultadoOperacao == true )
-    {
-        cout << "Cadastro de conta realizado com sucesso" << endl;
-        return true;
-    }
-    else
-    {
-        cout << "Nao foi possivel realizar o cadastro da conta" << endl;
-        return false;
-    }
-}
-
-bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
-{
-    cout << endl << "----------------------------------------------------" << endl;
-    cout << "Insira o numero do cartao:" << endl;
-    cin >> numCartStr;
-    cout << "Insira a data de validade:" << endl;
-    cin >> valiCartStr;
-
-    try
-    {
-        valiTemp.setDataValidade(valiCartStr);
-        numCartTemp.setNumCartaoCred(numCartStr);
-    }
-    catch( invalid_argument excecao )
-    {
-        cout << "Numero ou validade do cartao em formato invalido." << endl;
-        return false;
-    }
-
-    novoCartao.setIdUsuario( *idUsuario );
-    novoCartao.setNumero( numCartTemp );
-    novoCartao.setValidade( valiTemp );
-
-    resultadoOperacao = cntrMSUsuario->incluirCartao( novoCartao );
-
-    if( resultadoOperacao == true )
-    {
-        cout << "Cadastro realizado com sucesso." << endl;
-        return true;
-    }
-    else
-    {
-        cout << "Nao foi possivel terminar o cadastro." << endl;
-        return false;
-    }
-}
->>>>>>> 92279db8067ab157fc742345f33fd841c18c9639
 
 bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha &senha)
 {
@@ -400,7 +264,6 @@ bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha 
 
     return false;
 }
-<<<<<<< HEAD
 
 bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Senha &senha )
 {
@@ -518,114 +381,6 @@ bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
     }
 
     return resultado;
-=======
-
-bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
-{
-    ResultadoUsuario resultado;
-    resultado = container->incluirUsuario( novoUsuario );
-
-    if( resultado.getValor() == Resultado::SUCESSO )
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool CntrMSUsuario::incluirConta(const ContaCorrente &novaConta)
-{
-    ResultadoConta resultado;
-    resultado = container->incluirConta( novaConta );
-    if( resultado.getValor() == Resultado::SUCESSO )
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool CntrMSUsuario::incluirCartao(const CartaoCredito &novoCartao)
-{
-    ResultadoCartao resultado;
-    resultado = container->incluirCartao( novoCartao );
-    if(resultado.getValor() == Resultado::SUCESSO)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool CntrMSUsuario::removerUsuario(const Identificador &idUsuario)
-{
-    ResultadoUsuario resultadoUsuario;
-    ResultadoAcomodacao resultadoAcomodacao;
-    ResultadoReserva resultadoReserva;
-
-    resultadoAcomodacao = containerAcomodacoes->buscarAcomodacao( idUsuario );
-    resultadoReserva = containerAcomodacoes->buscarReservaUsuario( idUsuario );
-
-    if( (resultadoAcomodacao.getAcomodacoes().empty() == true) && (resultadoReserva.getReservas().empty() == true) )
-    {
-        resultadoUsuario = container->removerUsuario( idUsuario );
-        container->removerCartao( idUsuario );
-        container->removerConta( idUsuario );
-        if( resultadoUsuario.getValor() == Resultado::SUCESSO)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    return false;
-}
-
-bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
-{
-    int opcao = -1;
-    int resultado = false;
-
-    cout << endl << "----------------------------------------------------" << endl;
-    cout <<         "                Menu do usuario                     " << endl;
-    cout <<         "----------------------------------------------------" << endl;
-    cout <<         "Descadastrar usuario     - " << DESCADASTRAR << endl;
-    cout <<         "Cadastrar cartao         - " << CADASTRAR_CARTAO << endl;
-    cout <<         "Cadastrar conta corrente - " << CADASTRAR_CONTA << endl;
-    cout <<         "Sair                     - " << SAIR << endl;
-
-    do
-    {
-        cout << "Selecione uma opcao: ";
-        cin >> opcao;
-    } while( opcao < DESCADASTRAR || opcao > SAIR );
-
-    switch( opcao )
-    {
-    case DESCADASTRAR:
-        resultado = descadastrarUsuario( idUsuario );
-        break;
-
-    case CADASTRAR_CARTAO:
-        resultado = cadastrarCartao( idUsuario );
-        break;
-
-    case CADASTRAR_CONTA:
-        resultado = cadastrarConta( idUsuario );
-        break;
-    }
-
-    return resultado;
->>>>>>> 92279db8067ab157fc742345f33fd841c18c9639
 }
 
 void CntrMAAcomodacao::iniciarMenuAcomodacao( const Identificador &idUsuario )
@@ -1148,6 +903,10 @@ bool CntrMSAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario, c
             if(elemento->getIdentificador().getIdentificador() == identificador )
             {
                 resultado = containerAcomodacao->removerAcomodacao(idAcomodacao);
+                if(resultado.getValor() == Resultado::SUCESSO)
+                {
+                    containerAcomodacao->removerTodasDisponibAcomod(idAcomodacao);
+                }
                 return resultado.getValor();
             }
         }
@@ -1197,7 +956,15 @@ bool CntrMSAcomodacao::cadastrarDisponibilidade( const Identificador &idUsuario 
 bool CntrMSAcomodacao::cancelarReserva( Reserva reserva )
 {
 	ResultadoReserva resultado;
+	Disponibilidade disponibilidade;
 	resultado = containerAcomodacao->removerReserva(reserva);
+	if(resultado.getValor() == Resultado::SUCESSO)
+	{
+        disponibilidade.setIdAcomodacao(reserva.getIdAcomodacao());
+        disponibilidade.setDataInicio(reserva.getDataInicio());
+        disponibilidade.setDataTermino(reserva.getDataTermino());
+        containerAcomodacao->incluirDisponib(disponibilidade);
+	}
 
 	return resultado.getValor();
 }

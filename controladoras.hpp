@@ -109,4 +109,52 @@ void inline CntrMSUsuario::setContainer( ContainerUsuario *container )
 	this->container = container;
 }
 
+
+class CntrMAAcomodacao : public IAAcomodacao
+{
+private:
+	ISAcomodacao *cntrMSAcomodacao;
+    const static int EXIBIR          = 1;
+    const static int CADASTRAR       = 2;
+    const static int DESCADASTRAR    = 3;
+    const static int DISPONIBILIDADE = 4;
+    const static int RESERVA         = 5;
+    const static int SAIR            = 6;
+    const static int SIM			 = 1;
+    const static int NAO             = 0;
+    const static int SUCESSO         = 1;
+    const static int FALHA           = 0;
+
+    void exibirAcomodDisp( const Identificador &);
+    void cadastrarAcomodacao( const Identificador &);
+    void descadastrarAcomodacao( const Identificador&);
+public:
+    void setCntrMSAcomodacao( ISAcomodacao *cntrMSAcomodacao );
+	void iniciarMenuAcomodacao( const Identificador & );
+};
+
+void inline CntrMAAcomodacao::setCntrMSAcomodacao( ISAcomodacao *cntrMSAcomodacao )
+{
+    this->cntrMSAcomodacao = cntrMSAcomodacao;
+}
+
+class CntrMSAcomodacao : public ISAcomodacao
+{
+private:
+	ContainerAcomodacao *containerAcomodacao;
+public:
+	void setContainer( ContainerAcomodacao *container );
+ //   bool AcomodacoesDisp();
+    bool cadastrarAcomodacao( const Acomodacao & );
+    bool descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao );
+//    bool cadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade );
+//    bool descadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade);
+//    bool reservarAcomodacao( const Reserva &reserva );
+//    bool cancelarReserva( const Reserva &reserva );
+};
+
+void inline CntrMSAcomodacao::setContainer( ContainerAcomodacao *container )
+{
+	this->containerAcomodacao = container;
+}
 #endif // CONTROLADORAS_H_INCLUDED

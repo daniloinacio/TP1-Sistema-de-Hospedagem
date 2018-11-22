@@ -301,3 +301,362 @@ bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
 
     return resultado;
 }
+
+void CntrMAAcomodacao::iniciarMenuAcomodacao( const Identificador &idUsuario )
+{
+
+    int opcao;
+
+    while(true)
+    {
+
+        // Apresentar as opções.
+        cout << "----------------------------------------------------" << endl;
+        cout << endl << "Menu Acomodacao" << endl << endl;
+
+        cout << "Acomodacoes Disponiveis   - " << EXIBIR << endl;
+        cout << "Cadastrar Acomodacao      - " << CADASTRAR << endl;
+        cout << "Descadastrar Acomodacao   - " << DESCADASTRAR << endl;
+        cout << "Cadastrar Disponibilidade - " << DISPONIBILIDADE << endl;
+        cout << "Cancelar Reserva          - " << RESERVA << endl;
+        cout << "Sair                      - " << SAIR << endl;
+        cout << "Selecione uma opcao :";
+
+        cin >> opcao;
+
+        switch(opcao)
+        {
+            case EXIBIR:            exibirAcomodDisp( idUsuario );
+
+                            break;
+            case CADASTRAR:         cadastrarAcomodacao( idUsuario );
+
+                            break;
+            case DESCADASTRAR:
+                                    descadastrarAcomodacao( idUsuario );
+
+                            break;
+            case DISPONIBILIDADE:
+
+                            break;
+            case RESERVA:
+
+                            break;
+            case SAIR:
+
+                            break;
+        }
+
+        if(opcao == SAIR){
+            break;
+        }
+
+    }
+
+    return;
+}
+
+/*
+void CntrMAAcomodacao::exibirAcomodacao( Acomodacao acomodacao )
+{
+    cout << "Identificador: " << acomodacao.getIdentificador().getIdentificador() << endl;
+    cout << "Capacidade: " << acomodacao.getCapacidade().getCapAcomodacao() << endl;
+    cout << "Diaria: " << acomodacao.getDiaria().getDiaria() << endl;
+    cout << "Cidade: " << acomodacao.getCidade().getNome() << endl;
+    cout << "Estado: " << acomodacao.getEstado().getEstado() << endl;
+
+    return;
+}
+*/
+
+void CntrMAAcomodacao::cadastrarAcomodacao( const Identificador &idUsuario)
+{
+    float diariaFlt;
+    int capacidadeInt;
+    int resposta, operacao;
+    bool resultado;
+    string identificadorStr;
+    string estadoStr;
+    string cidadeStr;
+    string tipoStr;
+    Diaria diaria;
+    Identificador idAcomodacao;
+    Nome cidade;
+    Estado estado;
+    CapAcomodacao capacidade;
+    TpAcomodacao tipo;
+    Acomodacao acomodacao;
+
+    do
+    {
+        operacao = SUCESSO;
+        cout << "----------------------------------------------------" << endl;
+        cout << "Insira os dados da Acomodacao que deseja cadastrar: " << endl;
+        cout << "Identificador: " << endl;
+        cin >> identificadorStr;
+        cout << "Tipo: " << endl;
+        cin >> tipoStr;
+        cout << "Estado: " << endl;
+        cin >> estadoStr;
+        cout << "Cidade: " << endl;
+        cin >> cidadeStr;
+        cout << "Capacidade " << endl;
+        cin >> capacidadeInt;
+        cout << "Diaria " << endl;
+        cin >> diariaFlt;
+        try{
+
+            idAcomodacao.setIdentificador(identificadorStr);
+            tipo.setTpAcomodacao(tipoStr);
+            estado.setEstado(estadoStr);
+            cidade.setNome(cidadeStr);
+            capacidade.setCapAcomodacao(capacidadeInt);
+            diaria.setDiaria(diariaFlt);
+        }
+        catch ( invalid_argument excecao )
+        {
+            operacao = FALHA;
+            cout << "Dados fornecidos em formato errado" << endl;
+            cout << "Deseja tentar novamente?" << endl;
+            cout << "Sim  -" << SIM << endl;
+            cout << "Não  -" << NAO << endl;
+            cin >> resposta;
+        }
+
+        if ( resposta == NAO )
+        {
+            cout << "----------------------------------------------------" << endl;
+            return;
+        }
+
+    }while(operacao == FALHA);
+
+    acomodacao.setCapacidade(capacidade);
+    acomodacao.setDiaria(diaria);
+    acomodacao.setTipo(tipo);
+    acomodacao.setIdentificador(idAcomodacao);
+    acomodacao.setCidade(cidade);
+    acomodacao.setEstado(estado);
+    acomodacao.setIdUsuario(idUsuario);
+    resultado = cntrMSAcomodacao->cadastrarAcomodacao(acomodacao);
+    if ( resultado == true)
+    {
+        cout << "Acomodacao cadastrada" << endl;
+    }
+    else
+    {
+        cout << "Falha no cadastramento da Acomodacao" << endl;
+    }
+
+    cout << "----------------------------------------------------" << endl;
+
+    return;
+}
+
+
+void CntrMAAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario)
+{
+    int operacao, resposta;
+    bool resultado;
+    string identificador;
+    Identificador idAcomodacao;
+    do
+    {
+        operacao = SUCESSO;
+        cout << "Digite o identifcador da acomodacao que deseja descadastrar:" << endl;
+        cin >> identificador;
+        try{
+
+            idAcomodacao.setIdentificador(identificador);
+        }
+        catch ( invalid_argument excecao )
+        {
+            operacao = FALHA;
+            cout << "Dados fornecidos em formato errado" << endl;
+            cout << "Deseja tentar novamente?" << endl;
+            cout << "Sim  -" << SIM << endl;
+            cout << "Não  -" << NAO << endl;
+            cin >> resposta;
+        }
+        if ( resposta == NAO )
+        {
+            cout << "----------------------------------------------------" << endl;
+            return;
+        }
+    }while(operacao == FALHA);
+
+    resultado = cntrMSAcomodacao->descadastrarAcomodacao(idUsuario, idAcomodacao);
+    if ( resultado == Resultado::SUCESSO )
+    {
+        cout << "Acomodacao descadastrada" << endl;
+    }
+    else
+    {
+        cout << "Falha no descadastramento da Acomodacao" << endl;
+    }
+
+    cout << "----------------------------------------------------" << endl;
+    return;
+
+}
+
+
+void CntrMAAcomodacao::exibirAcomodDisp( const Identificador &idUsuario )
+{
+    int operacao;
+    int resposta = NAO;
+    bool resultado;
+    string estadoStr;
+    string dataInicioStr;
+    string dataTerminoStr;
+    string cidadeStr;
+    int capacidadeInt;
+    Nome cidade;
+    Estado estado;
+    Data dataInicio;
+    Data dataTermino;
+    CapAcomodacao capacidade;
+    Acomodacao acomodDesejada;
+    list<Acomodacao> acomodDisp;
+
+    do
+    {
+        operacao = SUCESSO;
+        cout << "----------------------------------------------------" << endl;
+        cout << "Forneça os dados da Acomodação que deseja:\n" << endl;
+        cout << "Estado:" << endl;
+        cin >> estadoStr;
+        cout << "Cidade:" << endl;
+        cin >> cidadeStr;
+        cout << "Data de inicio da estadia:" << endl;
+        cin >> dataInicioStr;
+        cout << "Data de termino da estadia:" << endl;
+        cin >> dataTerminoStr;
+        cout << "capacidade" << endl;
+        cin >> capacidadeInt;
+
+        try
+        {
+
+            cidade.setNome( cidadeStr );
+            estado.setEstado( estadoStr );
+            capacidade.setCapAcomodacao( capacidadeInt );
+            dataInicio.setData( dataInicioStr );
+            dataTermino.setData( dataTerminoStr );
+        }
+        catch ( invalid_argument excecao )
+        {
+            operacao = FALHA;
+            cout << "Dados fornecidos em formato errado" << endl;
+            cout << "Deseja tentar novamente?" << endl;
+            cout << "Sim  -" << SIM << endl;
+            cout << "Não  -" << NAO << endl;
+            cin >> resposta;
+        }
+        if ( resposta == NAO )
+        {
+            cout << "----------------------------------------------------" << endl;
+            return;
+        }
+
+    }while(operacao == FALHA);
+        // Cria uma acomodação modelo para fazer a buscas
+        acomodDesejada.setCidade(cidade);
+        acomodDesejada.setEstado(estado);
+        acomodDesejada.setDataTermino(dataTermino);
+        acomodDesejada.setDataInicio(dataInicio);
+        acomodDesejada.setCapacidade(capacidade);
+/*
+        acomodDisp = AcomodacoesDisp(idUsuario, acomodDesejada);
+        list<Acomodacao>::iterator elemento;
+        cout << "Acomodacões disponiveis:" << endl;
+        endl;
+
+        // Exibe na tela as caracteristicas das acomodações encontradas
+        for( elemento = acomodDisp.begin(); elemento != acomodDisp.end(); elemento++ )
+        {
+            cout << "Identificador: " << elemento->getIdentificador().getIdentificador() << endl;
+            cout << "Capacidade: " << elemento->getCapacidade().getCapAcomodacao() << endl;
+            cout << "Diaria: " << elemento->getDiaria().getDiaria() << endl;
+            cout << "Cidade: " << elemento->getCidade().getNome() << endl;
+            cout << "Estado: " << elemento->getEstado().getEstado() << endl;
+            cout << "----------------------------------------------------";
+        /*
+            cout << "Reservar -" << RESERVAR;
+            cin >> resposta;
+            if ( resposta == RESERVAR )
+            {
+                break;
+            }
+
+        }*/
+
+    cout << "----------------------------------------------------" << endl;
+    return;
+}
+
+
+bool CntrMSAcomodacao::cadastrarAcomodacao( const Acomodacao &acomodacao )
+{
+    ResultadoAcomodacao resultado;
+    resultado = containerAcomodacao->incluirAcomodacao(acomodacao);
+    return resultado.getValor();
+}
+
+bool CntrMSAcomodacao::descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao )
+{
+    ResultadoAcomodacao resultado;
+    ResultadoAcomodacao resultadoAcomod;
+    ResultadoReserva resultadoReserva;
+
+    string identificador = idAcomodacao.getIdentificador();
+    list<Acomodacao> acomodacoes;
+    list<Acomodacao>::iterator elemento;
+
+    resultadoAcomod = containerAcomodacao->buscarAcomodacao(idUsuario);
+    acomodacoes = resultadoAcomod.getAcomodacoes();
+    resultadoReserva = containerAcomodacao->buscarReservaAcomodacao(idAcomodacao);
+    if (resultadoAcomod.getValor() == Resultado::FALHA || resultadoReserva.getValor() == Resultado::SUCESSO)
+    {
+        return false;
+    }
+    else if (resultadoAcomod.getValor() == Resultado::SUCESSO)
+    {
+        for(elemento = acomodacoes.begin(); elemento != acomodacoes.end(); elemento++)
+        {
+            if(elemento->getIdentificador().getIdentificador() == identificador )
+            {
+                resultado = containerAcomodacao->removerAcomodacao(idAcomodacao);
+                return resultado.getValor();
+            }
+        }
+    }
+
+    return false;
+}
+/*
+list<Acomodacao> CntrMSAcomodacao::AcomodacoesDisp( idUsuario, acomodModelo )
+{
+    list<Disponibilidade> disponiveis;
+    ResultadoDisponibilidade resultadoDisp;
+    ResultadoAcomodacao resultadoAcomod, resultado;
+
+    resultadoDisp = containerAcomodacao->buscarDisponib(acomodModelo.getDataInicio(), acomodModelo.getDataTermino());
+    disponiveis = resultadoDisp.getDisponibilidades();
+    resultadoAcomod = containerAcomodacao->buscarAcomodacao( idUsuario );
+    acomodacoes = resultadoAcomod.getAcomodacoes();
+
+    list<Disponibilidade>::iterator primElemento;
+    list<Acomodacao>::iterator segElmento;
+
+
+    for ( primElemento = disponiveis.begin(); primElemento != disponiveis.end(); primElemento++ )
+    {
+        for ( segElemento = acomodacoes.begin(); segElemento != acomodacoes.end(); segElemento++ )
+        {
+
+
+        }
+    }
+
+}*/

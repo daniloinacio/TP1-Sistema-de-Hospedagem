@@ -17,6 +17,7 @@ public:
     ResultadoAcomodacao removerAcomodacao( Identificador idAcomodacao );
     /* Parametro da busca ainda pode mudar */
     ResultadoAcomodacao buscarAcomodacao( Identificador idUsuario );
+    ResultadoAcomodacao buscarAcomodacaoDisp( Acomodacao caracteristicasBuscadas );
     ResultadoDisponib incluirDisponib( Disponibilidade disponibilidade );
     ResultadoDisponib removerDisponib( Disponibilidade disponibilidade );
     ResultadoDisponib removerTodasDisponibAcomod( Identificador idAcomodacao );

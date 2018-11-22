@@ -13,8 +13,8 @@ protected:
 
 public:
 
-    const static int SUCESSO = 0;
-    const static int FALHA   = 1;
+    const static int SUCESSO = 1;
+    const static int FALHA   = 0;
 
     void setValor(int valor){
         this->valor = valor;

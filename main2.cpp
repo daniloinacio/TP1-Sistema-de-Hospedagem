@@ -9,6 +9,23 @@ using namespace std;
 
 int main()
 {
+ContainerUsuario containerUsuario;
+ContainerAcomodacao containerAcomodacao;
+
+CntrMAAutenticacao cntrMAAutenticacao;
+CntrMAAcomodacao cntrMAAcomodacao;
+
+CntrMAUsuario cntrUsuario;
+CntrMSUsuario cntrMSUsuario;
+CntrMSAcomodacao cntrMSAcomodacao;
+
+Identificador idUsuario;
+idUsuario.setIdentificador("danil");
+
+cntrMSAcomodacao.setContainer( &containerAcomodacao );
+cntrMAAcomodacao.setCntrMSAcomodacao(&cntrMSAcomodacao);
+cntrMAAcomodacao.iniciarMenuAcomodacao( idUsuario );
+/*
 ContainerUsuario container;
 CntrMAAutenticacao cntrMAAutenticacao;
 CntrMSUsuario cntrMSUsuario;
@@ -28,5 +45,6 @@ resultado = cntrUsuario.iniciarMenuUsuario( identificador );
 cout << resultado << endl;
 
 delete identificador;
+*/
 return 0;
 }

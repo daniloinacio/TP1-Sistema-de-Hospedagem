@@ -39,19 +39,22 @@ public:
 
 class IAAcomodacao
 {
+private:
+
 public:
-    virtual void iniciarMenuAcomodacao( const Identificador & );
+    virtual void iniciarMenuAcomodacao( const Identificador & ) = 0;
 };
 
 class ISAcomodacao
 {
 public:
-    virtual bool cadastrarAcomodacao( const Acomodacao & );
-    virtual bool descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao );
-    virtual bool cadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade );
-    virtual bool descadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade);
-    virtual bool reservarAcomodacao( const Reserva &reserva );
-    virtual bool cancelarReserva( const Reserva &reserva );
+//    virtual bool AcomodacoesDisp() = 0;
+    virtual bool cadastrarAcomodacao( const Acomodacao & ) = 0;
+    virtual bool descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao ) = 0;
+//    virtual bool cadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade ) = 0;
+//    virtual bool descadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade) = 0;
+//    virtual bool reservarAcomodacao( const Reserva &reserva ) = 0;
+//    virtual bool cancelarReserva( const Reserva &reserva ) = 0;
 
 };
 

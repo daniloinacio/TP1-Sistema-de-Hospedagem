@@ -10,21 +10,13 @@ ResultadoAcomodacao ContainerAcomodacao::incluirAcomodacao( Acomodacao acomodaca
     string identificador = acomodacao.getIdentificador().getIdentificador();
     list<Acomodacao>::iterator elemento;
 
-    if(!containerAcomodacoes.empty())
+    for( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
     {
-        for( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
+        if( elemento->getIdentificador().getIdentificador() == identificador )
         {
-            if( elemento->getIdentificador().getIdentificador() == identificador )
-            {
-                resultado.setValor( Resultado::FALHA );
-                return resultado;
-            }
+            resultado.setValor( Resultado::FALHA );
+            return resultado;
         }
-    }
-    else
-    {
-        resultado.setValor( Resultado::FALHA );
-        return resultado;
     }
 
     containerAcomodacoes.push_back(acomodacao);
@@ -58,6 +50,7 @@ ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacao( Identificador idUsuar
     list<Acomodacao>::iterator elemento;
     list<Acomodacao> acomodacoes;
 
+    resultado.setValor(Resultado::FALHA);
     for ( elemento = containerAcomodacoes.begin(); elemento != containerAcomodacoes.end(); elemento++ )
     {
         if ( elemento->getIdUsuario().getIdentificador() == identificador )
@@ -73,6 +66,50 @@ ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacao( Identificador idUsuar
     }
     return resultado;
 }
+
+ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacaoDisp( Acomodacao caracteristicasBuscadas )
+{
+    ResultadoAcomodacao resultado;
+    ResultadoDisponib resultadoDisp;
+    int capacidade = caracteristicasBuscadas.getCapacidade().getCapAcomodacao();
+    string cidade =  caracteristicasBuscadas.getCidade().getNome();
+    string estado = caracteristicasBuscadas.getEstado().getEstado();
+    list<Acomodacao>::iterator elementoAcomod;
+    list<Disponibilidade>::iterator elementoDisp;
+    list<Acomodacao> acomodacoes;
+    list<Disponibilidade> disponiveis;
+
+    //Busca acomodações disponiveis
+    resultadoDisp = buscarDisponib(caracteristicasBuscadas.getDataInicio(), caracteristicasBuscadas.getDataTermino());
+    disponiveis = resultadoDisp.getDisponibilidades();
+
+    resultado.setValor(Resultado::FALHA);
+    //Busca a acomodação desejada e verifica se esta entre as disponiveis
+    for ( elementoAcomod = containerAcomodacoes.begin(); elementoAcomod != containerAcomodacoes.end(); elementoAcomod++ )
+    {
+        if ( ( elementoAcomod->getCapacidade().getCapAcomodacao() == capacidade ) && ( elementoAcomod->getCidade().getNome() == cidade ) &&
+        ( elementoAcomod->getEstado().getEstado() == estado ) )
+        {
+
+            for ( elementoDisp = disponiveis.begin(); elementoDisp != disponiveis.end(); elementoDisp++ )
+            {
+                if ( elementoDisp->getIdAcomodacao().getIdentificador() == elementoAcomod->getIdentificador().getIdentificador() )
+                {
+                    acomodacoes.push_back( *elementoAcomod );
+                    resultado.setValor( Resultado::SUCESSO );
+                }
+            }
+
+        }
+    }
+
+    if ( resultado.getValor() == Resultado::SUCESSO )
+    {
+        resultado.setAcomodacoes( acomodacoes );
+    }
+    return resultado;
+}
+
 
 //Disponibilidade
 

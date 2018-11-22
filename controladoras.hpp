@@ -64,12 +64,19 @@ private:
     DataValidade valiTemp;
     CartaoCredito novoCartao;
 
+    // Menu do usuario
+    const static int DESCADASTRAR = 1;
+    const static int CADASTRAR_CARTAO = 2;
+    const static int CADASTRAR_CONTA = 3;
+    const static int SAIR = 4;
+
 public:
     bool cadastrarUsuario( Identificador *identificador );
     bool descadastrarUsuario( Identificador *idUsuario );
     bool cadastrarConta( Identificador *idUsuario );
     bool cadastrarCartao( Identificador *idUsuario );
     void setCntrMSUsuario( ISUsuario *cntrMSUsuario );
+    bool iniciarMenuUsuario( Identificador *identificador );
 };
 
 void inline CntrMAUsuario::setCntrMSUsuario(ISUsuario *cntrMSUsuario)
@@ -81,8 +88,8 @@ class CntrMSUsuario : public ISAutenticacao, public ISUsuario
 {
 private:
 
-	ContainerUsuario container;
-	ContainerAcomodacao containerAcomodacoes;
+	ContainerUsuario *container;
+	ContainerAcomodacao *containerAcomodacoes;
 	Senha senhaTemp;
 	list<Usuario>::iterator usuario;
 
@@ -97,7 +104,7 @@ public:
 	bool incluirCartao( const CartaoCredito & );
 };
 
-void inline CntrMSUsuario::setContainer( ContainerUsuario container )
+void inline CntrMSUsuario::setContainer( ContainerUsuario *container )
 {
 	this->container = container;
 }

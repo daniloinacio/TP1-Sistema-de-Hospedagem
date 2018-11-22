@@ -23,8 +23,9 @@ cntrUsuario.setCntrMSUsuario( &cntrMSUsuario );
 Identificador *identificador = new Identificador();
 bool resultado;
 
-resultado = cntrUsuario.cadastrarUsuario( identificador );
-cntrMAAutenticacao.autenticar( identificador );
+cntrUsuario.cadastrarUsuario( identificador );
+resultado = cntrUsuario.iniciarMenuUsuario( identificador );
+cout << resultado << endl;
 
 delete identificador;
 return 0;

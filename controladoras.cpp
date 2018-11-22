@@ -173,7 +173,7 @@ bool CntrMAUsuario::cadastrarCartao( Identificador *idUsuario )
 bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha &senha)
 {
     ResultadoUsuario resultado;
-    resultado = container.buscarUsuario( identificador );
+    resultado = container->buscarUsuario( identificador );
 
 	if ( ( resultado.getValor() == Resultado::SUCESSO ) &&
 	 (resultado.getUsuario().getSenha().getSenha() == senha.getSenha() ) )
@@ -187,7 +187,7 @@ bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha 
 bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Senha &senha )
 {
     ResultadoUsuario resultado;
-    resultado = container.buscarUsuario( identificador );
+    resultado = container->buscarUsuario( identificador );
 
     if( resultado.getValor() == Resultado::SUCESSO )
     {
@@ -200,7 +200,7 @@ bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Se
 bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
 {
     ResultadoUsuario resultado;
-    resultado = container.incluirUsuario( novoUsuario );
+    resultado = container->incluirUsuario( novoUsuario );
 
     if( resultado.getValor() == Resultado::SUCESSO )
     {
@@ -215,7 +215,7 @@ bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
 bool CntrMSUsuario::incluirConta(const ContaCorrente &novaConta)
 {
     ResultadoConta resultado;
-    resultado = container.incluirConta( novaConta );
+    resultado = container->incluirConta( novaConta );
     if( resultado.getValor() == Resultado::SUCESSO )
     {
         return true;
@@ -229,7 +229,7 @@ bool CntrMSUsuario::incluirConta(const ContaCorrente &novaConta)
 bool CntrMSUsuario::incluirCartao(const CartaoCredito &novoCartao)
 {
     ResultadoCartao resultado;
-    resultado = containerincluirCartao( novoCartao );
+    resultado = container->incluirCartao( novoCartao );
     if(resultado.getValor() == Resultado::SUCESSO)
     {
         return true;
@@ -246,14 +246,14 @@ bool CntrMSUsuario::removerUsuario(const Identificador &idUsuario)
     ResultadoAcomodacao resultadoAcomodacao;
     ResultadoReserva resultadoReserva;
 
-    resultadoAcomodacao = containerAcomodacoes.buscarAcomodacao( idUsuario );
-    resultadoReserva = containerAcomodacoes.buscarReservaUsuario( idUsuario );
+    resultadoAcomodacao = containerAcomodacoes->buscarAcomodacao( idUsuario );
+    resultadoReserva = containerAcomodacoes->buscarReservaUsuario( idUsuario );
 
     if( (resultadoAcomodacao.getAcomodacoes().empty() == true) && (resultadoReserva.getReservas().empty() == true) )
     {
-        resultadoUsuario = container.removerUsuario( idUsuario );
-        container.removerCartao( idUsuario );
-        container.removerConta( idUsuario );
+        resultadoUsuario = container->removerUsuario( idUsuario );
+        container->removerCartao( idUsuario );
+        container->removerConta( idUsuario );
         if( resultadoUsuario.getValor() == Resultado::SUCESSO)
         {
             return true;
@@ -265,4 +265,39 @@ bool CntrMSUsuario::removerUsuario(const Identificador &idUsuario)
     }
 
     return false;
+}
+
+bool CntrMAUsuario::iniciarMenuUsuario(Identificador *idUsuario)
+{
+    int opcao = -1;
+    int resultado = false;
+
+    cout << endl << "Menu do usuario." << endl << endl;
+    cout << "Descadastrar usuario     - " << DESCADASTRAR << endl;
+    cout << "Cadastrar cartao         - " << CADASTRAR_CARTAO << endl;
+    cout << "Cadastrar conta corrente - " << CADASTRAR_CONTA << endl;
+    cout << "Sair                     - " << SAIR << endl;
+
+    do
+    {
+        cout << "Selecione uma opcao: ";
+        cin >> opcao;
+    } while( opcao < DESCADASTRAR || opcao > SAIR );
+
+    switch( opcao )
+    {
+    case DESCADASTRAR:
+        resultado = descadastrarUsuario( idUsuario );
+        break;
+
+    case CADASTRAR_CARTAO:
+        resultado = cadastrarCartao( idUsuario );
+        break;
+
+    case CADASTRAR_CONTA:
+        resultado = cadastrarConta( idUsuario );
+        break;
+    }
+
+    return resultado;
 }

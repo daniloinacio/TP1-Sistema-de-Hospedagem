@@ -22,8 +22,9 @@ public:
 
 class IAUsuario
 {
-//public:
-//    virtual bool IniciarMenuUsuario( Identificador *identificador ) = 0;
+public:
+    virtual bool iniciarMenuUsuario( Identificador *identificador ) = 0;
+    virtual bool cadastrarUsuario( Identificador *identificador ) = 0;
 };
 
 class ISUsuario

@@ -55,7 +55,7 @@ public:
     virtual bool verificarCartao(const Identificador&) = 0;
     virtual bool verificarConta(const Identificador&) = 0;
     virtual bool fazerReserva( Reserva reserva) = 0;
-//    virtual bool cancelarReserva( const Reserva &reserva ) = 0;
+    virtual bool cancelarReserva( Reserva reserva ) = 0;
 
 };
 

@@ -170,6 +170,7 @@ private:
     void descadastrarAcomodacao( const Identificador&);
     void cadastrarDisponibilidade(const Identificador&);
     void fazerReserva(const Identificador&);
+    void cancelarReserva(const Identificador&);
 public:
     void setCntrMSAcomodacao( ISAcomodacao *cntrMSAcomodacao );
 	void iniciarMenuAcomodacao( const Identificador & );
@@ -195,7 +196,7 @@ public:
     bool verificarCartao(const Identificador&);
     bool verificarConta(const Identificador&);
     bool fazerReserva( Reserva reserva);
-    bool cancelarReserva( const Reserva &reserva );
+    bool cancelarReserva( Reserva reserva );
 };
 
 void inline CntrMSAcomodacao::setContainerAcomodacao( ContainerAcomodacao *containerAcomodacao )

@@ -426,6 +426,7 @@ void CntrMAAcomodacao::iniciarMenuAcomodacao( const Identificador &idUsuario )
                                     fazerReserva(idUsuario);
                             break;
             case CANCELAR_RESERVA:
+            						cancelarReserva(idUsuario);
                             break;
             case SAIR:
 
@@ -808,6 +809,68 @@ void CntrMAAcomodacao::fazerReserva( const Identificador &idUsuario )
 }
 
 
+void CntrMAAcomodacao::cancelarReserva( const Identificador &idUsuario )
+{
+    int resultado;
+    int operacao;
+    int resposta;
+    Reserva reserva;
+    string dataInicioStr, dataTerminoStr, identificador;
+    Identificador idAcomodacao;
+    Data dataInicio, dataTermino;
+
+    do{
+
+        operacao = SUCESSO;
+        resposta = SIM;
+        cout << "Digite o identificador da acomodacao que foi reservada:" << endl;
+        cin >> identificador;
+        cout << "Digite a data de inicio da reserva:" << endl;
+        cin >> dataInicioStr;
+        cout << "Digite a data de termino da reserva:" << endl;
+        cin >> dataTerminoStr;
+        try
+        {
+            dataInicio.setData(dataInicioStr);
+            dataTermino.setData(dataTerminoStr);
+            idAcomodacao.setIdentificador(identificador);
+        }
+        catch ( invalid_argument excecao )
+        {
+            operacao = FALHA;
+            cout << "Dados fornecidos em formato errado" << endl;
+            cout << "Deseja tentar novamente?" << endl;
+            cout << "Sim  -" << SIM << endl;
+            cout << "Não  -" << NAO << endl;
+            cin >> resposta;
+        }
+        if ( resposta == NAO )
+        {
+            cout << "----------------------------------------------------" << endl;
+            return;
+        }
+
+    }while(operacao == FALHA);
+
+    reserva.setIdAcomodacao(idAcomodacao);
+    reserva.setIdUsuario( idUsuario );
+    reserva.setDataInicio( dataInicio );
+    reserva.setDataTermino( dataTermino );
+
+    resultado = cntrMSAcomodacao->cancelarReserva(reserva);
+    if (resultado == true)
+    {
+        cout << "Reserva cancelada com sucesso." << endl;
+    }
+    else{
+        cout << "Reserva não encontrada." << endl;
+    }
+
+    cout << "----------------------------------------------------" << endl;
+    return;
+}
+
+
 
 bool CntrMSAcomodacao::cadastrarAcomodacao( const Acomodacao &acomodacao )
 {
@@ -884,6 +947,14 @@ bool CntrMSAcomodacao::cadastrarDisponibilidade( const Identificador &idUsuario 
         return false;
     }
     return false;
+}
+
+bool CntrMSAcomodacao::cancelarReserva( Reserva reserva )
+{
+	ResultadoReserva resultado;
+	resultado = containerAcomodacao->removerReserva(reserva);
+
+	return resultado.getValor();
 }
 
 bool CntrMSAcomodacao::verificarCartao( const Identificador &idUsuario )

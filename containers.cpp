@@ -1,4 +1,7 @@
 #include "containers.hpp"
+#include <iostream>
+
+using namespace std;
 
 // Métodos da classe Container Acomodacao
 
@@ -81,6 +84,11 @@ ResultadoAcomodacao ContainerAcomodacao::buscarAcomodacaoDisp( Acomodacao caract
 
     //Busca acomodações disponiveis
     resultadoDisp = buscarDisponib(caracteristicasBuscadas.getDataInicio(), caracteristicasBuscadas.getDataTermino());
+    if (resultadoDisp.getValor() == Resultado::FALHA)
+    {
+        resultado.setValor(Resultado::FALHA);
+        return resultado;
+    }
     disponiveis = resultadoDisp.getDisponibilidades();
 
     resultado.setValor(Resultado::FALHA);

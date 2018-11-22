@@ -48,12 +48,13 @@ public:
 class ISAcomodacao
 {
 public:
-//    virtual bool AcomodacoesDisp() = 0;
+    virtual ResultadoAcomodacao AcomodacoesDisp(const Acomodacao &) = 0;
     virtual bool cadastrarAcomodacao( const Acomodacao & ) = 0;
     virtual bool descadastrarAcomodacao( const Identificador &idUsuario, const Identificador &idAcomodacao ) = 0;
-//    virtual bool cadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade ) = 0;
-//    virtual bool descadastrarDisponibilidade( const Identificador &idUsuario, const Disponibilidade &disponibilidade) = 0;
-//    virtual bool reservarAcomodacao( const Reserva &reserva ) = 0;
+    virtual bool cadastrarDisponibilidade( const Identificador &idUsuario,  Disponibilidade disponibilidade ) = 0;
+    virtual bool verificarCartao(const Identificador&) = 0;
+    virtual bool verificarConta(const Identificador&) = 0;
+    virtual bool fazerReserva( Reserva reserva) = 0;
 //    virtual bool cancelarReserva( const Reserva &reserva ) = 0;
 
 };

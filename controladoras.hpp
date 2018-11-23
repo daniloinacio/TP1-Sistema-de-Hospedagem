@@ -127,8 +127,8 @@ class CntrMSUsuario : public ISAutenticacao, public ISUsuario
 {
 private:
 
-	ContainerUsuario *container;
-	ContainerAcomodacao *containerAcomodacoes;
+	ContainerUsuario *containerUsuario;
+	ContainerAcomodacao *containerAcomodacao;
 	Senha senhaTemp;
 	list<Usuario>::iterator usuario;
 
@@ -140,12 +140,17 @@ public:
 	bool removerUsuario( const Identificador & );
 	bool incluirConta( const ContaCorrente & );
 	bool incluirCartao( const CartaoCredito & );
-	void setContainer( ContainerUsuario *container );
+	void setContainerUsuario( ContainerUsuario *container );
+	void setContainerAcomodacao( ContainerAcomodacao *container );
 };
 
-void inline CntrMSUsuario::setContainer( ContainerUsuario *container )
+void inline CntrMSUsuario::setContainerUsuario( ContainerUsuario *container )
 {
-	this->container = container;
+	this->containerUsuario = container;
+}
+void inline CntrMSUsuario::setContainerAcomodacao( ContainerAcomodacao *container )
+{
+	this->containerAcomodacao = container;
 }
 
 

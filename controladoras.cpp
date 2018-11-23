@@ -256,7 +256,7 @@ bool CntrMAUsuario::cadastrarCartao( const Identificador &idUsuario )
 bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha &senha)
 {
     ResultadoUsuario resultado;
-    resultado = container->buscarUsuario( identificador );
+    resultado = containerUsuario->buscarUsuario( identificador );
 
 	if ( ( resultado.getValor() == Resultado::SUCESSO ) &&
 	 (resultado.getUsuario().getSenha().getSenha() == senha.getSenha() ) )
@@ -270,7 +270,7 @@ bool CntrMSUsuario::autenticar( const Identificador &identificador, const Senha 
 bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Senha &senha )
 {
     ResultadoUsuario resultado;
-    resultado = container->buscarUsuario( identificador );
+    resultado = containerUsuario->buscarUsuario( identificador );
 
     if( resultado.getValor() == Resultado::SUCESSO )
     {
@@ -283,7 +283,7 @@ bool CntrMSUsuario::validarUsuario( const Identificador &identificador, const Se
 bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
 {
     ResultadoUsuario resultado;
-    resultado = container->incluirUsuario( novoUsuario );
+    resultado = containerUsuario->incluirUsuario( novoUsuario );
 
     if( resultado.getValor() == Resultado::SUCESSO )
     {
@@ -298,7 +298,7 @@ bool CntrMSUsuario::incluirUsuario(const Usuario &novoUsuario)
 bool CntrMSUsuario::incluirConta(const ContaCorrente &novaConta)
 {
     ResultadoConta resultado;
-    resultado = container->incluirConta( novaConta );
+    resultado = containerUsuario->incluirConta( novaConta );
     if( resultado.getValor() == Resultado::SUCESSO )
     {
         return true;
@@ -312,7 +312,7 @@ bool CntrMSUsuario::incluirConta(const ContaCorrente &novaConta)
 bool CntrMSUsuario::incluirCartao(const CartaoCredito &novoCartao)
 {
     ResultadoCartao resultado;
-    resultado = container->incluirCartao( novoCartao );
+    resultado = containerUsuario->incluirCartao( novoCartao );
     if(resultado.getValor() == Resultado::SUCESSO)
     {
         return true;
@@ -329,14 +329,14 @@ bool CntrMSUsuario::removerUsuario(const Identificador &idUsuario)
     ResultadoAcomodacao resultadoAcomodacao;
     ResultadoReserva resultadoReserva;
 
-    resultadoAcomodacao = containerAcomodacoes->buscarAcomodacao( idUsuario );
-    resultadoReserva = containerAcomodacoes->buscarReservaUsuario( idUsuario );
+    resultadoAcomodacao = containerAcomodacao->buscarAcomodacao( idUsuario );
+    resultadoReserva = containerAcomodacao->buscarReservaUsuario( idUsuario );
 
     if( (resultadoAcomodacao.getAcomodacoes().empty() == true) && (resultadoReserva.getReservas().empty() == true) )
     {
-        resultadoUsuario = container->removerUsuario( idUsuario );
-        container->removerCartao( idUsuario );
-        container->removerConta( idUsuario );
+        resultadoUsuario = containerUsuario->removerUsuario( idUsuario );
+        containerUsuario->removerCartao( idUsuario );
+        containerUsuario->removerConta( idUsuario );
         if( resultadoUsuario.getValor() == Resultado::SUCESSO)
         {
             return true;

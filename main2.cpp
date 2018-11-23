@@ -21,8 +21,8 @@ CntrMSUsuario cntrMSUsuario;
 
 cntrMSAcomodacao.setContainerAcomodacao( &containerAcomodacao );
 cntrMSAcomodacao.setContainerUsuario( &containerUsuario );
-cntrMSUsuario.setContainer( &containerUsuario );
-
+cntrMSUsuario.setContainerUsuario( &containerUsuario );
+cntrMSUsuario.setContainerAcomodacao( &containerAcomodacao );
 // Setando valores das controladoras de apresentacao
 cntrMAAcomodacao.setCntrMSAcomodacao( &cntrMSAcomodacao );
 cntrMAAutenticacao.setCntrMSAutenticacao( &cntrMSUsuario );
